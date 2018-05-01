@@ -1,0 +1,9 @@
+//include ':app', ':FlycoTabLayout_Lib', ':ninegridview', ':library', ':haowushop'
+include ':app'
+
+include ':FlycoTabLayout_Lib'
+project (':FlycoTabLayout_Lib').projectDir = new File('../Yishijie/FlycoTabLayout_Lib')
+include ':ninegridview'
+project (':ninegridview').projectDir = new File('../Yishijie/ninegridview')
+include ':library'
+project (':library').projectDir = new File('../Yishijie/library')

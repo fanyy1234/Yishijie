@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/common_bg"
+    android:layout_height="match_parent">
+<include layout="@layout/layout_common_header"/>
+    <com.sunday.common.widgets.ClearEditText
+        android:id="@+id/edit_content"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:textColor="@color/black_3"
+        android:padding="13dp"
+        android:gravity="left|top"
+        android:textSize="14sp"
+        android:textColorHint="@color/black_8"
+        android:hint="编辑文案"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="13dp"
+        android:text="230字"
+        android:textColor="@color/black_c1"
+        android:gravity="end"/>
+    <com.sunday.common.widgets.NoScrollGridView
+        android:id="@+id/grid_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:verticalSpacing="5dp"
+        android:background="@color/white">
+    </com.sunday.common.widgets.NoScrollGridView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginRight="13dp"
+        android:background="@color/common_bg"/>
+
+<TextView
+    android:id="@+id/product_name"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="13dp"
+    android:textColor="@color/black_0"
+    android:background="@color/white"/>
+</LinearLayout>

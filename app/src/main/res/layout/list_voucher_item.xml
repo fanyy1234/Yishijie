@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:id="@+id/relative_layout"
+    android:background="@mipmap/profile_coupon_bg">
+
+    <TextView
+        android:id="@+id/txt_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¥"
+        android:textColor="@color/_333"
+        android:layout_marginLeft="27dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignBottom="@+id/voucher_money"
+        />
+    <TextView
+        android:id="@+id/voucher_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40dp"
+        android:textColor="@color/_000000"
+        android:textStyle="italic"
+        tools:text="aaa"
+        android:layout_toRightOf="@+id/txt_1"
+        android:layout_marginTop="15dp"/>
+
+
+    <TextView
+        android:id="@+id/voucher_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txt_1"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:text="时间"
+        android:textColor="@color/black_9"
+        android:textSize="14sp" />
+    <TextView
+        android:id="@+id/voucher_extra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/voucher_money"
+        android:layout_alignBottom="@+id/voucher_money"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:textSize="13sp"
+        tools:text="满100使用" />
+    <TextView
+        android:id="@+id/voucher_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/voucher_extra"
+        android:layout_alignBottom="@+id/voucher_extra"
+        android:layout_marginLeft="3dp"
+        android:textSize="13sp"
+        tools:text="aaa"/>
+
+
+
+    <TextView
+        android:id="@+id/txt_use"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="27dp"
+        android:textSize="15sp"
+        tools:text="立即\n使用"/>
+
+</RelativeLayout>
+

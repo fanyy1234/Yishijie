@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg">
+
+    <RelativeLayout
+        android:id="@+id/common_header"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        android:layout_height="48dp">
+        <ImageView
+            android:id="@+id/left_btn"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_back"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:onClick="back"
+            android:padding="13dp"/>
+        <com.flyco.tablayout.SlidingTabLayout  xmlns:tl="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/left_btn"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true"
+            tl:tl_indicator_color="@color/main_color"
+            tl:tl_indicator_width="40dp"
+            tl:tl_tab_space_equal="true"
+            tl:tl_textSelectColor="@color/main_color"
+            tl:tl_textUnselectColor="#333333" >
+        </com.flyco.tablayout.SlidingTabLayout>
+        <ImageView
+            android:id="@+id/right_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>

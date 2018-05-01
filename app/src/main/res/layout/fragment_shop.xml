@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_common_header" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/login_not_layout"
+        android:background="@color/white"
+        tools:visibility="gone">
+        <ImageView
+            android:id="@+id/login_not_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:src="@mipmap/login_not"/>
+        <TextView
+            android:id="@+id/login_not_dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_remind"
+            android:layout_below="@+id/login_not_img"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"/>
+        <TextView
+            android:id="@+id/text_login"
+            android:layout_below="@+id/login_not_dec"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/shape_unselect_spec"
+            android:text="去登录"/>
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/coordinator_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appbar_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <RelativeLayout
+                    android:id="@+id/header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    tools:background="@color/main_color"
+                    android:fitsSystemWindows="true"
+                    app:layout_scrollFlags="scroll">
+
+                    <com.sunday.common.widgets.CircleImageView
+                        android:id="@+id/shop_img"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginBottom="22dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_marginStart="24dp"
+                        tools:background="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/shop_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/shop_img"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/shop_img"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        tools:text="店铺名称" />
+
+                    <TextView
+                        android:id="@+id/shop_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shop_title"
+                        android:layout_marginTop="10dp"
+                        android:layout_alignLeft="@+id/shop_title"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        tools:text="店铺描述" />
+
+                </RelativeLayout>
+
+                <com.flyco.tablayout.SlidingTabLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/slide_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@color/white"
+                    tl:tl_indicator_color="#333333"
+                    tl:tl_indicator_width="70dp"
+                    tl:tl_tab_space_equal="true"
+                    tl:tl_textSelectColor="#808080"
+                    tl:tl_textUnselectColor="#333333" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/cal_divider" />
+            </android.support.design.widget.AppBarLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        </android.support.design.widget.CoordinatorLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

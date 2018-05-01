@@ -1,0 +1,37 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.sunday.common">
+    <!-- 访问网络状态-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 外置存储存取权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- 多媒体相关 -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!--<uses-permission android:name="android.permission.RECORD_AUDIO"/>-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <application android:allowBackup="true" android:label="@string/app_name">
+
+        <activity android:name=".qrcode.CaptureActivity"/>
+        <activity
+            android:name="com.sunday.common.imageselector.MultiImageSelectorActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity android:name=".base.BaseActivity"/>
+
+        <service
+            android:name="com.sunday.common.update.UpdateService"
+            android:process=":DownloadingService" />
+
+        <activity android:name=".update.UpdateDialogActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Transparent"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
+    </application>
+
+
+
+
+</manifest>

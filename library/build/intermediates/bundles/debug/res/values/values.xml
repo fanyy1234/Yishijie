@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cal_weekdays">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+    <integer-array name="material_colors">
+        <item>@color/material_red</item>
+        <item>@color/material_green</item>
+        <item>@color/material_blue</item>
+        <item>@color/material_yellow</item>
+    </integer-array>
+    <string-array name="shop_title">
+        <item>收益信息</item>
+        <item>产品信息</item>
+        </string-array>
+    <bool name="spb_default_mirror_mode">false</bool>
+    <bool name="spb_default_progressiveStart_activated">false</bool>
+    <bool name="spb_default_reversed">false</bool>
+    <color name="bgColor_overlay">#60000000</color>
+    <color name="bocop_dialog_bg">#77000000</color>
+    <color name="cal_arrow_enable">#ffc0c0c0</color>
+    <color name="cal_arrow_unable">#ffeaeaea</color>
+    <color name="cal_divider">#FFEDEDED</color>
+    <color name="cal_pager_background">#FFFFFFFF</color>
+    <color name="cal_signed_background">#fff7fcfe</color>
+    <color name="cal_signed_border">#ffb5e6f1</color>
+    <color name="cal_signed_day">#ff03A9F4</color>
+    <color name="cal_signed_text">#ff03A9F4</color>
+    <color name="cal_title_background">#FFFFFFFF</color>
+    <color name="cal_title_text">#FF2D2D2D</color>
+    <color name="cal_today_background">#ff03A9F4</color>
+    <color name="cal_today_day">#ffb6b6b6</color>
+    <color name="cal_today_text">#505050</color>
+    <color name="cal_unreach_day">#505050</color>
+    <color name="cal_unreach_text">#505050</color>
+    <color name="cal_unsigned_day">#ffb6b6b6</color>
+    <color name="cal_unsigned_text">#505050</color>
+    <color name="cal_weekdays_background">#FFFFFFFF</color>
+    <color name="cal_weekdays_text">#FF2D2D2D</color>
+    <color name="circle">#aa738ffe</color>
+    <color name="colorPrimary">#ef0022</color>
+    <color name="colorPrimaryDark">#ef0022</color>
+    <color name="comment_popup_bg">#4c5154</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
+    <color name="dialog_bg">#f5f5f5</color>
+    <color name="item_pressed">#e0e0e0</color>
+    <color name="line_gray">#E0E0E0</color>
+    <color name="list_divider_color">#d8d8d8</color>
+    <color name="main_gray">#9A9A9A</color>
+    <color name="material_blue">#ff03A9F4</color>
+    <color name="material_green">#ff4CAF50</color>
+    <color name="material_red">#ffF44336</color>
+    <color name="material_yellow">#ffFFEB3B</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_topbar_title">#000000</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="rect">#aae84e40</color>
+    <color name="shadow">#25808080</color>
+    <color name="spb_default_color">#33b5e5</color>
+    <color name="text_black">#000000</color>
+    <color name="triangle">#aa72d572</color>
+    <color name="view_bg">#00000000</color>
+    <color name="wheel_timebtn_nor">#54a3fa</color>
+    <color name="wheel_timebtn_pre">#CCCCCC</color>
+    <color name="white">#ffffff</color>
+    <color name="window_background">#efefef</color>
+    <declare-styleable name="ActionSheet"><attr format="color|reference" name="actionSheetBackground"/><attr format="color|reference" name="cancelButtonBackground"/><attr format="color|reference" name="otherButtonTopBackground"/><attr format="color|reference" name="otherButtonMiddleBackground"/><attr format="color|reference" name="otherButtonBottomBackground"/><attr format="color|reference" name="otherButtonSingleBackground"/><attr format="color|reference" name="cancelButtonTextColor"/><attr format="color|reference" name="otherButtonTextColor"/><attr format="color|reference" name="titleButtonTextColor"/><attr format="dimension|reference" name="actionSheetPadding"/><attr format="dimension|reference" name="otherButtonSpacing"/><attr format="dimension|reference" name="cancelButtonMarginTop"/><attr format="dimension|reference" name="actionSheetTextSize"/></declare-styleable>
+    <declare-styleable name="ActionSheets"><attr format="reference" name="actionSheetStyle"/></declare-styleable>
+    <declare-styleable name="CircleImageView"><attr format="dimension" name="border_width"/><attr format="color" name="border_color"/><attr format="boolean" name="border_overlay"/></declare-styleable>
+    <declare-styleable name="CircleProgressBar"><attr format="dimension" name="mlpb_inner_radius"/><attr format="color" name="mlpb_background_color"/><attr format="color" name="mlpb_progress_color"/><attr format="dimension" name="mlpb_progress_stoke_width"/><attr format="boolean" name="mlpb_show_arrow"/><attr format="boolean" name="mlpb_enable_circle_background"/><attr format="dimension" name="mlpb_arrow_width"/><attr format="dimension" name="mlpb_arrow_height"/><attr format="integer" name="mlpb_progress"/><attr format="integer" name="mlpb_max"/><attr format="dimension" name="mlpb_progress_text_size"/><attr format="color" name="mlpb_progress_text_color"/><attr format="enum" name="mlpb_progress_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="ConvenientBanner"><attr format="boolean" name="canLoop"/></declare-styleable>
+    <declare-styleable name="CountdownView"><attr format="boolean" name="isHideTimeBackground"/><attr format="boolean" name="isShowTimeBgDivisionLine"/><attr format="color" name="timeBgDivisionLineColor"/><attr format="dimension" name="timeBgDivisionLineSize"/><attr format="color" name="timeBgColor"/><attr format="dimension" name="timeBgSize"/><attr format="dimension" name="timeBgRadius"/><attr format="boolean" name="isTimeTextBold"/><attr format="dimension" name="timeTextSize"/><attr format="color" name="timeTextColor"/><attr format="boolean" name="isShowDay"/><attr format="boolean" name="isShowHour"/><attr format="boolean" name="isShowMinute"/><attr format="boolean" name="isShowSecond"/><attr format="boolean" name="isShowMillisecond"/><attr format="boolean" name="isSuffixTextBold"/><attr format="dimension" name="suffixTextSize"/><attr format="color" name="suffixTextColor"/><attr format="string" name="suffix"/><attr format="string" name="suffixDay"/><attr format="string" name="suffixHour"/><attr format="string" name="suffixMinute"/><attr format="string" name="suffixSecond"/><attr format="string" name="suffixMillisecond"/><attr name="suffixGravity">
+            <enum name="top" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr><attr format="dimension" name="suffixLRMargin"/><attr format="dimension" name="suffixDayLeftMargin"/><attr format="dimension" name="suffixDayRightMargin"/><attr format="dimension" name="suffixHourLeftMargin"/><attr format="dimension" name="suffixHourRightMargin"/><attr format="dimension" name="suffixMinuteLeftMargin"/><attr format="dimension" name="suffixMinuteRightMargin"/><attr format="dimension" name="suffixSecondLeftMargin"/><attr format="dimension" name="suffixSecondRightMargin"/><attr format="dimension" name="suffixMillisecondLeftMargin"/></declare-styleable>
+    <declare-styleable name="FlowLayout"><attr name="android:gravity"/></declare-styleable>
+    <declare-styleable name="FlowLayout_Layout"><attr name="android:layout_gravity"/></declare-styleable>
+    <declare-styleable name="LoadingView"><attr format="string" name="loadingText"/><attr format="reference" name="loadingTextAppearance"/></declare-styleable>
+    <declare-styleable name="MarqueeViewStyle"><attr format="integer|reference" name="mvInterval"/><attr format="integer|reference" name="mvAnimDuration"/><attr format="dimension|reference" name="mvTextSize"/><attr format="color|reference" name="mvTextColor"/><attr format="boolean" name="mvSingleLine"/><attr name="mvGravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr></declare-styleable>
+    <declare-styleable name="MaterialFavoriteButton"><attr format="boolean" name="mfb_animate_favorite"/><attr format="boolean" name="mfb_animate_unfavorite"/><attr format="integer" name="mfb_padding"/><attr format="integer" name="mfb_favorite_image"/><attr format="integer" name="mfb_not_favorite_image"/><attr format="integer" name="mfb_rotation_duration"/><attr format="integer" name="mfb_rotation_angle"/><attr format="integer" name="mfb_bounce_duration"/><attr format="enum" name="mfb_color">
+            <enum name="black" value="0"/>
+            <enum name="white" value="1"/>
+        </attr><attr format="enum" name="mfb_type">
+            <enum name="star" value="0"/>
+            <enum name="heart" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="MaterialRefreshLayout"><attr format="boolean" name="overlay"/><attr format="enum" name="wave_height_type">
+            <enum name="normal" value="0"/>
+            <enum name="higher" value="1"/>
+        </attr><attr format="color" name="wave_color"/><attr format="boolean" name="wave_show"/><attr format="reference" name="progress_colors"/><attr format="dimension" name="progress_stoke_width"/><attr format="color" name="progress_backgroud_color"/><attr format="boolean" name="progress_show_arrow"/><attr format="dimension" name="progress_arrow_width"/><attr format="dimension" name="progress_arrow_height"/><attr format="boolean" name="progress_show_circle_backgroud"/><attr format="integer" name="progress_value"/><attr format="integer" name="progress_max_value"/><attr format="dimension" name="progress_text_size"/><attr format="color" name="progress_text_color"/><attr format="enum" name="progress_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr><attr format="enum" name="progress_size_type">
+            <enum name="normal" value="0"/>
+            <enum name="big" value="1"/>
+        </attr><attr format="boolean" name="isLoadMore"/></declare-styleable>
+    <declare-styleable name="PasswordInputEdt"><attr format="boolean" name="isPwd"/><attr format="boolean" name="autoCloseKeyBoard"/><attr format="boolean" name="isNumber"/><attr format="dimension" name="widthSpace"/><attr format="dimension" name="heightSpace"/><attr format="dimension" name="rectStroke"/><attr format="dimension" name="txtSize"/><attr format="dimension" name="circleRadius"/><attr format="boolean" name="bgFill"/><attr format="integer" name="numLength"/><attr format="color" name="textColor"/><attr format="color" name="rectNormalColor"/><attr format="color" name="rectChooseColor"/><attr format="enum" name="pwdType">
+            <enum name="CIRCLE" value="0"/>
+            <enum name="XINGHAO" value="1"/>
+        </attr></declare-styleable>
+    <declare-styleable name="PasswordView"><attr format="boolean" name="useStrikeThrough"/></declare-styleable>
+    <declare-styleable name="PswText"><attr format="integer" name="pswLength"/><attr format="color" name="borderColor"/><attr format="color" name="pswColor"/><attr format="color" name="inputBorder_color"/><attr format="color" name="borderShadow_color"/><attr format="dimension" name="psw_textSize"/><attr format="dimension" name="borderRadius"/><attr format="boolean" name="isDrawBorderImg"/><attr format="boolean" name="isShowTextPsw"/><attr format="boolean" name="isShowBorderShadow"/><attr format="reference" name="borderImg"/><attr format="reference" name="inputBorderImg"/><attr format="integer" name="delayTime"/><attr format="boolean" name="clearTextPsw"/><attr format="boolean" name="darkPsw"/><attr format="boolean" name="isChangeBorder"/></declare-styleable>
+    <declare-styleable name="PtrClassicHeader"><attr format="integer" name="ptr_rotate_ani_time"/></declare-styleable>
+    <declare-styleable name="PtrFrameLayout"><attr format="reference" name="ptr_header"/><attr format="reference" name="ptr_content"/><attr format="float" name="ptr_resistance"/><attr format="float" name="ptr_ratio_of_header_height_to_refresh"/><attr format="integer" name="ptr_duration_to_close"/><attr format="integer" name="ptr_duration_to_close_header"/><attr format="boolean" name="ptr_pull_to_fresh"/><attr format="boolean" name="ptr_keep_header_when_refresh"/></declare-styleable>
+    <declare-styleable name="RefreshView"><attr format="enum" name="type">
+            <enum name="sun" value="0"/>
+        </attr></declare-styleable>
+    <declare-styleable name="SegmentControl"><attr format="dimension|reference" name="cornerRadius"/><attr format="color|reference" name="colors"/><attr format="string|reference" name="texts"/><attr format="dimension|reference" name="textSize"/><attr format="enum" name="direction">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr><attr format="dimension|reference" name="gaps"/><attr format="dimension|reference" name="horizonGap"/><attr format="dimension|reference" name="verticalGap"/></declare-styleable>
+    <declare-styleable name="SmoothProgressBar"><attr format="reference" name="spbStyle"/><attr format="color" name="spb_color"/><attr format="dimension" name="spb_stroke_width"/><attr format="dimension" name="spb_stroke_separator_length"/><attr format="integer" name="spb_sections_count"/><attr format="float" name="spb_speed"/><attr format="float" name="spb_progressiveStart_speed"/><attr format="float" name="spb_progressiveStop_speed"/><attr format="enum" name="spb_interpolator">
+            <enum name="spb_interpolator_accelerate" value="0"/>
+            <enum name="spb_interpolator_linear" value="1"/>
+            <enum name="spb_interpolator_acceleratedecelerate" value="2"/>
+            <enum name="spb_interpolator_decelerate" value="3"/>
+        </attr><attr format="boolean" name="spb_reversed"/><attr format="boolean" name="spb_mirror_mode"/><attr format="reference" name="spb_colors"/><attr format="boolean" name="spb_progressiveStart_activated"/><attr format="reference" name="spb_background"/><attr format="boolean" name="spb_generate_background_with_colors"/><attr format="boolean" name="spb_gradients"/></declare-styleable>
+    <declare-styleable name="SwipeMenuLayout"><attr format="reference" name="leftViewId"/><attr format="reference" name="rightViewId"/><attr format="reference" name="contentViewId"/></declare-styleable>
+    <declare-styleable name="ToggleButton"><attr format="color" name="themeColor"/><attr format="boolean" name="isOpen"/><attr name="shape">
+            <enum name="rect" value="1"/>
+            <enum name="circle" value="2"/>
+        </attr></declare-styleable>
+    <declare-styleable name="rtl_RecyclerTabLayout"><attr format="color" name="rtl_tabIndicatorColor"/><attr format="dimension" name="rtl_tabIndicatorHeight"/><attr format="reference" name="rtl_tabBackground"/><attr format="reference" name="rtl_tabTextAppearance"/><attr format="color" name="rtl_tabSelectedTextColor"/><attr format="integer" name="rtl_tabOnScreenLimit"/><attr format="dimension" name="rtl_tabMinWidth"/><attr format="dimension" name="rtl_tabMaxWidth"/><attr format="dimension" name="rtl_tabPaddingStart"/><attr format="dimension" name="rtl_tabPaddingTop"/><attr format="dimension" name="rtl_tabPaddingEnd"/><attr format="dimension" name="rtl_tabPaddingBottom"/><attr format="dimension" name="rtl_tabPadding"/><attr format="boolean" name="rtl_scrollEnabled"/></declare-styleable>
+    <declare-styleable name="wheelview"><attr name="gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr></declare-styleable>
+    <dimen name="alphabet_size">12dip</dimen>
+    <dimen name="cal_arrow_height">18dp</dimen>
+    <dimen name="cal_date_height">45dp</dimen>
+    <dimen name="cal_date_v_margin">5dp</dimen>
+    <dimen name="cal_date_width">45dp</dimen>
+    <dimen name="cal_day_text_size">20sp</dimen>
+    <dimen name="cal_divider_h_margin">10dp</dimen>
+    <dimen name="cal_divider_height">1dp</dimen>
+    <dimen name="cal_pager_h_margin">10dp</dimen>
+    <dimen name="cal_sign_text_size">10sp</dimen>
+    <dimen name="cal_title_h_margin">10dp</dimen>
+    <dimen name="cal_title_height">48dp</dimen>
+    <dimen name="cal_title_text_size">18sp</dimen>
+    <dimen name="cal_weekdays_h_margin">10dp</dimen>
+    <dimen name="cal_weekdays_height">52dp</dimen>
+    <dimen name="cal_weekdays_text_size">12sp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+    <dimen name="image_size">120dp</dimen>
+    <dimen name="pickerview_topbar_btn_textsize">20sp</dimen>
+    <dimen name="pickerview_topbar_height">44dp</dimen>
+    <dimen name="pickerview_topbar_paddingleft">10dp</dimen>
+    <dimen name="pickerview_topbar_paddingright">30dp</dimen>
+    <dimen name="pickerview_topbar_title_textsize">21sp</dimen>
+    <dimen name="space_size">10dp</dimen>
+    <dimen name="spb_default_stroke_separator_length">4dp</dimen>
+    <dimen name="spb_default_stroke_width">4dp</dimen>
+    <dimen name="umeng_socialize_pad_window_height">350dip</dimen>
+    <dimen name="umeng_socialize_pad_window_width">580dip</dimen>
+    <item name="cb_item_tag" type="id"/>
+    <integer name="spb_default_interpolator">0</integer>
+    <integer name="spb_default_sections_count">4</integer>
+    <string name="UMAppUpdate">应用更新</string>
+    <string name="UMBreak_Network">未联网</string>
+    <string name="UMDialog_InstallAPK">最新版本已下载，是否安装？</string>
+    <string name="UMGprsCondition">（提示：非WIFI环境）</string>
+    <string name="UMIgnore">忽略该版</string>
+    <string name="UMNewVersion">最新版本: </string>
+    <string name="UMNotNow">以后再说</string>
+    <string name="UMTargetSize">新版本大小:</string>
+    <string name="UMToast_IsUpdating">正在更新中....</string>
+    <string name="UMUpdateCheck">2.6.0.1.20150312</string>
+    <string name="UMUpdateContent">更新内容</string>
+    <string name="UMUpdateNow">立即更新</string>
+    <string name="UMUpdateSize">仅需要下载:</string>
+    <string name="UMUpdateTitle">发现新版本</string>
+    <string name="app_name">Library</string>
+    <string name="cal_signed">已签</string>
+    <string name="cal_today">今日</string>
+    <string name="cal_unreach">签到</string>
+    <string name="cal_unsign">未签</string>
+    <string name="calendar_title">%1$d年%2$d月</string>
+    <string name="count_goods">结算（%d）</string>
+    <string name="count_money">合计：¥%s</string>
+    <string name="cube_ptr_hours_ago"> 几小时前</string>
+    <string name="cube_ptr_last_update">上次更新: </string>
+    <string name="cube_ptr_minutes_ago"> 几分钟前</string>
+    <string name="cube_ptr_pull_down">下拉</string>
+    <string name="cube_ptr_pull_down_to_refresh">下拉刷新</string>
+    <string name="cube_ptr_refresh_complete">刷新完成</string>
+    <string name="cube_ptr_refreshing">正在刷新…</string>
+    <string name="cube_ptr_release_to_refresh">释放刷新</string>
+    <string name="cube_ptr_seconds_ago"> 几秒钟前</string>
+    <string name="define_smoothprogressbar"/>
+    <string name="delete_goods">删除（%d）</string>
+    <string name="edit">编辑</string>
+    <string name="error_view_click_to_refresh">点击屏幕,重新加载</string>
+    <string name="error_view_load_error_click_to_refresh">内容加载失败\r\n点击重新加载</string>
+    <string name="error_view_loading">加载中…</string>
+    <string name="error_view_network_error_click_to_refresh">没有可用的网络</string>
+    <string name="error_view_no_data">暂无内容</string>
+    <string name="folder_all">所有照片</string>
+    <string name="last_month">上个月</string>
+    <string name="library_smoothprogressbar_author">Antoine Merle</string>
+    <string name="library_smoothprogressbar_authorWebsite">https://github.com/castorflex</string>
+    <string name="library_smoothprogressbar_isOpenSource">true</string>
+    <string name="library_smoothprogressbar_libraryDescription">Small library allowing you to make a smooth indeterminate progress bar. You can either user your progress bars and set this drawable or use directly the SmoothProgressBarView.</string>
+    <string name="library_smoothprogressbar_libraryName">SmoothProgressBar</string>
+    <string name="library_smoothprogressbar_libraryVersion">1.0.0</string>
+    <string name="library_smoothprogressbar_libraryWebsite">https://github.com/castorflex/SmoothProgressBar</string>
+    <string name="library_smoothprogressbar_licenseId">apache_2_0</string>
+    <string name="library_smoothprogressbar_repositoryLink">https://github.com/castorflex/SmoothProgressBar.git</string>
+    <string name="msg_amount_limit">已经达到最高选择数量</string>
+    <string name="msg_no_camera">没有系统相机</string>
+    <string name="next_month">下个月</string>
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_seconds">秒</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="preview">预览</string>
+    <string name="qr_scan_tips">将二维码/条码放入框内，即可自动扫描</string>
+    <string name="shop_title">购物车(%s)</string>
+    <item format="float" name="spb_default_speed" type="string">1</item>
+    <string name="tip_network_error">没有可用的网络</string>
+    <string name="umeng_common_action_cancel">取消</string>
+    <string name="umeng_common_action_continue">继续</string>
+    <string name="umeng_common_action_info_exist">正在下载中.</string>
+    <string name="umeng_common_action_pause">暂停</string>
+    <string name="umeng_common_download_failed">下载失败</string>
+    <string name="umeng_common_download_finish">下载完成，请点击安装</string>
+    <string name="umeng_common_download_notification_prefix">正在下载: </string>
+    <string name="umeng_common_icon">图标</string>
+    <string name="umeng_common_info_interrupt">下载出错啦，请检查网络后继续。</string>
+    <string name="umeng_common_network_break_alert">请连接网络后再尝试！</string>
+    <string name="umeng_common_patch_finish">更新完成，请点击安装</string>
+    <string name="umeng_common_pause_notification_prefix">暂停: </string>
+    <string name="umeng_common_silent_download_finish">新版本已经准备好，请点击安装</string>
+    <string name="umeng_common_start_download_notification">正在下载应用</string>
+    <string name="umeng_common_start_patch_notification">正在更新安装包</string>
+    <string name="umeng_example_home_btn_plus">社交分享</string>
+    <string name="umeng_socialize_cancel_btn_str">取消</string>
+    <string name="umeng_socialize_content_hint">说点啥…</string>
+    <string name="umeng_socialize_img_des"/>
+    <string name="umeng_socialize_send_btn_str">发送</string>
+    <string name="umeng_socialize_share">分享</string>
+    <string name="umeng_socialize_text_add_custom_platform">请配置用户平台</string>
+    <string name="umeng_socialize_text_loading_message">载入中,请稍候...</string>
+    <string name="umeng_socialize_text_waitting">请稍候...</string>
+    <string name="umeng_socialize_text_waitting_message">,请稍候...</string>
+    <string name="umeng_socialize_text_waitting_qq">跳转QQ中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_qzone">跳转QZone中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_redirect">跳转</string>
+    <string name="umeng_socialize_text_waitting_share">分享中…</string>
+    <string name="umeng_socialize_text_waitting_weixin">跳转微信中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_weixin_circle">跳转朋友圈中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_yixin">跳转易信中，请稍候...</string>
+    <string name="umeng_socialize_text_waitting_yixin_circle">跳转易信朋友圈中，请稍候...</string>
+    <string name="umeng_socialize_text_weixin_circle_key">微信朋友圈</string>
+    <string name="umeng_socialize_text_weixin_key">微信</string>
+    <string name="update_download_failed">下载失败</string>
+    <string name="update_download_failed_msg">下载失败原因</string>
+    <string name="update_download_finish">下载完成</string>
+    <string name="update_download_new_version">有新版本</string>
+    <string name="update_download_processing">正在下载  %1$d%%</string>
+    <string name="update_download_start">下载开始</string>
+    <string name="version_unknown">版本未知</string>
+    <style name="ACPLDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <style name="Dialog_bocop">
+        <item name="android:windowBackground">@color/bocop_dialog_bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+    <style name="SPB" parent="android:Widget.ProgressBar.Horizontal"/>
+    <style name="SmoothProgressBar" parent="SPB">
+        <item name="spb_color">@color/spb_default_color</item>
+        <item name="spb_sections_count">@integer/spb_default_sections_count</item>
+        <item name="spb_speed">@string/spb_default_speed</item>
+        <item name="spb_stroke_width">@dimen/spb_default_stroke_width</item>
+        <item name="spb_stroke_separator_length">@dimen/spb_default_stroke_separator_length
+        </item>
+        <item name="spb_reversed">@bool/spb_default_reversed</item>
+        <item name="spb_mirror_mode">@bool/spb_default_mirror_mode</item>
+        <item name="spb_interpolator">@integer/spb_default_interpolator</item>
+    </style>
+    <style name="Theme.SmoothProgressBarDefaults" parent="android:Theme">
+        <item name="spbStyle">@style/SmoothProgressBar</item>
+    </style>
+    <style name="Transparent" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="UIAlertViewStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="common_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="custom_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+    <style name="fill_fill">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="fill_wrap">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="h_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginLeft">12dp</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:background">#f0f0f0</item>
+    </style>
+    <style name="h_line_no_padding">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/window_background</item>
+    </style>
+    <style name="h_line_no_padding_right">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:background">@color/window_background</item>
+    </style>
+    <style name="loading">
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateDrawable">@drawable/progressloading</item>
+        <item name="android:indeterminateDuration">1000</item>
+        <item name="android:indeterminateOnly">true</item>
+    </style>
+    <style name="rtl_RecyclerTabLayout">
+        <item name="rtl_tabMinWidth">72dp</item>
+        <item name="rtl_tabMaxWidth">264dp</item>
+        <item name="rtl_tabIndicatorColor">?attr/colorAccent</item>
+        <item name="rtl_tabIndicatorHeight">2dp</item>
+        <item name="rtl_tabPaddingStart">12dp</item>
+        <item name="rtl_tabPaddingEnd">12dp</item>
+        <item name="rtl_tabBackground">?attr/selectableItemBackground</item>
+        <item name="rtl_tabTextAppearance">@style/rtl_RecyclerTabLayout.Tab</item>
+        <item name="rtl_tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <style name="rtl_RecyclerTabLayout.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <style name="v_line">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">@color/window_background</item>
+    </style>
+    <style name="v_line_no_padding">
+        <item name="android:layout_width">0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:background">@color/list_divider_color</item>
+    </style>
+    <style name="wrap_fill">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+    <style name="wrap_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

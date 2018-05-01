@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <com.bby.yishijie.member.widgets.StickyNavLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@id/id_stickynavlayout_topview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.sunday.common.widgets.banner.ConvenientBanner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            </com.sunday.common.widgets.banner.ConvenientBanner>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/index_news" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/index_news1" />
+
+                <com.sunday.common.widgets.MarqueeView
+                    android:id="@+id/marquee_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:mvTextColor="@color/black_5"
+                    app:mvTextSize="13sp"></com.sunday.common.widgets.MarqueeView>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/index_news3" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/common_bg"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@id/id_stickynavlayout_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_bg"/>
+            <com.sunday.common.widgets.RecyclerTabLayout
+                android:id="@+id/recycler_tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.sunday.common.widgets.RecyclerTabLayout>
+            <android.support.v4.view.ViewPager
+                android:id="@+id/recycler_tablayout_view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="1dp">
+            </android.support.v4.view.ViewPager>
+        </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_bg"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@id/id_stickynavlayout_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </com.bby.yishijie.member.widgets.StickyNavLayout>

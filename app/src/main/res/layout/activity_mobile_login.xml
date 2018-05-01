@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg">
+<include layout="@layout/layout_common_header"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="54dp">
+            <TextView
+                android:text="手机号码"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.sunday.common.widgets.ClearEditText
+                android:id="@+id/et_phone"
+                android:paddingLeft="10dp"
+                android:lines="1"
+                android:background="@null"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:textColorHint="#999999"
+                android:imeOptions="actionNext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_marginTop="1dp"
+            android:layout_height="54dp">
+            <TextView
+                android:text="验证码    "
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <com.sunday.common.widgets.ClearEditText
+                android:id="@+id/et_code"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:lines="1"
+                android:background="@null"
+                android:inputType="number"
+                android:hint="请输入验证码"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:textColorHint="#999999"
+                android:imeOptions="actionNext"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/send_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:textSize="12sp"
+                android:background="@color/main_color"
+                android:textColor="#FFFFFF"
+                android:text="发送验证码"/>
+        </LinearLayout>
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/common_red_shape"
+        android:textColor="@color/white"
+        android:text="登录" />
+</LinearLayout>

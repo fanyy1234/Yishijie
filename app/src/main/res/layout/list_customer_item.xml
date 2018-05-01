@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="9dp"
+    android:paddingBottom="9dp">
+    <com.sunday.common.widgets.CircleImageView
+        android:id="@+id/user_logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        tools:src="@mipmap/ic_default"/>
+    <TextView
+        android:id="@+id/nick_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/user_logo"
+        android:textColor="@color/black_3"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="7dp" />
+    <TextView
+        android:id="@+id/reg_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nick_name"
+        android:layout_below="@+id/nick_name"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black_9"/>
+
+
+</RelativeLayout>

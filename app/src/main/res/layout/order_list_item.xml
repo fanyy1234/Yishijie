@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/shop_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="店名"
+            android:textColor="#003333"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="等待付款"
+            android:layout_marginRight="16dp"
+            android:textColor="@color/text_pressed"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <View
+        style="@style/h_line"/>
+    <com.sunday.common.widgets.NoScrollListview
+        android:id="@+id/no_scroll_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_total_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/total_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/express_money"
+            android:text="共3件商品,合计:"/>
+        <TextView
+            android:id="@+id/express_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            tools:text="20元"
+            android:padding="8dp"
+            android:layout_marginRight="12dp"
+            android:textColor="@color/black_5"
+            android:textSize="13sp" />
+    </RelativeLayout>
+
+    <View
+        style="@style/h_line"/>
+
+    <RelativeLayout
+        android:id="@+id/btn_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp">
+        <!--发货状态-->
+        <Button
+            android:id="@+id/order_btn3"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/order_btn2"
+            android:background="@mipmap/gray_shape"
+            android:text="申请退货"
+            android:textColor="@color/black_6"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/order_btn2"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/order_btn1"
+            android:background="@mipmap/gray_shape"
+            android:text="取消订单"
+            android:textColor="@color/black_6"
+            android:textSize="13sp"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/order_btn1"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/shape_black_stroke"
+            android:gravity="center"
+            android:text="立即支付"
+            android:textColor="@color/black_3"
+            android:textSize="13sp"
+            android:visibility="visible" />
+    </RelativeLayout>
+</LinearLayout>

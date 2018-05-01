@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/relative_layout"
+    android:padding="12dp">
+<TextView
+    android:id="@+id/scale"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/main_color"
+    android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/order_no"
+        android:layout_below="@+id/scale"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/_666"/>
+    <TextView
+        android:id="@+id/buyer_name"
+        android:layout_below="@+id/order_no"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/_999"/>
+    <TextView
+        android:id="@+id/order_time"
+        android:layout_below="@+id/buyer_name"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/_999"
+        android:textSize="12sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:drawableRight="@mipmap/arrow_right"
+        android:layout_centerVertical="true"
+        android:text="查看订单"
+        android:textColor="@color/_999"
+        android:textSize="13sp"
+        android:drawablePadding="6dp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

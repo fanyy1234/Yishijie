@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:id="@+id/total_layout">
+    <ImageView
+        android:id="@+id/main_img"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@mipmap/ic_default"
+        android:scaleType="fitXY"/>
+    <ImageView
+        android:id="@+id/brand_img"
+        android:layout_below="@+id/main_img"
+        android:layout_marginTop="10dp"
+        android:layout_width="45dp"
+        android:scaleType="fitXY"
+        android:layout_height="45dp" />
+<TextView
+    android:id="@+id/brand_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/brand_img"
+    android:layout_marginLeft="12dp"
+    android:layout_alignTop="@+id/brand_img"
+    android:layout_marginTop="14dp"/>
+    <TextView
+        android:id="@+id/brand_star"
+        android:layout_below="@+id/brand_title"
+        android:layout_alignLeft="@+id/brand_title"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <TextView
+        android:id="@+id/btn_buy"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/main_img"
+        android:layout_marginTop="17dp"
+        android:layout_width="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="13dp"
+        android:textColor="@color/colorPrimary"
+        android:paddingRight="13dp"
+        android:layout_height="wrap_content"
+        android:text="立即抢购"
+        android:background="@mipmap/buy_bg"/>
+
+
+</RelativeLayout>

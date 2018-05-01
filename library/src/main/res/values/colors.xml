@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="window_background">#efefef</color>
+    <color name="main_gray">#9A9A9A</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <!-- 自定义Loding_Dialog_Start -->
+    <color name="bocop_dialog_bg">#77000000</color>
+    <color name="wheel_timebtn_nor">#54a3fa</color>
+    <color name="wheel_timebtn_pre">#CCCCCC</color>
+    <color name="material_red">#ffF44336</color>
+    <color name="material_green">#ff4CAF50</color>
+    <color name="material_blue">#ff03A9F4</color>
+    <color name="material_yellow">#ffFFEB3B</color>
+    <integer-array name="material_colors">
+        <item>@color/material_red</item>
+        <item>@color/material_green</item>
+        <item>@color/material_blue</item>
+        <item>@color/material_yellow</item>
+    </integer-array>
+
+    <color name="text_black">#000000</color>
+    <color name="line_gray">#E0E0E0</color>
+    <color name="list_divider_color">#d8d8d8</color>
+    <color name="pickerview_timebtn_nor">#057dff</color>
+    <color name="pickerview_timebtn_pre">#c2daf5</color>
+    <color name="pickerview_bg_topbar">#f5f5f5</color>
+    <color name="pickerview_topbar_title">#000000</color>
+    <!--覆盖颜色-->
+    <color name="bgColor_overlay">#60000000</color>
+
+    <color name="triangle">#aa72d572</color>
+    <color name="circle">#aa738ffe</color>
+    <color name="rect">#aae84e40</color>
+    <color name="view_bg">#00000000</color>
+    <color name="shadow">#25808080</color>
+    <color name="dialog_bg">#f5f5f5</color>
+
+    <!--点赞popup色值-->
+    <color name="comment_popup_bg">#4c5154</color>
+    <color name="comment_popup_tx_bg">#c7c7c7</color>
+
+
+
+    <color name="cal_title_background">#FFFFFFFF</color>
+    <color name="cal_title_text">#FF2D2D2D</color>
+
+    <color name="cal_arrow_enable">#ffc0c0c0</color>
+    <color name="cal_arrow_unable">#ffeaeaea</color>
+
+    <color name="cal_divider">#FFEDEDED</color>
+
+    <color name="cal_weekdays_background">#FFFFFFFF</color>
+    <color name="cal_weekdays_text">#FF2D2D2D</color>
+
+    <color name="cal_pager_background">#FFFFFFFF</color>
+
+    <color name="cal_signed_border">#ffb5e6f1</color>
+    <color name="cal_signed_background">#fff7fcfe</color>
+    <color name="cal_signed_day">#ff03A9F4</color>
+    <color name="cal_signed_text">#ff03A9F4</color>
+
+    <color name="cal_unsigned_day">#ffb6b6b6</color>
+    <color name="cal_unsigned_text">#505050</color>
+
+    <color name="cal_today_background">#ff03A9F4</color>
+    <color name="cal_today_day">#ffb6b6b6</color>
+    <color name="cal_today_text">#505050</color>
+
+    <color name="cal_unreach_day">#505050</color>
+    <color name="cal_unreach_text">#505050</color>
+
+    <color name="item_pressed">#e0e0e0</color>
+    <color name="white">#ffffff</color>
+
+    <color name="colorPrimary">#ef0022</color>
+    <color name="colorPrimaryDark">#ef0022</color>
+</resources>

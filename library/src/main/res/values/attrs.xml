@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ConvenientBanner">
+        <attr name="canLoop" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="SmoothProgressBar">
+        <attr name="spbStyle" format="reference"/>
+        <attr name="spb_color" format="color"/>
+        <attr name="spb_stroke_width" format="dimension"/>
+        <attr name="spb_stroke_separator_length" format="dimension"/>
+        <attr name="spb_sections_count" format="integer"/>
+        <attr name="spb_speed" format="float"/>
+        <attr name="spb_progressiveStart_speed" format="float"/>
+        <attr name="spb_progressiveStop_speed" format="float"/>
+        <attr name="spb_interpolator" format="enum">
+            <enum name="spb_interpolator_accelerate" value="0"/>
+            <enum name="spb_interpolator_linear" value="1"/>
+            <enum name="spb_interpolator_acceleratedecelerate" value="2"/>
+            <enum name="spb_interpolator_decelerate" value="3"/>
+        </attr>
+        <attr name="spb_reversed" format="boolean"/>
+        <attr name="spb_mirror_mode" format="boolean"/>
+        <attr name="spb_colors" format="reference"/>
+        <attr name="spb_progressiveStart_activated" format="boolean"/>
+        <attr name="spb_background" format="reference"/>
+        <attr name="spb_generate_background_with_colors" format="boolean"/>
+        <attr name="spb_gradients" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="android:gravity" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_Layout">
+        <attr name="android:layout_gravity" />
+    </declare-styleable>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+    </declare-styleable>
+
+
+    <declare-styleable name="CountdownView">
+        <attr name="isHideTimeBackground" format="boolean" />
+        <attr name="isShowTimeBgDivisionLine" format="boolean" />
+        <attr name="timeBgDivisionLineColor" format="color" />
+        <attr name="timeBgDivisionLineSize" format="dimension" />
+        <attr name="timeBgColor" format="color" />
+        <attr name="timeBgSize" format="dimension" />
+        <attr name="timeBgRadius" format="dimension" />
+
+        <attr name="isTimeTextBold" format="boolean" />
+        <attr name="timeTextSize" format="dimension" />
+        <attr name="timeTextColor" format="color" />
+        <attr name="isShowDay" format="boolean" />
+        <attr name="isShowHour" format="boolean" />
+        <attr name="isShowMinute" format="boolean" />
+        <attr name="isShowSecond" format="boolean" />
+        <attr name="isShowMillisecond" format="boolean" />
+
+        <attr name="isSuffixTextBold" format="boolean" />
+        <attr name="suffixTextSize" format="dimension" />
+        <attr name="suffixTextColor" format="color" />
+        <attr name="suffix" format="string" />
+        <attr name="suffixDay" format="string" />
+        <attr name="suffixHour" format="string" />
+        <attr name="suffixMinute" format="string" />
+        <attr name="suffixSecond" format="string" />
+        <attr name="suffixMillisecond" format="string" />
+        <attr name="suffixGravity">
+            <enum name="top" value="0" />
+            <enum name="center" value="1" />
+            <enum name="bottom" value="2" />
+        </attr>
+        <attr name="suffixLRMargin" format="dimension" />
+        <attr name="suffixDayLeftMargin" format="dimension" />
+        <attr name="suffixDayRightMargin" format="dimension" />
+        <attr name="suffixHourLeftMargin" format="dimension" />
+        <attr name="suffixHourRightMargin" format="dimension" />
+        <attr name="suffixMinuteLeftMargin" format="dimension" />
+        <attr name="suffixMinuteRightMargin" format="dimension" />
+        <attr name="suffixSecondLeftMargin" format="dimension" />
+        <attr name="suffixSecondRightMargin" format="dimension" />
+        <attr name="suffixMillisecondLeftMargin" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ToggleButton">
+        <attr name="themeColor" format="color" />
+        <attr name="isOpen" format="boolean" />
+        <attr name="shape">
+            <enum name="rect" value="1" />
+            <enum name="circle" value="2" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="MarqueeViewStyle">
+        <attr name="mvInterval" format="integer|reference"/>
+        <attr name="mvAnimDuration" format="integer|reference"/>
+        <attr name="mvTextSize" format="dimension|reference"/>
+        <attr name="mvTextColor" format="color|reference"/>
+        <attr name="mvSingleLine" format="boolean"/>
+        <attr name="mvGravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
+
+
+    <declare-styleable name="rtl_RecyclerTabLayout">
+        <attr name="rtl_tabIndicatorColor" format="color"/>
+        <attr name="rtl_tabIndicatorHeight" format="dimension"/>
+
+        <attr name="rtl_tabBackground" format="reference"/>
+
+        <attr name="rtl_tabTextAppearance" format="reference"/>
+        <attr name="rtl_tabSelectedTextColor" format="color"/>
+
+        <attr name="rtl_tabOnScreenLimit" format="integer"/>
+        <attr name="rtl_tabMinWidth" format="dimension"/>
+        <attr name="rtl_tabMaxWidth" format="dimension"/>
+
+        <attr name="rtl_tabPaddingStart" format="dimension"/>
+        <attr name="rtl_tabPaddingTop" format="dimension"/>
+        <attr name="rtl_tabPaddingEnd" format="dimension"/>
+        <attr name="rtl_tabPaddingBottom" format="dimension"/>
+        <attr name="rtl_tabPadding" format="dimension"/>
+
+        <attr name="rtl_scrollEnabled" format="boolean"/>
+
+    </declare-styleable>
+        <declare-styleable name="SwipeMenuLayout">
+            <attr name="leftViewId" format="reference" />
+            <attr name="rightViewId" format="reference" />
+            <attr name="contentViewId" format="reference" />
+        </declare-styleable>
+
+    <!--密码输入框-->
+    <declare-styleable name="PswText">
+        <!--密码长度-->
+        <attr name="pswLength" format="integer"/>
+        <!--密码框颜色-->
+        <attr name="borderColor" format="color"/>
+        <!--密码颜色-->
+        <attr name="pswColor" format="color"/>
+        <!--输入时密码框颜色-->
+        <attr name="inputBorder_color" format="color"/>
+        <!--输入时密码框阴影颜色-->
+        <attr name="borderShadow_color" format="color"/>
+        <!--明文密码文字大小-->
+        <attr name="psw_textSize" format="dimension"/>
+        <!--密码框圆角程度-->
+        <attr name="borderRadius" format="dimension"/>
+        <!--是否使用图片绘制密码框-->
+        <attr name="isDrawBorderImg" format="boolean"/>
+        <!--按back键时，是否需要绘制明文密码-->
+        <attr name="isShowTextPsw" format="boolean"/>
+        <!--输入密码时密码框是否有阴影-->
+        <attr name="isShowBorderShadow" format="boolean"/>
+        <!--密码框图片-->
+        <attr name="borderImg" format="reference"/>
+        <!--输入时变化的密码框图片-->
+        <attr name="inputBorderImg" format="reference"/>
+        <!--延迟绘制密码圆点的时间,1000 = 1s-->
+        <attr name="delayTime" format="integer"/>
+        <!--是否只绘制明文密码-->
+        <attr name="clearTextPsw" format="boolean"/>
+        <!--是否只绘制圆点-->
+        <attr name="darkPsw" format="boolean"/>
+        <!--是否在输入密码时不更改密码框颜色-->
+        <attr name="isChangeBorder" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="PasswordInputEdt">
+
+        <attr name="isPwd" format="boolean" />
+        <attr name="autoCloseKeyBoard" format="boolean" />
+        <attr name="isNumber" format="boolean" />
+        <attr name="widthSpace" format="dimension" />
+        <attr name="heightSpace" format="dimension" />
+        <attr name="rectStroke" format="dimension" />
+        <attr name="txtSize" format="dimension" />
+        <attr name="circleRadius" format="dimension" />
+        <attr name="bgFill" format="boolean" />
+        <attr name="numLength" format="integer" />
+        <attr name="textColor" format="color" />
+        <attr name="rectNormalColor" format="color" />
+        <attr name="rectChooseColor" format="color" />
+        <attr name="pwdType" format="enum" >
+            <enum name="CIRCLE" value="0"/>
+            <enum name="XINGHAO" value="1"/>
+        </attr>
+
+    </declare-styleable>
+
+</resources>

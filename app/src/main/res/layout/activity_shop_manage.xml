@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include layout="@layout/layout_common_header"/>
+
+    <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <!--<android.support.design.widget.TabLayout-->
+            <!--android:id="@+id/tabs"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="44dp"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--app:tabBackground="@color/white"-->
+            <!--app:tabIndicatorColor="@color/colorPrimary"-->
+            <!--app:tabSelectedTextColor="@color/colorPrimary"-->
+            <!--app:tabTextColor="@color/black_3" />-->
+            <com.flyco.tablayout.SlidingTabLayout xmlns:tl="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/slide_tab"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                tl:tl_indicator_color="#333333"
+                tl:tl_indicator_width="70dp"
+                tl:tl_tab_space_equal="true"
+                tl:tl_textSelectColor="#333333"
+                tl:tl_textUnselectColor="#808080" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/common_bg" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white" />
+        </LinearLayout>
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapse_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:collapsedTitleGravity="center"
+                app:collapsedTitleTextAppearance="@style/collapsedTitleTextAppearance"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleGravity="center_horizontal"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:id="@+id/header_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="@color/main_color"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="parallax">
+
+                    <com.sunday.common.widgets.CircleImageView
+                        android:id="@+id/shop_img"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="24dp"
+                        android:layout_centerVertical="true"
+                        android:background="@color/colorPrimary" />
+
+                    <TextView
+                        android:id="@+id/shop_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/shop_img"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@+id/shop_img"
+                        android:textColor="@color/white"
+                        tools:text="店铺名称" />
+
+                    <TextView
+                        android:id="@+id/shop_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBottom="@+id/shop_img"
+                        android:layout_alignLeft="@+id/shop_title"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        tools:text="店铺描述" />
+
+                    <TextView
+                        android:id="@+id/share_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignTop="@+id/shop_title"
+                        android:background="@mipmap/shop_bg2"
+                        android:gravity="center"
+                        android:text="店铺分享"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--android:navigationIcon="@mipmap/return_back"-->
+                <!--app:contentInsetEnd="70dp"-->
+                <!--app:contentInsetStart="0dp"-->
+                <!--app:layout_collapseMode="pin"-->
+                <!--app:layout_scrollFlags="scroll|enterAlwaysCollapsed"-->
+                <!--app:navigationIcon="@mipmap/return_back"-->
+                <!--app:theme="@style/ToolBarTheme">-->
+
+                <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:gravity="center"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="17sp"-->
+                <!--tools:text="aaa" />-->
+                <!--</RelativeLayout>-->
+                <!--</android.support.v7.widget.Toolbar>-->
+            </android.support.design.widget.CollapsingToolbarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</LinearLayout>
+

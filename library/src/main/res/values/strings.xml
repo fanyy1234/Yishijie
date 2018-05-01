@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Library</string>
+    <!-- Error View -->
+    <string name="error_view_click_to_refresh">点击屏幕,重新加载</string>
+    <string name="error_view_no_data">暂无内容</string>
+    <string name="error_view_loading">加载中…</string>
+    <string name="error_view_load_error_click_to_refresh">内容加载失败\r\n点击重新加载</string>
+    <string name="error_view_network_error_click_to_refresh">没有可用的网络</string>
+    <string name="tip_network_error">没有可用的网络</string>
+    <string name="qr_scan_tips">将二维码/条码放入框内，即可自动扫描</string>
+    <string name="version_unknown">版本未知</string>
+
+    <string-array name="shop_title">
+        <item>收益信息</item>
+        <item>产品信息</item>
+        </string-array>
+
+
+    <string name="pickerview_cancel">取消</string>
+    <string name="pickerview_submit">确定</string>
+    <string name="pickerview_year">年</string>
+    <string name="pickerview_month">月</string>
+    <string name="pickerview_day">日</string>
+    <string name="pickerview_hours">时</string>
+    <string name="pickerview_minutes">分</string>
+    <string name="pickerview_seconds">秒</string>
+
+
+    <string name="edit">编辑</string>
+    <string name="shop_title">购物车(%s)</string>
+    <string name="count_money">合计：¥%s</string>
+    <string name="count_goods">结算（%d）</string>
+    <string name="delete_goods">删除（%d）</string>
+    <string name="folder_all">所有照片</string>
+    <string name="preview">预览</string>
+    <string name="msg_no_camera">没有系统相机</string>
+    <string name="msg_amount_limit">已经达到最高选择数量</string>
+
+
+
+    <string-array name="cal_weekdays">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <string name="calendar_title">%1$d年%2$d月</string>
+
+    <string name="last_month">上个月</string>
+    <string name="next_month">下个月</string>
+
+    <string name="cal_signed">已签</string>
+    <string name="cal_today">今日</string>
+    <string name="cal_unsign">未签</string>
+    <string name="cal_unreach">签到</string>
+
+    <string name="update_download_failed">下载失败</string>
+    <string name="update_download_failed_msg">下载失败原因</string>
+    <string name="update_download_finish">下载完成</string>
+    <string name="update_download_processing">正在下载  %1$d%%</string>
+    <string name="update_download_start">下载开始</string>
+    <string name="update_download_new_version">有新版本</string>
+</resources>

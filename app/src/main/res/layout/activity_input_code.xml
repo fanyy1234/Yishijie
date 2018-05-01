@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+<include layout="@layout/layout_common_header"/>
+
+
+    <!--<com.sunday.common.widgets.PswText-->
+        <!--android:id="@+id/edt_password"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="20dp"-->
+        <!--android:layout_marginRight="20dp"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--app:clearTextPsw="true"-->
+        <!--app:isDrawBorderImg="false"-->
+        <!--app:psw_textSize="14sp"-->
+        <!--app:pswColor="@color/black_6"/>-->
+
+    <com.sunday.common.widgets.PasswordInputEdt
+        android:id="@+id/edt_password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:numLength="6"
+        app:isPwd="false"
+        app:rectChooseColor="@color/main_color"
+        app:isNumber="true"
+        app:textColor="@color/black_6"
+        app:autoCloseKeyBoard="true"
+        app:txtSize="14sp" />
+
+    <TextView
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:background="@drawable/shape_red"
+        android:padding="14dp"
+        android:textColor="@color/white"
+        android:text="下一步"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_invite_code"
+            android:layout_toLeftOf="@+id/btn_call"/>
+        <TextView
+            android:id="@+id/btn_call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/material_blue"
+            android:layout_alignParentRight="true"
+            android:text="@string/call_service"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

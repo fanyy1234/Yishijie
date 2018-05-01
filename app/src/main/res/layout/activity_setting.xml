@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/common_bg">
+
+    <include layout="@layout/layout_common_header" />
+    <TextView
+        android:id="@+id/menu_person_info"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:drawablePadding="10dp"
+        android:textColor="@color/black_5"
+        android:text="基本资料"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/menu_user_logo"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="头像" />
+
+        <ImageView
+            android:id="@+id/user_logo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:drawablePadding="10dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/arrow_right"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/menu_user_name"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="姓名" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_right"
+            tools:text="店名"
+            android:textColor="@color/black_b5" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/menu_user_sex"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="性别" />
+
+        <TextView
+            android:id="@+id/user_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_right"
+            tools:text="店名"
+            android:textColor="@color/black_b5" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_user_addr"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="地区" />
+
+        <TextView
+            android:id="@+id/user_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_right"
+            tools:text="地区"
+            android:textColor="@color/black_b5" />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="提升安全"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/menu_user_pwd"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="登录密码" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_right"
+            android:text="修改"
+            android:textColor="@color/main_color" />
+    </LinearLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:visibility="gone"
+    android:text="更多"/>
+    <TextView
+        android:id="@+id/menu_clear_cash"
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:padding="14dp"
+        android:background="@drawable/btn_white_selector"
+        android:drawablePadding="10dp"
+        android:textColor="@color/black_5"
+        android:drawableRight="@mipmap/arrow_right"
+        android:text="清除缓存" />
+    <LinearLayout
+        android:id="@+id/menu_user_version"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="当前版本" />
+
+        <TextView
+            android:id="@+id/user_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:drawableRight="@mipmap/arrow_right"
+            tools:text="店名"
+            android:textColor="@color/black_b5" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        android:background="@color/white"
+        android:textColor="@color/main_color"
+        android:gravity="center"
+        android:padding="13dp"
+        android:text="退出登录"/>
+</LinearLayout>

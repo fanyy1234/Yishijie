@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_voucher"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@mipmap/voucher_item"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/voucher_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:scaleType="fitXY"
+        tools:background="@color/main_color" />
+
+    <TextView
+        android:id="@+id/voucher_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/voucher_img"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/voucher_img"
+        tools:text="aaa" />
+    <TextView
+        android:id="@+id/voucher_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_color"
+        android:layout_alignBottom="@id/voucher_img"
+        android:layout_alignLeft="@id/voucher_title"
+        tools:text="aa"/>
+    <TextView
+        android:id="@+id/voucher_money_extra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_color"
+        android:layout_alignBottom="@id/voucher_img"
+        android:layout_toRightOf="@+id/voucher_money"
+        tools:text="aa"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/voucher_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/voucher_img"
+        android:textColor="@color/_555"
+        android:layout_marginTop="7dp"
+        tools:text="aaaa"/>
+    <TextView
+        android:id="@+id/voucher_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:text="立即\n领取"
+        android:layout_marginRight="15dp"
+        android:textSize="17sp"
+        android:layout_marginTop="7dp"/>
+    <ImageView
+        android:id="@+id/img_got_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/voucher_got_item"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="8dp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

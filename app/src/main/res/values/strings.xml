@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">易饰界</string>
+
+    <string name="network_error">网络连接错误</string>
+    <string name="send_code_success">
+     验证码已发送到手机
+    </string>
+    <string name="send_code_failed">
+     验证码发送失败，请重试
+    </string>
+    <string name="desc2">请输入正确手机号</string>
+    <string name="desc3">请输入正确验证码</string>
+
+    <array name="order_title">
+        <item>全部</item>
+        <item>待付款</item>
+        <item>待发货</item>
+        <item>待收货</item>
+        <item>售后</item>
+    </array>
+
+    <array name="group_order_title">
+        <item>全部</item>
+        <item>待成团</item>
+        <item>已成团</item>
+        <item>拼团失败</item>
+    </array>
+
+    <array name="material_title">
+        <item>官方精选</item>
+        <item>我的素材</item>
+    </array>
+    <array name="voucher_title">
+        <item>领券中心</item>
+        <item>未使用</item>
+        <item>已失效</item>
+    </array>
+    <array name="shop_manage_title">
+        <item>单品</item>
+        <item>品牌</item>
+    </array>
+    <string name="login_remind">"您还没有登录，快去登录吧"</string>
+
+    <string name="input_title">邀请码为好物空投店铺序列号</string>
+    <string name="input_extra">邀请码规则:\n\n1、邀请码为好物空投店主绑定的手机号。\n2、店主可登陆云缇微店版，在设置中查看。\n3、一个用户只能绑定一个邀请码，绑定后会产生相关收益。\n</string>
+    <string name="share_product_desc">听说只有长得好看的人才能看到这个分享</string>
+    <string name="share_shop_desc">你那么好看,这个分享一定要看</string>
+    <string name="refund_desc">审核通过后,退款金额将会退到支付账户中，请耐心等候</string>
+    <string name="invite_title">易饰界VIP邀请注册</string>
+    <string name="invite_content">你的好友赠送了你10元优惠券，邀请你成为TA的VIP用户</string>
+    <string name="refund_desc1">审核通过后,退款货物需退换给商家，待商家收到后会及时退回退款金额</string>
+
+    <string name="gift">好物空投专享大礼包，免费赠送</string>
+    <string name="no_invite_code">没有邀请码？</string>
+    <string name="call_service">联系客服获取</string>
+    <string name="baoshui_remind">此单含保税商品，请务必在此填写身份证号</string>
+</resources>

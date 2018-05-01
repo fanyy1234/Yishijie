@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_bg">
+    <include layout="@layout/layout_common_header"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="收货人"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_6"/>
+        <com.sunday.common.widgets.ClearEditText
+            android:id="@+id/tv_name"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColorHint="#50000000"
+            android:textSize="15sp"
+            android:textColor="@color/black_3"
+            android:hint="请填写收货人姓名"
+            android:background="@null"
+            android:inputType="text" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="1dp"
+        android:paddingRight="16dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="手机号"
+            android:textColor="@color/black_6" />
+
+        <com.sunday.common.widgets.ClearEditText
+            android:id="@+id/tv_phone"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black_3"
+            android:textColorHint="#50000000"
+            android:hint="请填写收货人手机号"
+            android:textSize="15sp"
+            android:background="@null"
+            android:inputType="number" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@color/white"
+        android:layout_marginTop="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="省市区"
+            android:layout_width="70dp"
+            android:textColor="@color/black_6"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_place"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColorHint="#50000000"
+            android:drawableRight="@mipmap/arrow_right"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:textColor="@color/black_3"
+            android:paddingBottom="16dp"
+            android:textSize="16sp"
+            android:hint="请选择收货地区"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="详细地址"
+            android:layout_width="70dp"
+            android:textColor="@color/black_6"
+            android:layout_height="wrap_content" />
+        <com.sunday.common.widgets.ClearEditText
+            android:id="@+id/tv_finalAddress"
+            android:padding="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="6dp"
+            android:textColorHint="#50000000"
+            android:hint="请填写详细地址"
+            android:textColor="@color/black_3"
+            android:textSize="15sp"
+            android:background="@null"
+            android:inputType="text" />
+    </LinearLayout>
+    <CheckBox
+        android:id="@+id/choice"
+        style="@style/checkBoxStyle"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:focusable="true"
+        android:textColor="@color/black_9"
+        android:layout_marginLeft="15dp"
+        android:focusableInTouchMode="false"
+        android:text=" 设置默认地址"
+        android:visibility="gone"/>
+</LinearLayout>

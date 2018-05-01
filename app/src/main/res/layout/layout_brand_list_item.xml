@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/total_layout"
+    android:padding="10dp">
+    <ImageView
+        android:id="@+id/product_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:background="@mipmap/ic_default"/>
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/btn_add_product"
+        android:layout_toRightOf="@+id/product_img"
+        android:layout_centerVertical="true"
+        android:maxLines="2"
+        android:textColor="@color/black_0"
+        android:layout_marginLeft="16dp" />
+
+    <ImageView
+        android:id="@+id/btn_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/product_share"
+        android:padding="10dp"/>
+    <ImageView
+        android:id="@+id/btn_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/product_add"
+        android:layout_toLeftOf="@+id/btn_share"
+        android:layout_centerVertical="true"
+        android:padding="10dp"/>
+</RelativeLayout>

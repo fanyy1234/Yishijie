@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="F:\AndroidStudioProjects\Yishijie\library\src\main\jniLibs"><file name="armeabi/libqrcode.so" path="F:\AndroidStudioProjects\Yishijie\library\src\main\jniLibs\armeabi\libqrcode.so"/><file name="armeabi-v7a/libqrcode.so" path="F:\AndroidStudioProjects\Yishijie\library\src\main\jniLibs\armeabi-v7a\libqrcode.so"/></source></dataSet><dataSet config="debug"><source path="F:\AndroidStudioProjects\Yishijie\library\src\debug\jniLibs"/></dataSet></merger>
