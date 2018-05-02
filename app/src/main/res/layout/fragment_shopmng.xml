@@ -68,9 +68,10 @@
                 android:gravity="center"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/order_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text="0"
                     android:textColor="@color/main_color"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,9 +86,10 @@
                 android:gravity="center"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/sale_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text="0"
                     android:textColor="@color/main_color"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -102,9 +104,10 @@
                 android:gravity="center"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/profit_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text=""
                     android:textColor="@color/main_color"/>
                 <TextView
                     android:layout_width="wrap_content"
@@ -119,9 +122,10 @@
                 android:gravity="center"
                 android:layout_weight="1">
                 <TextView
+                    android:id="@+id/fans_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="5"
+                    android:text=""
                     android:textColor="@color/main_color"/>
                 <TextView
                     android:layout_width="wrap_content"

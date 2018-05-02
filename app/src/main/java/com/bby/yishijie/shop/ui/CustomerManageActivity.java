@@ -51,8 +51,6 @@ public class CustomerManageActivity extends BaseActivity {
 
     @Bind(R.id.left_btn)
     ImageView leftBtn;
-    @Bind(R.id.left_txt)
-    TextView leftTxt;
     @Bind(R.id.title_view)
     TextView titleView;
     @Bind(R.id.rightTxt)

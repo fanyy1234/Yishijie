@@ -180,6 +180,13 @@ public class CartAdapter1 extends RecyclerView.Adapter {
             cartHolder.productPrice.setText(String.format("¥%s", cartItem.getPrice().setScale(2, RoundingMode.HALF_UP)));
             cartHolder.tvNum2.setText(String.valueOf(cartItem.getNum()));
             cartHolder.productNum.setText(String.valueOf("X" + cartItem.getNum()));
+            if (cartItem.getTypeName().equals("积分商城")){
+                cartHolder.productScore.setVisibility(View.VISIBLE);
+                cartHolder.productScore.setText(cartItem.getScore()+"积分");
+            }
+            else {
+                cartHolder.productScore.setVisibility(View.GONE);
+            }
 
             if (parentType == 1) {
                 //预热商品
@@ -274,6 +281,8 @@ public class CartAdapter1 extends RecyclerView.Adapter {
             ImageView deleteImg;
             @Bind(R.id.product_num)
             TextView productNum;
+            @Bind(R.id.product_score)
+            TextView productScore;
 
             CartHolder(View view) {
                 ButterKnife.bind(this, view);

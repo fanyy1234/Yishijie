@@ -49,6 +49,8 @@ public class CartItem implements Serializable {
     private int isInvalid;
 
     private boolean isSelect;
+    private String typeName;
+    private int score;
 
     public long getId() {
         return id;
@@ -197,5 +199,21 @@ public class CartItem implements Serializable {
 
     public void setIsInvalid(int isInvalid) {
         this.isInvalid = isInvalid;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

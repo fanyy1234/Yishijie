@@ -35,8 +35,8 @@ public class ApiClient {
     private static Retrofit imAdapter;
     //private static MemberService memberService;
 
-//    public final static String API_URL = "http://192.168.11.159:8080";
-   public final static String API_URL = "http://ysjmobile.whitecao.cn";
+    public final static String API_URL = "http://192.168.0.104:8080";
+//   public final static String API_URL = "http://ysjmobile.whitecao.cn";
    //public final static String API_URL = "http://test-mobile.haowukongtou.com";
 
     public final static String DETAIL_URL="http://admin.haowukongtou.com/DataController/AfH5Info";

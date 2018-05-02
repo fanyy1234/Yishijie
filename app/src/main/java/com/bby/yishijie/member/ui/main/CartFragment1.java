@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.shop.entity.TotalProfit;
 import com.sunday.common.base.BaseFragment;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.StringUtils;
@@ -40,6 +41,7 @@ import com.bby.yishijie.member.ui.order.OrderConfirmActivity;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import butterknife.Bind;
@@ -385,9 +387,10 @@ public class CartFragment1 extends BaseFragment {
 
     //更新结算
     private int totalBuyNum = 0;
-
+    private HashSet<String> typeNameList = new HashSet<>();//统计选中商品的种类
     private void updatePrice() {
         buyProducts.clear();
+        typeNameList.clear();
         if (dataSet != null && !dataSet.isEmpty()) {
             for (int i = 0; i < dataSet.size(); i++) {
                 if (dataSet.get(i).getType() != 1) {
@@ -496,10 +499,17 @@ public class CartFragment1 extends BaseFragment {
                 for (CartItem cartItem : buyProducts) {
                     if (cartItem.isSelect() && cartItem.getProductStore() > 0) {
                         cartIds.add(String.valueOf(cartItem.getId()));
+                        String typeName = cartItem.getTypeName();
+                        typeNameList.add(typeName);
                     }
                 }
                 if (!cartIds.isEmpty()) {
-                    payCart();
+                    if (typeNameList.size()==1){
+                        payCart();
+                    }
+                    else {
+                        ToastUtils.showToast(mContext,"只能选择一种类型的商品");
+                    }
 
                 }
                 break;
@@ -578,6 +588,7 @@ public class CartFragment1 extends BaseFragment {
                         dataSet.add(cartListItem);
                         for (int i = 0; i < resultDO.getResult().getBuyList().size(); i++) {
                             resultDO.getResult().getBuyList().get(i).setSelect(false);
+                            resultDO.getResult().getBuyList().get(i).setTypeName("好物购物");
                         }
                         //一开始都是全选 不包括预热 结算
 //                        availableNum = resultDO.getResult().getBuyList().size();
@@ -599,6 +610,7 @@ public class CartFragment1 extends BaseFragment {
                         dataSet.add(cartListItem);
                         for (int i = 0; i < resultDO.getResult().getActiveList().size(); i++) {
                             resultDO.getResult().getActiveList().get(i).setSelect(false);
+                            resultDO.getResult().getActiveList().get(i).setTypeName("满减商品");
                         }
                     }
                     if (resultDO.getResult().getJfList() != null && !resultDO.getResult().getJfList().isEmpty()) {
@@ -610,6 +622,7 @@ public class CartFragment1 extends BaseFragment {
                         dataSet.add(cartListItem);
                         for (int i = 0; i < resultDO.getResult().getJfList().size(); i++) {
                             resultDO.getResult().getJfList().get(i).setSelect(false);
+                            resultDO.getResult().getJfList().get(i).setTypeName(resultDO.getResult().getJfName());
                         }
                     }
 
@@ -622,6 +635,7 @@ public class CartFragment1 extends BaseFragment {
                         dataSet.add(cartListItem);
                         for (int i = 0; i < resultDO.getResult().getNotBuyList().size(); i++) {
                             resultDO.getResult().getNotBuyList().get(i).setSelect(false);
+                            resultDO.getResult().getNotBuyList().get(i).setTypeName("预热商品");
                         }
                     }
                     txt_totalMoney.setText("￥0.00");

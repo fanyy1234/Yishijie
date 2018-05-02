@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.adapter.IndexAdHolder;
@@ -75,6 +76,8 @@ public class TodayFragment extends BaseLazyFragment {
     PtrClassicFrameLayout ptrFrame;
     @Bind(R.id.pinpaiguan_view)
     RelativeLayout pinpaiguanView;
+    @Bind(R.id.today_gold_price)
+    TextView todayGoldPrice;
 
 
     private LinearLayoutManager layoutManager;
@@ -110,6 +113,7 @@ public class TodayFragment extends BaseLazyFragment {
         super.onActivityCreated(savedInstanceState);
         initView();
         initRecylcerTab();
+        todayGoldPrice();
         getHeadData();
         getLimitTimeList();
     }
@@ -203,13 +207,33 @@ public class TodayFragment extends BaseLazyFragment {
 //                    getLimitTimeList();
                 }
             }
-
             @Override
             public void onFailure(Call<ResultDO<IndexAd>> call, Throwable t) {
                 ptrFrame.refreshComplete();
             }
         });
+    }
+    private void todayGoldPrice() {
+        Call<ResultDO> call = ApiClient.getApiAdapter().todayGoldPrice();
+        call.enqueue(new Callback<ResultDO>() {
+            @Override
+            public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
+                if (isFinish) {
+                    return;
+                }
+                ResultDO resultDO = response.body();
+                if (resultDO == null) {
+                    return;
+                }
+                if (resultDO.getCode() == 0) {
+                    todayGoldPrice.setText(resultDO.getMessage());
+                }
+            }
+            @Override
+            public void onFailure(Call<ResultDO> call, Throwable t) {
 
+            }
+        });
     }
 
     private void updateAds(IndexAd indexAd) {

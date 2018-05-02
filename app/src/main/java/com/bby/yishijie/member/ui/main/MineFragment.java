@@ -30,6 +30,7 @@ import com.bby.yishijie.member.ui.mine.UserInfoActivity;
 import com.bby.yishijie.member.ui.mine.WithdrawActivity;
 import com.bby.yishijie.member.ui.mine.voucher.VoucherListActivity;
 import com.bby.yishijie.member.ui.order.OrderListActivity;
+import com.bby.yishijie.shop.entity.ProfitAll;
 import com.bby.yishijie.shop.ui.AvailableProfitActivity;
 import com.bby.yishijie.shop.ui.MyIntegralActivity;
 import com.bby.yishijie.shop.ui.TotalProfitActivity;
@@ -41,6 +42,8 @@ import com.sunday.common.utils.Constants;
 import com.sunday.common.utils.SharePerferenceUtils;
 import com.sunday.common.widgets.BoundScrollView;
 import com.sunday.common.widgets.CircleImageView;
+
+import java.math.RoundingMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -79,8 +82,6 @@ public class MineFragment extends BaseFragment {
     TextView menuOrder3;
     @Bind(R.id.menu_order_4)
     TextView menuOrder4;
-    @Bind(R.id.counpon_num)
-    TextView counponNum;
     @Bind(R.id.menu_counpon)
     LinearLayout menuCounpon;
     @Bind(R.id.menu_addr)
@@ -115,6 +116,18 @@ public class MineFragment extends BaseFragment {
     LinearLayout myIntegral;
     @Bind(R.id.my_coupon)
     LinearLayout myCoupon;
+    @Bind(R.id.my_score)
+    TextView myScore;
+    @Bind(R.id.withdraw_num)
+    TextView withdrawNum;
+    @Bind(R.id.wait_profit_num)
+    TextView waitProfitNum;
+    @Bind(R.id.total_profit_num)
+    TextView totalProfitNum;
+    @Bind(R.id.counpon_num)
+    TextView counponNum;
+    @Bind(R.id.shop_counpon_num)
+    TextView shopCounponNum;
     private boolean isLogin;
     private boolean isShop;
     private long memberId;
@@ -163,6 +176,7 @@ public class MineFragment extends BaseFragment {
             shopView.setVisibility(View.VISIBLE);
             shopHeader.setVisibility(View.VISIBLE);
             memberHeader.setVisibility(View.GONE);
+            getProfits();
         }
 
         if (!isLogin) {
@@ -171,10 +185,9 @@ public class MineFragment extends BaseFragment {
         } else {
             loginNotLayout.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
-            if (MainActivity.isShop){
+            if (MainActivity.isShop) {
                 memberId = BaseApp.getInstance().getShopMember().getId();
-            }
-            else {
+            } else {
                 memberId = BaseApp.getInstance().getMember().getId();
             }
             getOrderNums();
@@ -194,7 +207,6 @@ public class MineFragment extends BaseFragment {
                 if (response.body().getCode() == 0) {
                     updateOrderNums(response.body().getResult());
                 }
-
             }
 
             @Override
@@ -284,11 +296,15 @@ public class MineFragment extends BaseFragment {
 
     @OnClick({R.id.menu_order_4, R.id.menu_counpon, R.id.menu_addr, R.id.order_all, R.id.set_rec_code,
             R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting,
-            R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3, R.id.withdraw_btn,
-            R.id.my_integral,R.id.available_profit,R.id.total_profit,R.id.my_coupon})
+            R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3, R.id.withdraw_btn, R.id.menu_jifen,
+            R.id.my_integral, R.id.available_profit, R.id.total_profit, R.id.my_coupon})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_integral:
+                intent = new Intent(mContext, MyIntegralActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.menu_jifen:
                 intent = new Intent(mContext, MyIntegralActivity.class);
                 startActivity(intent);
                 break;
@@ -398,5 +414,57 @@ public class MineFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
+    private void myScore() {
+        Call<ResultDO> call = ApiClient.getApiAdapter().getScore(memberId);
+        call.enqueue(new Callback<ResultDO>() {
+            @Override
+            public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
+                if (isFinish) {
+                    return;
+                }
+                ResultDO resultDO = response.body();
+                if (resultDO == null) {
+                    return;
+                }
+                if (resultDO.getCode() == 0) {
+                    myScore.setText(resultDO.getResult().toString());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResultDO> call, Throwable t) {
+            }
+        });
+    }
+
+    public void getProfits() {
+        Call<ResultDO<ProfitAll>> call = ApiClient.getApiAdapter().getMyProfit(BaseApp.getInstance().getMember().getId());
+        call.enqueue(new Callback<ResultDO<ProfitAll>>() {
+            @Override
+            public void onResponse(Call<ResultDO<ProfitAll>> call, Response<ResultDO<ProfitAll>> response) {
+                if (isFinish) {
+                    return;
+                }
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() == null) {
+                        return;
+                    }
+                    ProfitAll profitAll = response.body().getResult();
+                    withdrawNum.setText(String.format("%s", profitAll.getWithdrawAmount().setScale(2, RoundingMode.HALF_UP)));
+                    waitProfitNum.setText(String.format("%s", profitAll.getWaitAmount().setScale(2, RoundingMode.HALF_UP)));
+                    totalProfitNum.setText(String.format("%s", profitAll.getTotalProfit().setScale(2, RoundingMode.HALF_UP)));
+                    shopCounponNum.setText("" + profitAll.getVoucherCount());
+                    myScore.setText("" + profitAll.getScore());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<ProfitAll>> call, Throwable t) {
+
+            }
+        });
+    }
 }

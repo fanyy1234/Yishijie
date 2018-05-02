@@ -32,6 +32,7 @@ import com.bby.yishijie.shop.entity.IncomeRecord;
 import com.bby.yishijie.shop.entity.IntegralDetail;
 import com.bby.yishijie.shop.entity.ProductBrand;
 import com.bby.yishijie.shop.entity.ProductMaterial;
+import com.bby.yishijie.shop.entity.ProfitAll;
 import com.bby.yishijie.shop.entity.Statistic;
 import com.bby.yishijie.shop.entity.TotalProfit;
 import com.sunday.common.model.ResultDO;
@@ -47,6 +48,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 
 /**
@@ -989,5 +991,30 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/shop/ArSaleRecord")
     Call<ResultDO<FansProfit>> getSaleRecord(@Field("memberId") long memberId);
+    /**
+     * 我的收益
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AoMyProfit")
+    Call<ResultDO<ProfitAll>> getMyProfit(@Field("memberId") long memberId);
+    /**
+     * 今日金价
+     *
+     * @param
+     */
+    @POST("/mobi/cart/todayGoldPrice")
+    Call<ResultDO> todayGoldPrice();
+    /**
+     *积分
+     */
+    @GET("/mobi/score/getScore")
+    Call<ResultDO> getScore(@Query("memberId") long memberId);
+    /**
+     *积分记录
+     */
+    @GET("/mobi/score/getScoreRecord")
+    Call<ResultDO> getScoreRecord(@Query("memberId") long memberId);
 
 }

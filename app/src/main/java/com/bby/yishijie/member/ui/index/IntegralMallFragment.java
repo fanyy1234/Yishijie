@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.adapter.CommonRecycleAdapter;
+import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.entity.IndexAd;
+import com.bby.yishijie.member.entity.Member;
 import com.bby.yishijie.member.entity.Product;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.model.IntegralMall;
@@ -21,6 +23,7 @@ import com.bby.yishijie.member.model.IntegralMallItem;
 import com.bby.yishijie.member.model.RecycleVisitable;
 import com.bby.yishijie.member.ui.base.BaseLazyFragment;
 import com.bby.yishijie.member.utils.GridSpacingItemDecoration;
+import com.bby.yishijie.shop.entity.IntegralDetail;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.Constants;
 import com.sunday.common.widgets.FeedRootRecyclerView;
@@ -93,6 +96,7 @@ public class IntegralMallFragment extends BaseLazyFragment {
         super.onActivityCreated(savedInstanceState);
         title.setText("积分商城");
         initView();
+        myScore();
     }
 
 
@@ -100,7 +104,7 @@ public class IntegralMallFragment extends BaseLazyFragment {
     private int pageNo=1,lastVisibleItem;
     private void initView() {
         IntegralMall integralMall = new IntegralMall();
-        integralMall.setJifen(100);
+        integralMall.setJifen("0");
         models.add(integralMall);
         layoutManager = new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
@@ -191,7 +195,32 @@ public class IntegralMallFragment extends BaseLazyFragment {
         });
 
     }
+    private void myScore() {
+        Member member = BaseApp.getInstance().getMember();
+        Call<ResultDO> call = ApiClient.getApiAdapter().getScore(member.getId());
+        call.enqueue(new Callback<ResultDO>() {
+            @Override
+            public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
+                if (isFinish) {
+                    return;
+                }
+                ResultDO resultDO = response.body();
+                if (resultDO == null) {
+                    return;
+                }
+                if (resultDO.getCode() == 0) {
+                    IntegralMall integralMall = new IntegralMall();
+                    integralMall.setJifen(resultDO.getResult().toString());
+                    models.set(0,integralMall);
+                    adapter.notifyDataSetChanged();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResultDO> call, Throwable t) {
+            }
+        });
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();

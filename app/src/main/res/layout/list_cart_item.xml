@@ -122,6 +122,14 @@
         android:layout_alignRight="@+id/product_price"
         android:layout_below="@+id/product_price"
         android:layout_marginTop="2dp" />
+    <TextView
+        android:id="@+id/product_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/product_price"
+        android:layout_below="@+id/product_num"
+        android:textColor="@color/appcolor"
+        android:layout_marginTop="2dp" />
 
 
 </RelativeLayout>

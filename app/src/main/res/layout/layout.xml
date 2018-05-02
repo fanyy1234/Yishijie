@@ -16,11 +16,12 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
             <TextView
+                android:id="@+id/withdraw_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/main_color"
                 android:textSize="22sp"
-                android:text="1800.68"/>
+                android:text=""/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="待收收益           "/>
                 <TextView
+                    android:id="@+id/wait_profit_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0.00"/>
@@ -97,9 +99,10 @@
                     android:layout_height="wrap_content"
                     android:text="累计收益           "/>
                 <TextView
+                    android:id="@+id/total_profit_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="889.96"/>
+                    android:text=""/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -130,6 +133,7 @@
                     android:layout_height="wrap_content"
                     android:text="我的积分           "/>
                 <TextView
+                    android:id="@+id/my_score"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="20"/>
@@ -161,6 +165,7 @@
                     android:layout_height="wrap_content"
                     android:text="优惠券                "/>
                 <TextView
+                    android:id="@+id/shop_counpon_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"/>

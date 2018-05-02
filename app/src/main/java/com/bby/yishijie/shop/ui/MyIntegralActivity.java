@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.ui.MainActivity;
+import com.bby.yishijie.member.utils.EntityUtil;
 import com.bby.yishijie.shop.adapter.ViewHolder;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.http.ApiClient;
@@ -72,7 +75,7 @@ public class MyIntegralActivity extends BaseActivity {
 
         initRecyclerView();
         getMember();
-
+        myScoreRecord();
     }
 
     private void getMember() {
@@ -89,7 +92,6 @@ public class MyIntegralActivity extends BaseActivity {
                         SharePerferenceUtils.getIns(mContext).saveOAuth(member);
                         BaseApp.getInstance().setShopMember(member);
                         totalMoney.setText(member.getScore()+"");
-                        getData();
                     }
                 }
             }
@@ -124,7 +126,7 @@ public class MyIntegralActivity extends BaseActivity {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE
                         && lastVisibleItem + 1 == adapter.getItemCount() && isCanloadMore) {
-                    getData();
+//                    getData();
                 }
             }
 
@@ -191,5 +193,39 @@ public class MyIntegralActivity extends BaseActivity {
         });
     }
 
+    private void myScoreRecord() {
+        Call<ResultDO> call = ApiClient.getApiAdapter().getScoreRecord(memberId);
+        call.enqueue(new Callback<ResultDO>() {
+            @Override
+            public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
+                if (isFinish) {
+                    return;
+                }
+                ResultDO resultDO = response.body();
+                if (resultDO == null) {
+                    return;
+                }
+                if (resultDO.getCode() == 0) {
+                    JSONObject jsonObject = EntityUtil.ObjectToJson2(resultDO);
+                    JSONArray jsonArray = jsonObject.getJSONArray("result");
+                    int length = jsonArray.size();
 
+                    for (int i=0;i<length;i++){
+                        JSONObject object = jsonArray.getJSONObject(i);
+                        IntegralDetail integralDetail = new IntegralDetail();
+                        integralDetail.setNum(object.get("score").toString());
+                        integralDetail.setTime(object.getString("strTime"));
+                        integralDetail.setForm(object.getInteger("type").toString());
+                        dataSet.add(integralDetail);
+                    }
+                    adapter.notifyDataSetChanged();
+//                    myScore.setText(resultDO.getResult().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO> call, Throwable t) {
+            }
+        });
+    }
 }

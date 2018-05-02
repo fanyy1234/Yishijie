@@ -4,13 +4,13 @@ package com.bby.yishijie.member.model;
 import com.bby.yishijie.member.type.RecycleTypeFactory;
 
 public class IntegralMall implements RecycleVisitable{
-    private int jifen;
+    private String jifen;
 
-    public int getJifen() {
+    public String getJifen() {
         return jifen;
     }
 
-    public void setJifen(int jifen) {
+    public void setJifen(String jifen) {
         this.jifen = jifen;
     }
 

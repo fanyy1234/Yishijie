@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.bby.yishijie.member.entity.CartItem;
 import com.sunday.common.alipay.OrderInfoUtil2_0;
 import com.sunday.common.alipay.PayResult;
 import com.sunday.common.alipay.SignUtils;
@@ -93,6 +94,8 @@ public class OrderConfirmActivity extends BaseActivity {
     TextView totalMoney;
     @Bind(R.id.total_money_bottom)
     TextView totalMoneyBottom;
+    @Bind(R.id.total_score)
+    TextView totalScore;
     @Bind(R.id.product_num)
     TextView productNum;
     @Bind(R.id.confirm_pay)
@@ -166,6 +169,14 @@ public class OrderConfirmActivity extends BaseActivity {
             expressMoney.setText(String.format("¥%s", cartPay.getPostFee().setScale(2, RoundingMode.HALF_UP)));
             totalMoneyBottom.setText(SpannalbeStringUtils.setTextColor("总金额:", getResources().getColor(R.color.black_6)));
             totalMoneyBottom.append(SpannalbeStringUtils.setTextColor("¥" + cartPay.getAmount().add(cartPay.getPostFee()).setScale(2, RoundingMode.HALF_UP), getResources().getColor(R.color.colorPrimary)));
+
+            int totalScoreInt = 0 ;
+            List<CartItem> cartItems = cartPay.getList();
+            for (CartItem cartItem : cartItems){
+                totalScoreInt += cartItem.getScore();
+            }
+            totalScore.setText(SpannalbeStringUtils.setTextColor("总积分:", getResources().getColor(R.color.black_6)));
+            totalScore.append(SpannalbeStringUtils.setTextColor( totalScoreInt+"", getResources().getColor(R.color.appcolor)));
             //totalMoneyBottomExtra.setText(SpannalbeStringUtils.setTextColor("(含运费", getResources().getColor(R.color.black_6)));
             //totalMoneyBottomExtra.append(SpannalbeStringUtils.setTextColor("¥" + cartPay.getPostFee(), getResources().getColor(R.color.colorPrimary)));
             //totalMoneyBottomExtra.append(SpannalbeStringUtils.setTextColor(")", getResources().getColor(R.color.black_6)));

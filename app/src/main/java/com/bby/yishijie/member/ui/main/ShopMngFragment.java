@@ -9,24 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.common.BaseApp;
-import com.bby.yishijie.member.entity.Member;
 import com.bby.yishijie.member.entity.OrderNums;
 import com.bby.yishijie.member.event.UpdateBaseInfo;
 import com.bby.yishijie.member.http.ApiClient;
-import com.bby.yishijie.member.ui.WebViewActivity;
 import com.bby.yishijie.member.ui.login.LoginActivity;
 import com.bby.yishijie.member.ui.mine.AddressListActivity;
-import com.bby.yishijie.member.ui.mine.OpenShopActivity;
-import com.bby.yishijie.member.ui.mine.SettingActivity;
 import com.bby.yishijie.member.ui.mine.UserInfoActivity;
-import com.bby.yishijie.member.ui.mine.voucher.VoucherListActivity;
 import com.bby.yishijie.member.ui.order.OrderListActivity;
+import com.bby.yishijie.shop.entity.Member;
+import com.bby.yishijie.shop.entity.Statistic;
+import com.bby.yishijie.shop.ui.CustomerManageActivity;
 import com.bby.yishijie.shop.ui.PerformanceActivity;
 import com.bby.yishijie.shop.ui.SalesActivity;
 import com.bby.yishijie.shop.ui.ShopManageActivity;
@@ -36,6 +33,8 @@ import com.sunday.common.event.EventBus;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.widgets.BoundScrollView;
 import com.sunday.common.widgets.CircleImageView;
+
+import java.math.RoundingMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -78,6 +77,14 @@ public class ShopMngFragment extends BaseFragment {
     TextView textLogin;
     @Bind(R.id.login_not_layout)
     RelativeLayout loginNotLayout;
+    @Bind(R.id.order_num)
+    TextView orderNum;
+    @Bind(R.id.sale_num)
+    TextView saleNum;
+    @Bind(R.id.profit_num)
+    TextView profitNum;
+    @Bind(R.id.fans_num)
+    TextView fansNum;
     private boolean isLogin;
     private long memberId;
 
@@ -125,6 +132,7 @@ public class ShopMngFragment extends BaseFragment {
             memberId = BaseApp.getInstance().getShopMember().getId();
             getOrderNums();
             updateView();
+            getStatistics();
         }
     }
 
@@ -188,7 +196,7 @@ public class ShopMngFragment extends BaseFragment {
     }
 
     private void updateView() {
-        com.bby.yishijie.shop.entity.Member member = BaseApp.getInstance().getShopMember();
+        Member member = BaseApp.getInstance().getShopMember();
         if (!TextUtils.isEmpty(member.getLogo())) {
             Glide.with(mContext)
                     .load(member.getLogo())
@@ -207,14 +215,14 @@ public class ShopMngFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.menu_order_4,R.id.shop_mng,R.id.address,
-             R.id.text_login,R.id.fans_manage,R.id.yeji_manage,R.id.sales_manage,
+    @OnClick({R.id.menu_order_4, R.id.shop_mng, R.id.address,
+            R.id.text_login, R.id.fans_manage, R.id.yeji_manage, R.id.sales_manage,
             R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3})
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.fans_manage:
-//                intent = new Intent(mContext, ShopManageActivity.class);
-//                startActivity(intent);
+                intent = new Intent(mContext, CustomerManageActivity.class);
+                startActivity(intent);
                 break;
             case R.id.yeji_manage:
                 intent = new Intent(mContext, PerformanceActivity.class);
@@ -274,6 +282,35 @@ public class ShopMngFragment extends BaseFragment {
         updateView();
     }
 
+    public void getStatistics() {
+        Call<ResultDO<Statistic>> call = ApiClient.getApiAdapter().getStatistic(BaseApp.getInstance().getMember().getId());
+        call.enqueue(new Callback<ResultDO<Statistic>>() {
+            @Override
+            public void onResponse(Call<ResultDO<Statistic>> call, Response<ResultDO<Statistic>> response) {
+                if (isFinish) {
+                    return;
+                }
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() == null) {
+                        return;
+                    }
+                    Statistic statistic = response.body().getResult();
+                    orderNum.setText(String.valueOf(statistic.getTodayOrder()));
+                    saleNum.setText(String.format("%s", statistic.getMonthSale().setScale(2, RoundingMode.HALF_UP)));
+                    profitNum.setText(String.format("%s", statistic.getMonthTotalScale().setScale(2, RoundingMode.HALF_UP)));
+                    fansNum.setText(String.valueOf(statistic.getMemberSize()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<Statistic>> call, Throwable t) {
+
+            }
+        });
+    }
 
     @Override
     public void onResume() {

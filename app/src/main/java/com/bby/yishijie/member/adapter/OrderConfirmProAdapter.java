@@ -73,6 +73,13 @@ public class OrderConfirmProAdapter extends BaseAdapter {
                     .into(listHolder.productImg);
         }
         listHolder.productNum.setText("X"+item.getNum());
+        if (item.getScore()!=0){
+            listHolder.productScore.setVisibility(View.VISIBLE);
+            listHolder.productScore.setText(item.getScore()+"积分");
+        }
+        else {
+            listHolder.productScore.setVisibility(View.GONE);
+        }
         listHolder.productTitle.setText(item.getProductName());
         listHolder.productSpec.setText("规格:"+item.getElements());
         listHolder.productPrice.setText(String.format("¥%s",item.getPrice().setScale(2, RoundingMode.HALF_UP)));
@@ -94,6 +101,8 @@ public class OrderConfirmProAdapter extends BaseAdapter {
         TextView productPrice;
         @Bind(R.id.product_num)
         TextView productNum;
+        @Bind(R.id.product_score)
+        TextView productScore;
 
         ViewHolder(View view) {
             ButterKnife.bind(this, view);

@@ -52,4 +52,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black_9"
         android:text="价格"/>
+    <TextView
+        android:id="@+id/product_score"
+        android:layout_below="@+id/product_num"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/appcolor"
+        android:text=""/>
 </RelativeLayout>

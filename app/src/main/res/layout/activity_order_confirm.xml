@@ -290,8 +290,13 @@
             android:id="@+id/total_money_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             tools:text="总金额：￥222" />
+        <TextView
+            android:id="@+id/total_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/total_money_bottom"
+            tools:text="总积分：" />
 
         <TextView
             android:id="@+id/total_money_bottom_extra"

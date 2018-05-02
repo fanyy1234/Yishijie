@@ -328,9 +328,14 @@ public class MainActivity extends BaseActivity {
             }
         }
         else {
-            member = (Member) SharePerferenceUtils.getIns(mContext).getOAuth();
+            try {
+                member = (Member) SharePerferenceUtils.getIns(mContext).getOAuth();
+            } catch (Exception e) {
+                member = com.bby.yishijie.shop.entity.Member.transferMember((com.bby.yishijie.shop.entity.Member) SharePerferenceUtils.getIns(mContext).getOAuth());
+            }
             if (member != null) {
                 BaseApp.getInstance().setMember(member);
+
             }
         }
     }

@@ -238,7 +238,7 @@ public class SelectProSpecWindow extends PopupWindow {
     private void queryStock() {
         selectSpec.setText(String.format("已选%1$s%2$s", sizeText, colorText));
         if (productDetail.getColors().size() > 0 && productDetail.getSizes().size() > 0) {
-            if (colorId == null || sizeId == null) {
+            if (sizeId == null) {
                 return;
             }
         }
