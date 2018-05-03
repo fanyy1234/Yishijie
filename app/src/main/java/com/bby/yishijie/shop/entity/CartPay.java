@@ -21,7 +21,7 @@ public class CartPay implements Serializable {
     private int totalScore;
     private int payPassword;
     private BigDecimal scoreProductFee;
-    private int isCross;//1:含保税商品 2：不含
+//    private boolean isCross;//1:含保税商品 2：不含
 
     private int isFreePost;//0:不包邮 1：包邮
 
@@ -103,13 +103,13 @@ public class CartPay implements Serializable {
         this.scoreProductFee = scoreProductFee;
     }
 
-    public int getIsCross() {
-        return isCross;
-    }
-
-    public void setIsCross(int isCross) {
-        this.isCross = isCross;
-    }
+//    public int getIsCross() {
+//        return isCross;
+//    }
+//
+//    public void setIsCross(int isCross) {
+//        this.isCross = isCross;
+//    }
 
     public int getIsFreePost() {
         return isFreePost;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/viewItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="14dp">
+
+    <ImageView
+        android:id="@+id/bank_logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="14dp"
+        tools:src="@mipmap/alipay" />
+
+    <TextView
+        android:id="@+id/bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/bank_logo"
+        android:text="支付宝"
+        android:textColor="@color/black_3"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/bank_no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bank_name"
+        android:layout_marginTop="8dp"
+        android:layout_alignLeft="@+id/bank_name"
+        android:text="何明明"
+        android:textColor="@color/black_9"
+        android:textSize="13sp" />
+
+</RelativeLayout>
+

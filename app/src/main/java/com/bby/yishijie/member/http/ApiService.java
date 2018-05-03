@@ -25,7 +25,9 @@ import com.bby.yishijie.member.entity.ProductDetail;
 import com.bby.yishijie.member.entity.ProductSpec;
 import com.bby.yishijie.member.entity.RefundDetail;
 import com.bby.yishijie.member.entity.Voucher;
+import com.bby.yishijie.shop.entity.Account;
 import com.bby.yishijie.shop.entity.AvailableProfit;
+import com.bby.yishijie.shop.entity.BalanceDetail;
 import com.bby.yishijie.shop.entity.Customer;
 import com.bby.yishijie.shop.entity.FansProfit;
 import com.bby.yishijie.shop.entity.IncomeRecord;
@@ -35,6 +37,7 @@ import com.bby.yishijie.shop.entity.ProductMaterial;
 import com.bby.yishijie.shop.entity.ProfitAll;
 import com.bby.yishijie.shop.entity.Statistic;
 import com.bby.yishijie.shop.entity.TotalProfit;
+import com.bby.yishijie.shop.entity.WithDrawRecord;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.model.Version;
 
@@ -326,18 +329,18 @@ public interface ApiService {
      */
     @FormUrlEncoded
     @POST("/mobi/cart/AiNewBuyNow")
-    Call<ResultDO<CartPay>> buyNowNew(@Field("type") int type, @Field("productId") long productId,
-                                      @Field("memberId") long memberId,@Field("paramId") long paramId,
-                                      @Field("num") int num, @Field("addressId") Integer addressId);
+    Call<ResultDO<CartPay>> buyNowNew(@Field("type") int type, @Field("productId") int productId,
+                                      @Field("memberId") int memberId,@Field("paramId") int paramId,
+                                      @Field("num") int num);
     /**
      * 立即购买(新)店主
      * @param type 类型(1-普通商品 2-限时购 3-跨境 4-满减)
      */
     @FormUrlEncoded
     @POST("/mobi/cart/AiNewBuyNow")
-    Call<ResultDO<com.bby.yishijie.shop.entity.CartPay>> buyNowNew2(@Field("type") int type, @Field("productId") long productId,
-                                      @Field("memberId") long memberId,@Field("paramId") long paramId,
-                                      @Field("num") int num, @Field("addressId") Integer addressId);
+    Call<ResultDO<com.bby.yishijie.shop.entity.CartPay>> buyNowNew2(@Field("type") int type, @Field("productId") int productId,
+                                                                    @Field("memberId") int memberId, @Field("paramId") int paramId,
+                                                                    @Field("num") int num);
 
 
 
@@ -358,7 +361,18 @@ public interface ApiService {
                                             @Field("identityNo") String identityNo, @Field("realName") String realName,
                                             @Field("sendType") Integer sendType);
 
-
+    /**
+     * 提交订单(立即购买)
+     *
+     * @param orderType 订单类型(1-用户订单 2-店主订单)
+     */
+    @FormUrlEncoded
+    @POST("/mobi/cart/AjCreateOrder")
+    Call<ResultDO<com.bby.yishijie.shop.entity.Order>> createOrderBuyNow(@Field("addressId") int addressId, @Field("id") long id,
+                                            @Field("voucherId") Integer voucherId, @Field("score") int score,
+                                            @Field("money") String money, @Field("message") String message, @Field("appType") Integer orderType,
+                                            @Field("identityNo") String identityNo, @Field("realName") String realName,
+                                            @Field("sendType") Integer sendType);
 
 
 
@@ -498,7 +512,19 @@ public interface ApiService {
                                          @Field("isActive") Integer isActive, @Field("sendType") Integer sendType);
 
 
-
+    /**
+     * 提交订单(购物车)(新)
+     *
+     * @param orderType 订单类型(1-用户订单 2-店主订单)
+     */
+    @FormUrlEncoded
+    @POST("/mobi/cart/AhNewCreateOrder")
+    Call<ResultDO<com.bby.yishijie.shop.entity.Order>> createOrderNew(@Field("addressId") int addressId, @Field("ids") String cartIds,
+                                         @Field("voucherId") Integer voucherId, @Field("score") int score,
+                                         @Field("money") String money, @Field("message") String message,
+                                         @Field("appType") Integer orderType, @Field("identityNo") String identityNo,
+                                         @Field("realName") String realName, @Field("isActive") Integer isActive,
+                                         @Field("sendType") Integer sendType);
 
 
     /**
@@ -1016,5 +1042,92 @@ public interface ApiService {
      */
     @GET("/mobi/score/getScoreRecord")
     Call<ResultDO> getScoreRecord(@Query("memberId") long memberId);
+
+    /**
+     * 申请提现
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AtWithdraw")
+    Call<ResultDO> withDraw(@Field("memberId") long memberId, @Field("amount") String amount, @Field("accId") int accId);
+
+    /**
+     * 我的提现记录
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/BaWithdrawList")
+    Call<ResultDO<List<WithDrawRecord>>> getWithDrawList(@Field("memberId") long memberId);
+
+    /**
+     * 添加账户
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AsAddAccount")
+    Call<ResultDO<Account>> addAccount(@Field("memberId") long memberId, @Field("type") int type,
+                                       @Field("accCode") String accCode, @Field("accName") String accName,
+                                       @Field("bankName") String bankName, @Field("subBankName") String subBankName);
+    /**
+     * 账户列表
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AsAccountList")
+    Call<ResultDO<List<Account>>> getAccountList(@Field("memberId") long memberId);
+
+
+    /**
+     * 删除账户
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AsDeleteAccount")
+    Call<ResultDO> delAccount(@Field("id") int id);
+    /**
+     * 余额明细
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/BhMoneyDetail")
+    Call<ResultDO<List<BalanceDetail>>> getBalanceDetail(@Field("memberId") long memberId, @Field("pageNo") int pageNo,
+                                                         @Field("pageSize") int pageSize);
+    /**
+     * 余额明细(店主)
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/BhMoneyDetail2")
+    Call<ResultDO<List<BalanceDetail>>> getBalanceExtraDetail(@Field("memberId") long memberId, @Field("type") int type, @Field("pageNo") int pageNo,
+                                                              @Field("pageSize") int pageSize);
+    /**
+     * 设置修改支付密码
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AcSetPayPassword")
+    Call<ResultDO<com.bby.yishijie.shop.entity.Member>> updatePayPwd(@Field("memberId") long memberId, @Field("code") String code, @Field("payPassword") String payPassword);
+
+    /**
+     * 设置修改支付密码
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/shop/AdCheckPayPassword")
+    Call<ResultDO<Integer>> checkPayPwd(@Field("memberId") long memberId, @Field("payPassword") String payPassword);
+
+    /**
+     * 微信支付(店主版-普通订单)
+     *
+     * @param
+     */
+    @FormUrlEncoded
+    @POST("/mobi/wxPay/BaPay")
+    Call<ResultDO<com.bby.yishijie.shop.entity.PayInfo>> getNormalPayInfo2(@Field("orderId") long orderId);
 
 }

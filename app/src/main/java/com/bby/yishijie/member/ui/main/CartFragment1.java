@@ -13,7 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.shop.entity.TotalProfit;
+import com.bby.yishijie.shop.ui.OrderConfirmShopActivity;
 import com.sunday.common.base.BaseFragment;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.StringUtils;
@@ -540,7 +542,8 @@ public class CartFragment1 extends BaseFragment {
                     return;
                 }
                 if (resultDO.getCode() == 0) {
-                    Intent intent = new Intent(mContext, OrderConfirmActivity.class);
+                    Intent intent;
+                    intent = new Intent(mContext, OrderConfirmActivity.class);
                     intent.putExtra("cartPay", resultDO.getResult());
                     intent.putExtra("cartIds", StringUtils.listToString(cartIds));
                     //intent.putExtra("isActive",isActiveProSelected?1:0);

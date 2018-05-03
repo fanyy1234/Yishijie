@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.entity.CartPay;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
@@ -39,7 +40,6 @@ import com.bby.yishijie.member.adapter.StringBannerHolder;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.common.Constant;
 import com.bby.yishijie.member.common.DividerGridItemDecoration;
-import com.bby.yishijie.member.entity.CartPay;
 import com.bby.yishijie.member.entity.ProductDetail;
 import com.bby.yishijie.member.entity.TabEntity;
 import com.bby.yishijie.member.http.ApiClient;
@@ -551,7 +551,7 @@ public class ProductDetailActivity extends BaseActivity {
 
     private void buyNow(long paramId, int num) {
         showLoadingDialog(0);
-        Call<ResultDO<CartPay>> call = ApiClient.getApiAdapter().buyNowNew(productDetail.getType(), productId, memberId,paramId,  num, null);
+        Call<ResultDO<CartPay>> call = ApiClient.getApiAdapter().buyNowNew(productDetail.getType(), (int)productId, (int)memberId,(int)paramId,  num);
         call.enqueue(new Callback<ResultDO<CartPay>>() {
             @Override
             public void onResponse(Call<ResultDO<CartPay>> call, Response<ResultDO<CartPay>> response) {

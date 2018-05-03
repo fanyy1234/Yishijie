@@ -16,7 +16,7 @@ public class CartPay implements Serializable {
     private BigDecimal postFee;
     private int count;
     private List<CartItem> list;
-    private int isCross;//1:含保税商品 2：不含
+//    private int isCross;//1:含保税商品 2：不含
     private int isFreePost;//0:不包邮 1：包邮
     private List<CartItem> limitList;//限时购
     private List<CartItem> activeList;//满减
@@ -59,13 +59,13 @@ public class CartPay implements Serializable {
         this.count = count;
     }
 
-    public int getIsCross() {
-        return isCross;
-    }
-
-    public void setIsCross(int isCross) {
-        this.isCross = isCross;
-    }
+//    public int getIsCross() {
+//        return isCross;
+//    }
+//
+//    public void setIsCross(int isCross) {
+//        this.isCross = isCross;
+//    }
 
     public int getIsFreePost() {
         return isFreePost;

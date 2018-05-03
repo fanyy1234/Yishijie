@@ -1,4 +1,4 @@
-package com.bby.yishijie.member.ui.order;
+package com.bby.yishijie.shop.ui;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -20,38 +20,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
-import com.bby.yishijie.member.entity.CartItem;
-import com.sunday.common.alipay.OrderInfoUtil2_0;
-import com.sunday.common.alipay.PayResult;
-import com.sunday.common.alipay.SignUtils;
-import com.sunday.common.base.BaseActivity;
-import com.sunday.common.model.ResultDO;
-import com.sunday.common.utils.SpannalbeStringUtils;
-import com.sunday.common.utils.StringUtils;
-import com.sunday.common.utils.ToastUtils;
-import com.sunday.common.widgets.NoScrollListview;
 import com.bby.yishijie.R;
-import com.bby.yishijie.member.adapter.OrderConfirmAdapter;
-import com.bby.yishijie.member.adapter.OrderConfirmProAdapter;
+import com.bby.yishijie.shop.adapter.OrderConfirmAdapter;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.common.Constant;
 import com.bby.yishijie.member.entity.Address;
-import com.bby.yishijie.member.entity.CartListItem;
-import com.bby.yishijie.member.entity.CartPay;
 import com.bby.yishijie.member.entity.Order;
 import com.bby.yishijie.member.entity.PayInfo;
 import com.bby.yishijie.member.entity.PostFee;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.mine.AddressListActivity;
 import com.bby.yishijie.member.ui.mine.voucher.SelectVoucherListActivity;
+import com.bby.yishijie.member.ui.order.OrderListActivity;
+import com.bby.yishijie.shop.entity.CartItem;
+import com.bby.yishijie.shop.entity.CartListItem;
+import com.bby.yishijie.shop.entity.CartPay;
+import com.sunday.common.alipay.OrderInfoUtil2_0;
+import com.sunday.common.alipay.PayResult;
+import com.sunday.common.base.BaseActivity;
+import com.sunday.common.model.ResultDO;
+import com.sunday.common.utils.SpannalbeStringUtils;
+import com.sunday.common.utils.StringUtils;
+import com.sunday.common.utils.ToastUtils;
+import com.sunday.common.widgets.NoScrollListview;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
-import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URLEncoder;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +66,7 @@ import retrofit2.Response;
  * Created by 刘涛 on 2017/4/20.
  */
 
-public class OrderConfirmActivity extends BaseActivity {
+public class OrderConfirmShopActivity extends BaseActivity {
 
     @Bind(R.id.title_view)
     TextView titleView;
@@ -681,7 +678,7 @@ public class OrderConfirmActivity extends BaseActivity {
             @Override
             public void run() {
                 // 构造PayTask 对象
-                PayTask alipay = new PayTask(OrderConfirmActivity.this);
+                PayTask alipay = new PayTask(OrderConfirmShopActivity.this);
                 // 调用支付接口，获取支付结果
                 Map<String,String> result = alipay.payV2(orderInfo,true);
 //                String result = alipay.pay(payInfo,true);

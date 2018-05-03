@@ -27,10 +27,10 @@ import com.bby.yishijie.member.common.DividerGridItemDecoration;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.base.ShowBigImage;
 import com.bby.yishijie.member.ui.cart.CartActivity;
-import com.bby.yishijie.member.ui.order.OrderConfirmActivity;
 import com.bby.yishijie.shop.adapter.ProductDetailRecAdapter;
 import com.bby.yishijie.shop.entity.CartPay;
 import com.bby.yishijie.shop.entity.ProductDetail;
+import com.bby.yishijie.shop.ui.OrderConfirmShopActivity;
 import com.bby.yishijie.shop.widgets.SelectProSpecWindow;
 import com.bby.yishijie.shop.widgets.ShareWindow;
 import com.sunday.common.base.BaseFragment;
@@ -487,7 +487,7 @@ public class ProductDetailFragment extends BaseFragment {
 
     private void buyNow(long paramId, int num) {
         showLoadingDialog(0);
-        Call<ResultDO<CartPay>> call = ApiClient.getApiAdapter().buyNowNew2(productDetail.getType(), productId, paramId, memberId, num,null);
+        Call<ResultDO<CartPay>> call = ApiClient.getApiAdapter().buyNowNew2(productDetail.getType(), (int)productId, (int)memberId,(int)paramId,  num);
         call.enqueue(new Callback<ResultDO<CartPay>>() {
             @Override
             public void onResponse(Call<ResultDO<CartPay>> call, Response<ResultDO<CartPay>> response) {
@@ -499,7 +499,7 @@ public class ProductDetailFragment extends BaseFragment {
                     return;
                 }
                 if (response.body().getCode() == 0) {
-                    intent = new Intent(mContext, OrderConfirmActivity.class);
+                    intent = new Intent(mContext, OrderConfirmShopActivity.class);
                     intent.putExtra("cartPay", response.body().getResult());
                     intent.putExtra("isActive",productDetail.getType()==4?1:0);
                     startActivity(intent);

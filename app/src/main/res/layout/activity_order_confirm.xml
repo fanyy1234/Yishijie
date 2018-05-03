@@ -310,7 +310,7 @@
             android:id="@+id/product_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerVertical="false"
             android:layout_marginLeft="13dp"
             android:layout_toRightOf="@+id/total_money_bottom"
             android:textSize="12sp"
