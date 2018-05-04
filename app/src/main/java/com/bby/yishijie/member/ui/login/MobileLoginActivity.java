@@ -50,7 +50,7 @@ public class MobileLoginActivity extends BaseActivity {
 
     private TimeCount timeCount;
     private long memberId;
-
+    public static MobileLoginActivity mobileLoginActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +60,9 @@ public class MobileLoginActivity extends BaseActivity {
     }
 
     private void initView() {
-        titleView.setText("绑定手机号");
-        btnSubmit.setText("绑定");
+        mobileLoginActivity = this;
+        titleView.setText("邀请店铺");
+        btnSubmit.setText("下一步");
         memberId = getIntent().getLongExtra("memberId", 0);
         rightTxt.setVisibility(View.GONE);
         timeCount = new TimeCount(60000, 1000, sendCode);
@@ -113,7 +114,7 @@ public class MobileLoginActivity extends BaseActivity {
                     return;
                 }
                 showLoadingDialog(0);
-                Call<ResultDO<Member>> call1 = ApiClient.getApiAdapter().bindMobile(mobileNo, code, memberId);
+                Call<ResultDO<Member>> call1 = ApiClient.getApiAdapter().checkCode(mobileNo, code,3, memberId);
                 call1.enqueue(new Callback<ResultDO<Member>>() {
                     @Override
                     public void onResponse(Call<ResultDO<Member>> call, Response<ResultDO<Member>> response) {
@@ -126,13 +127,8 @@ public class MobileLoginActivity extends BaseActivity {
                             if (resultDO.getResult() == null) {
                                 return;
                             }
-                            SharePerferenceUtils.getIns(mContext).saveOAuth(resultDO.getResult());
-                            SharePerferenceUtils.getIns(mContext).putBoolean(Constants.IS_LOGIN, true);
-                            SharePerferenceUtils.getIns(mContext).putLong(Constants.MEMBERID, resultDO.getResult().getId());
-                            BaseApp.getInstance().setMember(resultDO.getResult());
-                            intent = new Intent(mContext, MainActivity.class);
+                            intent = new Intent(mContext, BindShopActivity.class);
                             startActivity(intent);
-                            finish();
                         } else {
                             ToastUtils.showToast(mContext, resultDO.getMessage());
                         }

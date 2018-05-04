@@ -1130,4 +1130,12 @@ public interface ApiService {
     @POST("/mobi/wxPay/BaPay")
     Call<ResultDO<com.bby.yishijie.shop.entity.PayInfo>> getNormalPayInfo2(@Field("orderId") long orderId);
 
+    /**
+     * 输入邀请码
+     *
+     *@param memberId
+     */
+    @FormUrlEncoded
+    @POST("/mobi/member/AjBindShop")
+    Call<ResultDO> bindShop(@Field("memberId") long memberId, @Field("initCode") String initCode);
 }

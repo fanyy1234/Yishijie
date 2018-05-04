@@ -73,7 +73,9 @@
             android:name=".member.ui.login.GuideActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@style/ColorTranslucentTheme" />
+            android:theme="@style/ColorTranslucentTheme" >
+
+        </activity>
         <activity
             android:name=".member.ui.login.MobileLoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -280,6 +282,9 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity android:name=".shop.ui.OrderConfirmShopActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".member.ui.login.BindShopActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
 
