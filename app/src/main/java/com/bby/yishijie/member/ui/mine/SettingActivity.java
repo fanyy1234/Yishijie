@@ -198,6 +198,8 @@ public class SettingActivity extends BaseActivity {
                                            SharePerferenceUtils.getIns(mContext).removeKey("oAuth");
                                            SharePerferenceUtils.getIns(mContext).removeKey(Constants.IS_LOGIN);
                                            SharePerferenceUtils.getIns(mContext).removeKey(Constants.MEMBERID);
+                                           BaseApp.getInstance().setMember(null);
+                                           BaseApp.getInstance().setShopMember(null);
                                            deleteClientId();
                                            delDialog.dismiss();
                                        }

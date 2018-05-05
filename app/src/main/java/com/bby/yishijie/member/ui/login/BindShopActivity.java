@@ -10,6 +10,7 @@ import com.bby.yishijie.R;
 import com.bby.yishijie.member.entity.Member;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.MainActivity;
+import com.bby.yishijie.member.ui.main.ShopFragment;
 import com.sunday.common.base.BaseActivity;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.StringUtils;
@@ -76,11 +77,12 @@ public class BindShopActivity extends BaseActivity {
                             return;
                         }
                         if (resultDO.getCode() == 0) {
-                            if (resultDO.getResult() == null) {
-                                return;
-                            }
+                            ShopFragment.refreshFlag=true;
                             MobileLoginActivity.mobileLoginActivity.finish();
                             finish();
+//                            if (resultDO.getResult() == null) {
+//                                return;
+//                            }
                         } else {
                             ToastUtils.showToast(mContext, resultDO.getMessage());
                         }

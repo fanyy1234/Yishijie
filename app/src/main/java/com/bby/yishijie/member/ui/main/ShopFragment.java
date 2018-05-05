@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -92,8 +93,10 @@ public class ShopFragment extends BaseFragment {
     private List<String> mTitles=new ArrayList<>();
 
     private boolean isLogin;
-    Member member;
-
+//    Member member;
+    long memberId = 0;
+    long recId = 0;
+    public static boolean refreshFlag=false;
     public static ShopFragment newInstance(boolean isLogin) {
         ShopFragment shopFragment = new ShopFragment();
         Bundle args = new Bundle();
@@ -134,13 +137,20 @@ public class ShopFragment extends BaseFragment {
         if (!isLogin) {
             loginNotLayout.setVisibility(View.VISIBLE);
             refreshLayout.setVisibility(View.GONE);
-
         } else {
-          member = BaseApp.getInstance().getMember();
-            if (member.getRecId() != 0) {
+            if (MainActivity.isShop){
+                memberId = BaseApp.getInstance().getShopMember().getId();
+                recId = BaseApp.getInstance().getShopMember().getRecId();
+            }
+            else {
+                memberId = BaseApp.getInstance().getMember().getId();
+                recId = BaseApp.getInstance().getMember().getRecId();
+            }
+
+            if (recId!=0) {
                 loginNotLayout.setVisibility(View.GONE);
                 refreshLayout.setVisibility(View.VISIBLE);
-                getRecShopInfo(member.getRecId());
+                getRecShopInfo(recId);
                 initView();
                 //getShopBrand();
             } else {
@@ -163,7 +173,7 @@ public class ShopFragment extends BaseFragment {
             public void onRefresh(RefreshLayout refreshlayout) {
                // ((ShopProductFragment)fragments.get(0)).refresh();
                 //((ShopBrandFragment)fragments.get(1)).refresh();
-                getRecShopInfo(member.getRecId());
+                getRecShopInfo(recId);
             }
         });
         ((ClassicsHeader)refreshLayout.getRefreshHeader()).setPrimaryColor(Color.parseColor("#f5f4f9"));
@@ -177,6 +187,7 @@ public class ShopFragment extends BaseFragment {
             startActivity(intent);
         } else {
             intent = new Intent(mContext, MobileLoginActivity.class);
+            intent.putExtra("memberId",memberId);
             intent.putExtra("isFromRecShop", true);
             startActivity(intent);
         }
@@ -232,5 +243,72 @@ public class ShopFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if (refreshFlag){
+            if (MainActivity.isShop){
+                getShopMemberInfo();
+            }
+            else {
+                getMemberInfo();
+            }
+            refreshFlag = false;
+        }
+    }
+
+    public void getMemberInfo() {
+        Call<ResultDO<Member>> call = ApiClient.getApiAdapter().getMemberInfo(memberId);
+        call.enqueue(new Callback<ResultDO<Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<Member>> call, Response<ResultDO<Member>> response) {
+                if (isFinish) {
+                    return;
+                }
+                refreshLayout.finishRefresh();
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() != null) {
+                        Member member = response.body().getResult();
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(member);
+                        BaseApp.getInstance().setMember(member);
+                        initParams();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<Member>> call, Throwable t) {
+                refreshLayout.finishRefresh();
+            }
+        });
+    }
+    private void getShopMemberInfo() {
+        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().getMemberInfo2(memberId);
+        call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Response<ResultDO<com.bby.yishijie.shop.entity.Member>> response) {
+                if (isFinish || response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() != null) {
+                        com.bby.yishijie.shop.entity.Member member = response.body().getResult();
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(member);
+                        BaseApp.getInstance().setShopMember(member);
+                        initParams();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Throwable t) {
+
+            }
+        });
     }
 }

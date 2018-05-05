@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bumptech.glide.Glide;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.DeviceUtils;
@@ -317,6 +318,15 @@ public class SelectProSpecWindow extends PopupWindow {
                     ToastUtils.showToast(mContext, "超过最大库存");
                     return;
                 }*/
+
+                if (MainActivity.isShop&&BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext, "请先登录");
+                    return;
+                }
+                if (!MainActivity.isShop&&BaseApp.getInstance().getMember()==null){
+                    ToastUtils.showToast(mContext, "请先登录");
+                    return;
+                }
                 if (specId == 0) {
                     ToastUtils.showToast(mContext, "请选择规格");
                     return;
@@ -331,6 +341,14 @@ public class SelectProSpecWindow extends PopupWindow {
                     ToastUtils.showToast(mContext, "超过最大库存");
                     return;
                 }*/
+                if (MainActivity.isShop&&BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext, "请先登录");
+                    return;
+                }
+                if (!MainActivity.isShop&&BaseApp.getInstance().getMember()==null){
+                    ToastUtils.showToast(mContext, "请先登录");
+                    return;
+                }
                 if (specId == 0) {
                     ToastUtils.showToast(mContext, "请选择规格");
                     return;

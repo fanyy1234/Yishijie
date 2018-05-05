@@ -13,11 +13,16 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.common.BaseApp;
+import com.bby.yishijie.member.entity.Member;
 import com.bby.yishijie.member.http.ApiClient;
 import com.sunday.common.base.BaseActivity;
 import com.sunday.common.model.ResultDO;
+import com.sunday.common.utils.Constants;
 import com.sunday.common.utils.MD5Utils;
+import com.sunday.common.utils.SharePerferenceUtils;
 import com.sunday.common.utils.StringUtils;
+import com.sunday.common.utils.TimeCount;
 import com.sunday.common.utils.ToastUtils;
 import com.sunday.common.widgets.ClearEditText;
 import com.bby.yishijie.R;
@@ -35,80 +40,132 @@ import retrofit2.Response;
 
 public class ForgetPwdActivity extends BaseActivity {
 
-
     @Bind(R.id.title_view)
     TextView titleView;
-    @Bind(R.id.et_pwd)
-    ClearEditText etPwd;
-    @Bind(R.id.iv_reset_pwd_visible)
-    ImageButton ivResetPwdVisible;
+    @Bind(R.id.et_phone)
+    ClearEditText etPhone;
+    @Bind(R.id.et_code)
+    ClearEditText etCode;
+    @Bind(R.id.send_code)
+    TextView sendCode;
     @Bind(R.id.btn_register)
     TextView btnRegister;
+    @Bind(R.id.password)
+    ClearEditText password;
+    @Bind(R.id.repeat_pwd)
+    ClearEditText repeatPwd;
 
-    private String mobile,code;
+    private TimeCount timeCount;
+    private int type;
 
+    private String phoneStr, codeStr, pwdStr,pwdRepeatStr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_pwd);
         ButterKnife.bind(this);
-        titleView.setText("设置密码");
-        mobile=getIntent().getStringExtra("mobile");
-        code=getIntent().getStringExtra("code");
+        type = getIntent().getIntExtra("type", 0);
+        titleView.setText("忘记密码");
+        timeCount = new TimeCount(60000, 1000, sendCode);
 
     }
 
-    private boolean isPressed = true;
-    @OnClick({R.id.btn_register,R.id.iv_reset_pwd_visible})
-    void onClick(View v){
-        switch (v.getId()){
+    @OnClick({R.id.send_code, R.id.btn_register})
+    void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.send_code:
+                String mobile = etPhone.getText().toString().trim();
+                if (TextUtils.isEmpty(mobile) || !StringUtils.isMobileNO(mobile)) {
+                    ToastUtils.showToast(mContext, "请输入正确的手机号");
+                    return;
+                }
+                sendCode(mobile);
+                break;
             case R.id.btn_register:
-                String pwd = etPwd.getText().toString().trim();
-                if (TextUtils.isEmpty(pwd)) {
+                phoneStr = etPhone.getText().toString().trim();
+                codeStr = etCode.getText().toString().trim();
+                pwdStr = password.getText().toString().trim();
+                pwdRepeatStr = repeatPwd.getText().toString().trim();
+                if (TextUtils.isEmpty(phoneStr) || !StringUtils.isMobileNO(phoneStr)) {
+                    ToastUtils.showToast(mContext, "请输入正确的手机号");
+                    return;
+                }
+                if (TextUtils.isEmpty(codeStr)) {
+                    ToastUtils.showToast(mContext, "请输入验证码");
+                    return;
+                }
+                if (TextUtils.isEmpty(pwdStr)) {
                     ToastUtils.showToast(mContext, "请输入密码");
                     return;
                 }
-                Call<ResultDO<Integer>> call= ApiClient.getApiAdapter().forgetPwd(mobile,code, MD5Utils.MD5(pwd));
-                call.enqueue(new Callback<ResultDO<Integer>>() {
-                    @Override
-                    public void onResponse(Call<ResultDO<Integer>> call, Response<ResultDO<Integer>> response) {
-                        if (isFinish||response.body()==null){return;}
-                        if (response.body().getCode()==0){
-                            ToastUtils.showToast(mContext,"设置成功");
-                            intent=new Intent(mContext,LoginActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }else {
-                            ToastUtils.showToast(mContext,response.body().getMessage());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResultDO<Integer>> call, Throwable t) {
-                        ToastUtils.showToast(mContext,R.string.network_error);
-                    }
-                });
-
-                break;
-            case R.id.iv_reset_pwd_visible:
-                if (!isPressed) {
-                    ivResetPwdVisible.setSelected(false);
-                    etPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                } else {
-                    etPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    ivResetPwdVisible.setSelected(true);
+                if (!pwdStr.equals(pwdRepeatStr)) {
+                    ToastUtils.showToast(mContext, "密码与确认密码不一致");
+                    return;
                 }
-                isPressed = !isPressed;
-                etPwd.postInvalidate();
-                CharSequence text = etPwd.getText();
-                if (text instanceof Spannable) {
-                    Spannable spanText = (Spannable) text;
-                    Selection.setSelection(spanText, text.length());
-                }
+                register();
                 break;
+
         }
     }
 
+    private void sendCode(String mobile) {
+        Call<ResultDO> call = ApiClient.getApiAdapter().sendCode(mobile, 5);
+        call.enqueue(new Callback<ResultDO>() {
+            @Override
+            public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
+                if (isFinish || response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    ToastUtils.showToast(mContext, "验证码已发送到手机");
+                    timeCount.start();
+                } else {
+                    ToastUtils.showToast(mContext, response.body().getMessage());
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResultDO> call, Throwable t) {
+                ToastUtils.showToast(mContext, R.string.network_error);
+            }
+        });
+    }
+
+    private void register() {
+        showLoadingDialog(0);
+        Call<ResultDO<Integer>> call = ApiClient.getApiAdapter().forgetPwd(phoneStr,codeStr, MD5Utils.MD5(pwdStr));
+        call.enqueue(new Callback<ResultDO<Integer>>() {
+            @Override
+            public void onResponse(Call<ResultDO<Integer>> call, Response<ResultDO<Integer>> response) {
+                if (isFinish || response.body() == null) {
+                    showLoadingDialog(0);
+                    return;
+                }
+                dissMissDialog();
+                ResultDO<Integer> resultDO = response.body();
+                if (response.body().getCode() == 0) {
+
+                    ToastUtils.showToast(mContext, "修改成功");
+                    finish();
+                } else {
+                    ToastUtils.showToast(mContext, resultDO.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<Integer>> call, Throwable t) {
+                dissMissDialog();
+                ToastUtils.showToast(mContext, R.string.network_error);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (timeCount != null) {
+            timeCount.cancel();
+        }
+    }
 }

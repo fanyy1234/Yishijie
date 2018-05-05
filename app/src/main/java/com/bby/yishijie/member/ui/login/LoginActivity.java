@@ -73,8 +73,8 @@ public class LoginActivity extends BaseActivity {
         etPwd.addTextChangedListener(textWatcher);
         umShareAPI = UMShareAPI.get(this);
         umShareAPI.deleteOauth(LoginActivity.this,SHARE_MEDIA.WEIXIN,null);
-        etPhone.setText("15258801811");
-        etPwd.setText("123123");
+        etPhone.setText("15267850711");
+        etPwd.setText("111111");
     }
 
     TextWatcher textWatcher = new TextWatcher() {
@@ -132,8 +132,7 @@ public class LoginActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.btn_forget_pwd:
-                intent=new Intent(mContext,RegisterActivity.class);
-                intent.putExtra("type",1);
+                intent=new Intent(mContext,ForgetPwdActivity.class);
                 startActivity(intent);
                 break;
             case R.id.iv_reset_pwd_visible:

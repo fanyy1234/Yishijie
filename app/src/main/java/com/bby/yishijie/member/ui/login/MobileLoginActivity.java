@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.ui.main.ShopFragment;
 import com.sunday.common.base.BaseActivity;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.utils.Constants;
@@ -128,6 +129,7 @@ public class MobileLoginActivity extends BaseActivity {
                                 return;
                             }
                             intent = new Intent(mContext, BindShopActivity.class);
+                            intent.putExtra("memberId",memberId);
                             startActivity(intent);
                         } else {
                             ToastUtils.showToast(mContext, resultDO.getMessage());
