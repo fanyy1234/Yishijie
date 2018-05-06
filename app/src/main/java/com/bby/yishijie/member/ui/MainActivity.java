@@ -57,10 +57,21 @@ import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 public class MainActivity extends BaseActivity {
 
     @Bind({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5})
-    List<TextView> tabViews;
+    List<TextView> tabViews1;
+    @Bind({R.id.tab6, R.id.tab2, R.id.tab7, R.id.tab3, R.id.tab5})
+    List<TextView> tabViews2;
+    @Bind(R.id.tab1)
+    TextView textView1;
     @Bind(R.id.tab4)
     TextView textView4;
+    @Bind(R.id.tab3)
+    TextView textView3;
+    @Bind(R.id.tab6)
+    TextView textView6;
+    @Bind(R.id.tab7)
+    TextView textView7;
 
+    List<TextView> tabViews;
     private Member member;
     private int pageNo;
     private Fragment[] fragments;
@@ -91,6 +102,7 @@ public class MainActivity extends BaseActivity {
     private void checkLogin() {
         login = SharePerferenceUtils.getIns(mContext).getBoolean(Constants.IS_LOGIN, false);
         isShop = SharePerferenceUtils.getIns(mContext).getBoolean(Constants.IS_SHOP, false);
+        tabViews = isShop?tabViews2:tabViews1;
         if (!login) {
             /*intent = new Intent(mContext, LoginActivity.class);
             startActivity(intent);
@@ -122,17 +134,19 @@ public class MainActivity extends BaseActivity {
         ShopMngFragment shopMngFragment = ShopMngFragment.newInstance(login);
         MineFragment mineFragment = MineFragment.newInstance(login);
         if (isShop){
-            textView4.setText("店铺");
+            textView1.setVisibility(View.GONE);
+            textView4.setVisibility(View.GONE);
             fragments = new Fragment[]{
                     indexFragment,
                     mClassifyFragment,
-                    mLiveCircleFragment,
                     shopMngFragment,
+                    mLiveCircleFragment,
                     mineFragment
             };
         }
         else {
-            textView4.setText("积分商城");
+            textView6.setVisibility(View.GONE);
+            textView7.setVisibility(View.GONE);
             fragments = new Fragment[]{
                     indexFragment,
                     mClassifyFragment,
@@ -207,24 +221,45 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5})
+    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5, R.id.tab6, R.id.tab7})
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.tab1:
-                changeFragmentIndex(0);
-                break;
-            case R.id.tab2:
-                changeFragmentIndex(1);
-                break;
-            case R.id.tab3:
-                changeFragmentIndex(2);
-                break;
-            case R.id.tab4:
-                changeFragmentIndex(3);
-                break;
-            case R.id.tab5:
-                changeFragmentIndex(4);
-                break;
+        if (isShop){
+            switch (v.getId()) {
+                case R.id.tab6:
+                    changeFragmentIndex(0);
+                    break;
+                case R.id.tab2:
+                    changeFragmentIndex(1);
+                    break;
+                case R.id.tab7:
+                    changeFragmentIndex(2);
+                    break;
+                case R.id.tab3:
+                    changeFragmentIndex(3);
+                    break;
+                case R.id.tab5:
+                    changeFragmentIndex(4);
+                    break;
+            }
+        }
+        else {
+            switch (v.getId()) {
+                case R.id.tab1:
+                    changeFragmentIndex(0);
+                    break;
+                case R.id.tab2:
+                    changeFragmentIndex(1);
+                    break;
+                case R.id.tab3:
+                    changeFragmentIndex(2);
+                    break;
+                case R.id.tab4:
+                    changeFragmentIndex(3);
+                    break;
+                case R.id.tab5:
+                    changeFragmentIndex(4);
+                    break;
+            }
         }
     }
 

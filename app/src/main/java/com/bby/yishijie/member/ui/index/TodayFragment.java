@@ -35,6 +35,7 @@ import com.bby.yishijie.member.ui.product.BrandProductListActivity;
 import com.bby.yishijie.member.ui.product.JingxuanProductActivity;
 import com.bby.yishijie.member.ui.product.ProductDetailActivity;
 import com.bby.yishijie.shop.ui.JingxuanProductListActivity;
+import com.bby.yishijie.shop.ui.LonghubangActivity;
 import com.bby.yishijie.shop.ui.ShitidianActivity;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.widgets.RecyclerTabLayout;
@@ -144,7 +145,7 @@ public class TodayFragment extends BaseLazyFragment {
         adapter = new IndexTodaysAdapter(mContext, brandList, productList);
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(mContext).drawable(R.drawable.shape_divider_width).build());
+        recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(mContext).drawable(R.drawable.shape_divider_width1).build());
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         ptrFrame.setPtrHandler(new PtrHandler() {
@@ -194,7 +195,8 @@ public class TodayFragment extends BaseLazyFragment {
             @Override
             public void onClick(View view) {
                 if (MainActivity.isShop) {
-
+                    Intent intent = new Intent(getActivity(), LonghubangActivity.class);
+                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(getActivity(), JingxuanProductActivity.class);
                     startActivity(intent);

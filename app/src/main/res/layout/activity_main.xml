@@ -30,7 +30,18 @@
             android:text="首页"
             android:textColor="@color/main_bottom_tab_text"
             android:gravity="center_horizontal"
-            android:drawableTop="@drawable/main_bottom_tab1"
+            android:drawableTop="@drawable/bottom_tab_shouye"
+            android:drawablePadding="5dp"/>
+        <TextView
+            android:id="@+id/tab6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:text="商品"
+            android:textColor="@color/main_bottom_tab_text"
+            android:gravity="center_horizontal"
+            android:drawableTop="@drawable/bottom_tab_jingxuan"
             android:drawablePadding="5dp"/>
         <TextView
             android:id="@+id/tab2"
@@ -43,7 +54,20 @@
             android:text="发现"
             android:textColor="@color/main_bottom_tab_text"
             android:gravity="bottom|center_horizontal"
-            android:drawableTop="@drawable/main_bottom_tab2"
+            android:drawableTop="@drawable/bottom_tab_find"
+            android:drawablePadding="5dp"/>
+        <TextView
+            android:id="@+id/tab7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="2dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:text="店铺"
+            android:textColor="@color/main_bottom_tab_text"
+            android:gravity="bottom|center_horizontal"
+            android:drawableTop="@drawable/bottom_tab_shop"
             android:drawablePadding="5dp"/>
         <TextView
             android:id="@+id/tab3"
@@ -51,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
-            android:drawableTop="@drawable/main_bottom_tab3"
+            android:drawableTop="@drawable/bottom_tab_jingxuan"
             android:text="店主精选"
             android:textColor="@color/main_bottom_tab_text"
             android:gravity="bottom|center_horizontal"
@@ -62,8 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
-            android:drawableTop="@drawable/main_bottom_tab4"
-            android:text="购物车"
+            android:drawableTop="@drawable/bottom_tab_jifen"
+            android:text="积分商城"
             android:textColor="@color/main_bottom_tab_text"
             android:gravity="bottom|center_horizontal"
             android:drawablePadding="5dp"/>
@@ -73,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:clickable="true"
-            android:drawableTop="@drawable/main_bottom_tab5"
+            android:drawableTop="@drawable/bottom_tab_mine"
             android:text="我的"
             android:textColor="@color/main_bottom_tab_text"
             android:gravity="bottom|center_horizontal"

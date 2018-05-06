@@ -32,6 +32,7 @@ import com.bby.yishijie.shop.entity.Customer;
 import com.bby.yishijie.shop.entity.FansProfit;
 import com.bby.yishijie.shop.entity.IncomeRecord;
 import com.bby.yishijie.shop.entity.IntegralDetail;
+import com.bby.yishijie.shop.entity.Longhubang;
 import com.bby.yishijie.shop.entity.ProductBrand;
 import com.bby.yishijie.shop.entity.ProductMaterial;
 import com.bby.yishijie.shop.entity.ProfitAll;
@@ -1161,4 +1162,10 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/product/AtNewProduct")
     Call<ResultDO<List<com.bby.yishijie.shop.entity.Product>>> jingxuanProductList2(@Field("page") Integer page,@Field("rows") Integer rows);
+    /**
+     * 龙虎榜
+     * @return
+     */
+    @POST("/mobi/member/lhb")
+    Call<ResultDO<List<Longhubang>>> longhubang();
 }

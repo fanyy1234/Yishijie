@@ -25,14 +25,11 @@ import com.sunday.common.widgets.ptr.PtrHandler;
 import com.sunday.common.widgets.recyclerView.HorizontalDividerItemDecoration;
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.adapter.CommonAdapter;
-import com.bby.yishijie.member.adapter.ProductListAdapter;
 import com.bby.yishijie.member.adapter.ViewHolder;
 import com.bby.yishijie.member.common.BaseApp;
-import com.bby.yishijie.member.entity.Product;
 import com.bby.yishijie.member.entity.Voucher;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.base.BaseLazyFragment;
-import com.bby.yishijie.member.ui.index.ProductListFragment;
 
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -156,7 +153,7 @@ public class GetVoucherListFragment extends BaseLazyFragment {
         recyclerView.setPadding(10, 10, 10, 10);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(mContext)
-                .drawable(R.drawable.shape_divider_width)
+                .drawable(R.drawable.shape_divider_width1)
                 .build());
         ptrFrame.setPtrHandler(new PtrHandler() {
             @Override

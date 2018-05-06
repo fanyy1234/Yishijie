@@ -79,7 +79,7 @@ public class AvailableProfitActivity extends BaseActivity {
         adapter = new AvailableProfitAdapter(mContext, dataSet);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(mContext)
-                .drawable(R.drawable.shape_divider_width)
+                .drawable(R.drawable.shape_divider_width1)
                 .build());
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
