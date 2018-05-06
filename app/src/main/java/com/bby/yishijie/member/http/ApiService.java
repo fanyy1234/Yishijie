@@ -35,6 +35,7 @@ import com.bby.yishijie.shop.entity.IntegralDetail;
 import com.bby.yishijie.shop.entity.ProductBrand;
 import com.bby.yishijie.shop.entity.ProductMaterial;
 import com.bby.yishijie.shop.entity.ProfitAll;
+import com.bby.yishijie.shop.entity.Shitidian;
 import com.bby.yishijie.shop.entity.Statistic;
 import com.bby.yishijie.shop.entity.TotalProfit;
 import com.bby.yishijie.shop.entity.WithDrawRecord;
@@ -1138,4 +1139,26 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/member/AjBindShop")
     Call<ResultDO> bindShop(@Field("memberId") long memberId, @Field("initCode") String initCode);
+    /**
+     * 实体店
+     *
+     *@param
+     */
+    @POST("/mobi/shop/CpEntityShop")
+    Call<ResultDO<List<Shitidian>>> shitidian();
+
+    /**
+     * 精选商品
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/mobi/product/AtJxProduct")
+    Call<ResultDO<List<Product>>> jingxuanProductList(@Field("page") Integer page,@Field("rows") Integer rows);
+    /**
+     * 新品速递
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/mobi/product/AtNewProduct")
+    Call<ResultDO<List<com.bby.yishijie.shop.entity.Product>>> jingxuanProductList2(@Field("page") Integer page,@Field("rows") Integer rows);
 }

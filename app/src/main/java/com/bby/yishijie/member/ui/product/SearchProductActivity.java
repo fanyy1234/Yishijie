@@ -66,7 +66,12 @@ public class SearchProductActivity extends BaseActivity {
 
     @OnClick(R.id.edit_query)
     void search(){
-        intent=new Intent(mContext, SearchProductListActivity.class);
+        if (MainActivity.isShop){
+            intent=new Intent(mContext, com.bby.yishijie.shop.ui.SearchProductListActivity.class);
+        }
+        else {
+            intent=new Intent(mContext, SearchProductListActivity.class);
+        }
         startActivity(intent);
     }
 

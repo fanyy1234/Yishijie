@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,11 +27,15 @@ import com.bby.yishijie.member.entity.LimitProduct;
 import com.bby.yishijie.member.entity.LimitTime;
 import com.bby.yishijie.member.entity.Product;
 import com.bby.yishijie.member.http.ApiClient;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.member.ui.base.BaseLazyFragment;
 import com.bby.yishijie.member.ui.main.IndexFragment;
 import com.bby.yishijie.member.ui.product.BrandActivity;
 import com.bby.yishijie.member.ui.product.BrandProductListActivity;
+import com.bby.yishijie.member.ui.product.JingxuanProductActivity;
 import com.bby.yishijie.member.ui.product.ProductDetailActivity;
+import com.bby.yishijie.shop.ui.JingxuanProductListActivity;
+import com.bby.yishijie.shop.ui.ShitidianActivity;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.widgets.RecyclerTabLayout;
 import com.sunday.common.widgets.banner.ConvenientBanner;
@@ -78,6 +83,22 @@ public class TodayFragment extends BaseLazyFragment {
     RelativeLayout pinpaiguanView;
     @Bind(R.id.today_gold_price)
     TextView todayGoldPrice;
+    @Bind(R.id.shitidian_view)
+    RelativeLayout shitidianView;
+    @Bind(R.id.jinxuan_view)
+    RelativeLayout jinxuanView;
+    @Bind(R.id.shitidian_text)
+    TextView shitidianText;
+    @Bind(R.id.shitidian_text1)
+    TextView shitidianText1;
+    @Bind(R.id.jingxuan_text)
+    TextView jingxuanText;
+    @Bind(R.id.jingxuan_text1)
+    TextView jingxuanText1;
+    @Bind(R.id.shitidian_pic)
+    ImageView shitidianPic;
+    @Bind(R.id.jingxuan_pic)
+    ImageView jingxuanPic;
 
 
     private LinearLayoutManager layoutManager;
@@ -142,11 +163,42 @@ public class TodayFragment extends BaseLazyFragment {
             }
         });
         ptrFrame.disableWhenHorizontalMove(true);
+        if (MainActivity.isShop) {
+            shitidianText.setText("新品速递");
+            shitidianText1.setText("新品抢先看");
+            shitidianPic.setImageResource(R.mipmap.xinpinsudi);
+            jingxuanText.setText("龙虎榜");
+            jingxuanText1.setText("推荐店主龙虎榜");
+            jingxuanPic.setImageResource(R.mipmap.longhubang);
+        }
         pinpaiguanView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), BrandActivity.class);
                 startActivity(intent);
+            }
+        });
+        shitidianView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.isShop) {
+                    Intent intent = new Intent(getActivity(), JingxuanProductListActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getActivity(), ShitidianActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+        jinxuanView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (MainActivity.isShop) {
+
+                } else {
+                    Intent intent = new Intent(getActivity(), JingxuanProductActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -207,12 +259,14 @@ public class TodayFragment extends BaseLazyFragment {
 //                    getLimitTimeList();
                 }
             }
+
             @Override
             public void onFailure(Call<ResultDO<IndexAd>> call, Throwable t) {
                 ptrFrame.refreshComplete();
             }
         });
     }
+
     private void todayGoldPrice() {
         Call<ResultDO> call = ApiClient.getApiAdapter().todayGoldPrice();
         call.enqueue(new Callback<ResultDO>() {
@@ -229,6 +283,7 @@ public class TodayFragment extends BaseLazyFragment {
                     todayGoldPrice.setText(resultDO.getMessage());
                 }
             }
+
             @Override
             public void onFailure(Call<ResultDO> call, Throwable t) {
 
