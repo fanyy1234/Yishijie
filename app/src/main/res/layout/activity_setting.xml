@@ -154,6 +154,31 @@
             android:text="修改"
             android:textColor="@color/main_color" />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rec_code_view"
+        style="@style/person_menu_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:textColor="@color/black_5"
+            android:text="邀请码" />
+
+        <TextView
+            android:id="@+id/rec_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:text=""
+            android:textIsSelectable="true"
+            android:textColor="@color/main_color" />
+    </LinearLayout>
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

@@ -59,8 +59,9 @@ public class VoucherListActivity extends BaseActivity {
     }
 
     private void initFragment() {
-        fragments.add(GetVoucherListFragment.newInstance());//领券中心
+//        fragments.add(GetVoucherListFragment.newInstance());//领券中心
         fragments.add(VoucherListFragment.newInstance(0,type));//
+        fragments.add(VoucherListFragment.newInstance(1,type));//
         fragments.add(VoucherListFragment.newInstance(2,type));//已过期
         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(), mContext,
                 fragments, R.array.voucher_title));

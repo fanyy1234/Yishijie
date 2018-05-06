@@ -26,7 +26,13 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/MyAppTheme">
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5a4620e88f4a9d1b320002e1" />
 
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="sunday" />
         <activity
             android:name=".member.ui.MainActivity"
             android:launchMode="singleTop"

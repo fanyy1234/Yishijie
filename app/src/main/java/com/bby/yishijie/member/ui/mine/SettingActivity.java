@@ -11,6 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.R;
+import com.bby.yishijie.member.common.BaseApp;
+import com.bby.yishijie.member.entity.City;
+import com.bby.yishijie.member.entity.Member;
+import com.bby.yishijie.member.event.UpdateBaseInfo;
+import com.bby.yishijie.member.http.ApiClient;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bumptech.glide.Glide;
 import com.sunday.common.base.BaseActivity;
 import com.sunday.common.event.EventBus;
@@ -25,13 +32,6 @@ import com.sunday.common.utils.SharePerferenceUtils;
 import com.sunday.common.utils.ToastUtils;
 import com.sunday.common.utils.UploadUtils;
 import com.sunday.common.widgets.UIAlertView;
-import com.bby.yishijie.R;
-import com.bby.yishijie.member.common.BaseApp;
-import com.bby.yishijie.member.entity.City;
-import com.bby.yishijie.member.entity.Member;
-import com.bby.yishijie.member.event.UpdateBaseInfo;
-import com.bby.yishijie.member.http.ApiClient;
-import com.bby.yishijie.member.ui.MainActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -87,8 +87,12 @@ public class SettingActivity extends BaseActivity {
     LinearLayout menuUserPwd;
     @Bind(R.id.user_version)
     TextView userVersion;
+    @Bind(R.id.rec_code)
+    TextView recCode;
+    @Bind(R.id.rec_code_view)
+    LinearLayout recCodeView;
 
-//    private Member member;
+    //    private Member member;
     private long memberId;
 
 
@@ -100,16 +104,16 @@ public class SettingActivity extends BaseActivity {
         titleView.setText("设置");
         menuClearCash.setText("清理缓存  （" + CacheUtils.getTotalCacheSize(mContext) + "）");
         userVersion.setText(DeviceUtils.getVersion(mContext));
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             memberId = BaseApp.getInstance().getShopMember().getId();
-        }
-        else {
+        } else {
             memberId = BaseApp.getInstance().getMember().getId();
         }
         initView();
     }
+
     private void initView() {
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             com.bby.yishijie.shop.entity.Member member = BaseApp.getInstance().getShopMember();
             if (!TextUtils.isEmpty(member.getLogo())) {
                 Glide.with(mContext)
@@ -124,8 +128,9 @@ public class SettingActivity extends BaseActivity {
             }
             userName.setText(TextUtils.isEmpty(member.getNickName()) ? "" : member.getNickName());
             userAddr.setText(TextUtils.isEmpty(member.getCityName()) ? "" : member.getCityName());
-        }
-        else {
+            recCodeView.setVisibility(View.VISIBLE);
+            recCode.setText(member.getInitCode());
+        } else {
             Member member = BaseApp.getInstance().getMember();
             if (!TextUtils.isEmpty(member.getLogo())) {
                 Glide.with(mContext)
@@ -140,6 +145,7 @@ public class SettingActivity extends BaseActivity {
             }
             userName.setText(TextUtils.isEmpty(member.getNickName()) ? "" : member.getNickName());
             userAddr.setText(TextUtils.isEmpty(member.getCityName()) ? "" : member.getCityName());
+            recCodeView.setVisibility(View.GONE);
         }
 
     }
@@ -210,7 +216,7 @@ public class SettingActivity extends BaseActivity {
 
     private void deleteClientId() {
         showLoadingDialog(0);
-        Call<ResultDO> call = ApiClient.getApiAdapter().deleteClientId(memberId,1);
+        Call<ResultDO> call = ApiClient.getApiAdapter().deleteClientId(memberId, 1);
         call.enqueue(new Callback<ResultDO>() {
             @Override
             public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
@@ -238,7 +244,7 @@ public class SettingActivity extends BaseActivity {
 
     private void setSex() {
         int checkedItem = 0;
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             com.bby.yishijie.shop.entity.Member member = BaseApp.getInstance().getShopMember();
             if (member.getSex() == null) {
                 checkedItem = -1;
@@ -247,8 +253,7 @@ public class SettingActivity extends BaseActivity {
             } else if (member.getSex().equals(2)) {
                 checkedItem = 1;
             }
-        }
-        else {
+        } else {
             Member member = BaseApp.getInstance().getMember();
             if (member.getSex() == null) {
                 checkedItem = -1;
@@ -316,7 +321,7 @@ public class SettingActivity extends BaseActivity {
 
     private void updateUserInfo(final City province, final City city) {
         showLoadingDialog(0);
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().saveEditInfo2(
                     BaseApp.getInstance().getMember().getId(), null, null, null, province.getId(), city.getId(), province.getValue() + city.getValue());
             call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
@@ -341,8 +346,7 @@ public class SettingActivity extends BaseActivity {
                     ToastUtils.showToast(mContext, "网络错误");
                 }
             });
-        }
-        else {
+        } else {
             Call<ResultDO<Member>> call = ApiClient.getApiAdapter().saveEditInfo(
                     BaseApp.getInstance().getMember().getId(), null, null, null, province.getId(), city.getId(), province.getValue() + city.getValue());
             call.enqueue(new Callback<ResultDO<Member>>() {
@@ -402,7 +406,7 @@ public class SettingActivity extends BaseActivity {
 
     private void update(String logo, Integer sex) {
         showLoadingDialog(0);
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().saveEditInfo2(
                     memberId, sex, null, logo, null, null, null);
             call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
@@ -427,8 +431,7 @@ public class SettingActivity extends BaseActivity {
                     ToastUtils.showToast(mContext, "网络错误");
                 }
             });
-        }
-        else{
+        } else {
             Call<ResultDO<Member>> call = ApiClient.getApiAdapter().saveEditInfo(
                     memberId, sex, null, logo, null, null, null);
             call.enqueue(new Callback<ResultDO<Member>>() {

@@ -31,8 +31,8 @@
         <item>我的素材</item>
     </array>
     <array name="voucher_title">
-        <item>领券中心</item>
         <item>未使用</item>
+        <item>已使用</item>
         <item>已失效</item>
     </array>
     <array name="shop_manage_title">
