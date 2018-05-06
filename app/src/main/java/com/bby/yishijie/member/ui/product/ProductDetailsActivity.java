@@ -101,8 +101,7 @@ public class ProductDetailsActivity extends BaseActivity {
     ProductDetail productDetail;
 
     private void getProductDetail() {
-        long memberId = BaseApp.getInstance().getMember().getId();
-        Call<ResultDO<ProductDetail>> call = ApiClient.getApiAdapter().getProductDetail2(type, productId, limitId == 0 ? null : limitId, memberId);
+        Call<ResultDO<ProductDetail>> call = ApiClient.getApiAdapter().getProductDetail2(type, productId, limitId == 0 ? null : limitId);
         call.enqueue(new Callback<ResultDO<ProductDetail>>() {
             @Override
             public void onResponse(Call<ResultDO<ProductDetail>> call, Response<ResultDO<ProductDetail>> response) {
@@ -148,6 +147,10 @@ public class ProductDetailsActivity extends BaseActivity {
                  /*1我要开店2分享店铺3普通商品4限时购商品)-memberId(会员Id)-productId(商品Id)-limitId(限时购时间段Id)
                     这四个参数没有值的传0
                     例如普通商品分享：http://weixin.zj-yunti.com/authorizationPage.html?param=3-1-14-0*/
+                 if (BaseApp.getInstance().getShopMember()==null){
+                     ToastUtils.showToast(mContext,"请先登录");
+                     return;
+                 }
                 showWindow();
                 break;
 //            case R.id.right_menu2:
@@ -163,7 +166,7 @@ public class ProductDetailsActivity extends BaseActivity {
     }
 
     public void showWindow() {
-        String shareUrl = String.format("%1$s%2$d-%3$d-%4$d-%5$d", ApiClient.SHARE_URL, limitId == 0 ? 3 : 4, BaseApp.getInstance().getMember().getId(), productId, limitId);
+        String shareUrl = String.format("%1$s%2$d-%3$d-%4$d-%5$d", ApiClient.SHARE_URL, limitId == 0 ? 3 : 4, BaseApp.getInstance().getShopMember().getId(), productId, limitId);
         ShareWindow shareWindow = new ShareWindow(mContext, shareUrl, productName, productDetailImg, scale,
                 mContext.getResources().getString(R.string.share_product_desc), productPrice, productDetail.getShareImage());
         shareWindow.showPopupWindow(rightMenu1);

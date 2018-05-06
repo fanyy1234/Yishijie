@@ -20,6 +20,7 @@ import com.bby.yishijie.R;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.entity.ProductSpec;
 import com.bby.yishijie.member.http.ApiClient;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.member.ui.product.ProductDetailsActivity;
 import com.bby.yishijie.shop.adapter.ListSpecAdapter;
 import com.bby.yishijie.shop.entity.ProductDetail;
@@ -248,6 +249,10 @@ public class SelectProSpecWindow extends PopupWindow {
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.sub:
+                if (BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (buyNum == 1) {
                     return;
                 }
@@ -259,6 +264,10 @@ public class SelectProSpecWindow extends PopupWindow {
                     ToastUtils.showToast(mContext, "暂无库存!");
                     return;
                 }*/
+                if (BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (buyNum == storeNum && storeNum > 0) {
                     ToastUtils.showToast(mContext, "已达到最大库存");
                     return;
@@ -272,6 +281,10 @@ public class SelectProSpecWindow extends PopupWindow {
                     ToastUtils.showToast(mContext, "超过最大库存");
                     return;
                 }*/
+                if (BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (specId == 0) {
                     ToastUtils.showToast(mContext, "请选择规格");
                     return;
@@ -290,6 +303,10 @@ public class SelectProSpecWindow extends PopupWindow {
                     ToastUtils.showToast(mContext, "超过最大库存");
                     return;
                 }*/
+                if (BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (specId == 0) {
                     ToastUtils.showToast(mContext, "请选择规格");
                     return;
@@ -303,6 +320,10 @@ public class SelectProSpecWindow extends PopupWindow {
                 this.dismiss();
                 break;
             case R.id.product_store_num:
+                if (BaseApp.getInstance().getShopMember()==null){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (storeNum == 0) {
                     applyAddProduct();
                 }

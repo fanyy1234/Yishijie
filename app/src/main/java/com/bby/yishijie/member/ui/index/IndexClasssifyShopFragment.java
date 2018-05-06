@@ -55,7 +55,7 @@ public class IndexClasssifyShopFragment extends BaseLazyFragment {
     private int lastVisibleItem;
     private LinearLayoutManager layoutManager;
     private IndexProductListShopAdapter adapter;
-    private long memberId;
+//    private long memberId;
     private String parentName;
 
     public static IndexClasssifyShopFragment newInstance(long pCatId,String parentName) {
@@ -105,7 +105,7 @@ public class IndexClasssifyShopFragment extends BaseLazyFragment {
         }
         initRefreshLayout();
         isPrepared = false;
-        memberId= BaseApp.getInstance().getMember().getId();
+//        memberId= BaseApp.getInstance().getMember().getId();
         ptrFrame.autoRefresh();
     }
 

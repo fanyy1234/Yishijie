@@ -295,7 +295,7 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/product/AeProductDetail")
     Call<ResultDO<com.bby.yishijie.shop.entity.ProductDetail>> getProductDetail2(@Field("type") int type, @Field("id") long id,
-                                                   @Field("limitId") Long limitId,@Field("memberId") Long memberId);
+                                                   @Field("limitId") Long limitId);
 
     /**
      * 产品规格信息

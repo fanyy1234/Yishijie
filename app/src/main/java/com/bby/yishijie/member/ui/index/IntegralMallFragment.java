@@ -197,6 +197,13 @@ public class IntegralMallFragment extends BaseLazyFragment {
     }
     private void myScore() {
         Member member = BaseApp.getInstance().getMember();
+        if (member==null){
+            IntegralMall integralMall = new IntegralMall();
+            integralMall.setJifen("");
+            models.set(0,integralMall);
+            adapter.notifyDataSetChanged();
+            return;
+        }
         Call<ResultDO> call = ApiClient.getApiAdapter().getScore(member.getId());
         call.enqueue(new Callback<ResultDO>() {
             @Override

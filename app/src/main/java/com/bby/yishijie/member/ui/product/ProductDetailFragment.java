@@ -144,7 +144,12 @@ public class ProductDetailFragment extends BaseFragment {
             type = getArguments().getInt("type");
             limitId = getArguments().getLong("limitId");
         }
-        memberId = BaseApp.getInstance().getMember().getId();
+        if (BaseApp.getInstance().getShopMember()==null){
+            memberId=0;
+        }
+        else {
+            memberId= BaseApp.getInstance().getShopMember().getId();
+        }
         banner.getLayoutParams().width = DeviceUtils.getDisplay(mContext).widthPixels;
         banner.getLayoutParams().height = DeviceUtils.getDisplay(mContext).widthPixels;
     }
@@ -249,7 +254,14 @@ public class ProductDetailFragment extends BaseFragment {
         webView1.loadUrl(url);
 
         if (productDetail.getProductList() != null && productDetail.getProductList().size() > 0) {
-            ProductDetailRecAdapter adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList());
+            int listSize = productDetail.getProductList().size();
+            ProductDetailRecAdapter adapter;
+            if (listSize>4){
+                adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList().subList(0,4));
+            }
+            else {
+                adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList());
+            }
             GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
             layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
@@ -345,7 +357,7 @@ public class ProductDetailFragment extends BaseFragment {
 
     private void getProductDetail() {
         showLoadingDialog(0);
-        Call<ResultDO<ProductDetail>> call = ApiClient.getApiAdapter().getProductDetail2(type, productId, limitId == 0 ? null : limitId, memberId);
+        Call<ResultDO<ProductDetail>> call = ApiClient.getApiAdapter().getProductDetail2(type, productId, limitId == 0 ? null : limitId);
         call.enqueue(new Callback<ResultDO<ProductDetail>>() {
             @Override
             public void onResponse(Call<ResultDO<ProductDetail>> call, Response<ResultDO<ProductDetail>> response) {
@@ -382,10 +394,18 @@ public class ProductDetailFragment extends BaseFragment {
     void onClick(View v) {
         switch (v.getId()) {
             case R.id.img_cart:
+                if (memberId==0){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 intent = new Intent(mContext, CartActivity.class);
                 startActivity(intent);
                 break;
             case R.id.btn_buy:
+                if (memberId==0){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 //立即购买和加入购物车 type区分普通商品和限时购
                 if (specWindow == null) {
                     specWindow = new SelectProSpecWindow(mContext, productDetail, type);
@@ -398,6 +418,10 @@ public class ProductDetailFragment extends BaseFragment {
                  /*1我要开店2分享店铺3普通商品4限时购商品)-memberId(会员Id)-productId(商品Id)-limitId(限时购时间段Id)
                     这四个参数没有值的传0
                     例如普通商品分享：http://weixin.zj-yunti.com/authorizationPage.html?param=3-1-14-0*/
+                if (memberId==0){
+                    ToastUtils.showToast(mContext,"请先登录");
+                    return;
+                }
                 if (productDetail == null) {
                     return;
                 }

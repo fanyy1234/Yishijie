@@ -102,7 +102,12 @@ public class OfficialMaterialFragment extends BaseFragment {
             productId = getArguments().getLong("productId");
             type = getArguments().getInt("type");
         }
-        memberId = type == 0 ? 0 : BaseApp.getInstance().getMember().getId();
+        if (type==0||BaseApp.getInstance().getShopMember()==null){
+            memberId=0;
+        }
+        else {
+            memberId=BaseApp.getInstance().getShopMember().getId();
+        }
         myClipboard = (ClipboardManager) mContext.getSystemService(CLIPBOARD_SERVICE);
     }
 

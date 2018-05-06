@@ -444,6 +444,9 @@ public class Member implements Serializable {
     }
 
     public static com.bby.yishijie.member.entity.Member transferMember(Member shopMember){
+        if (shopMember==null){
+            return null;
+        }
         com.bby.yishijie.member.entity.Member member = new com.bby.yishijie.member.entity.Member();
         try {
             //使用反射技术完成对象属性的输出

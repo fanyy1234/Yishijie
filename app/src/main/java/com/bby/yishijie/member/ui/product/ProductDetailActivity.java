@@ -252,7 +252,14 @@ public class ProductDetailActivity extends BaseActivity {
         webView1.loadUrl(url);
 
         if (productDetail.getProductList() != null && productDetail.getProductList().size() > 0) {
-            ProductDetailRecAdapter adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList());
+            int listSize = productDetail.getProductList().size();
+            ProductDetailRecAdapter adapter;
+            if (listSize>4){
+                adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList().subList(0,4));
+            }
+            else {
+                adapter = new ProductDetailRecAdapter(mContext, productDetail.getProductList());
+            }
             GridLayoutManager layoutManager = new GridLayoutManager(mContext, 2);
             layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
                 @Override
@@ -437,6 +444,10 @@ public class ProductDetailActivity extends BaseActivity {
                 specWindow.showPopupWindow(buyNow);
                 break;
             case R.id.img_cart:
+                if (!isLogin) {
+                    showLoginDialog();
+                    return;
+                }
                 intent = new Intent(mContext, CartActivity.class);
                 startActivity(intent);
                 break;

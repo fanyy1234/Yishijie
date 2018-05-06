@@ -168,16 +168,6 @@ public class MineFragment extends BaseFragment {
 
     private void initView() {
         isShop = SharePerferenceUtils.getIns(mContext).getBoolean(Constants.IS_SHOP, false);
-        if (!isShop) {
-            shopView.setVisibility(View.GONE);
-            shopHeader.setVisibility(View.GONE);
-            memberHeader.setVisibility(View.VISIBLE);
-        } else {
-            shopView.setVisibility(View.VISIBLE);
-            shopHeader.setVisibility(View.VISIBLE);
-            memberHeader.setVisibility(View.GONE);
-            getProfits();
-        }
 
         if (!isLogin) {
             loginNotLayout.setVisibility(View.VISIBLE);
@@ -187,11 +177,21 @@ public class MineFragment extends BaseFragment {
             scrollView.setVisibility(View.VISIBLE);
             if (MainActivity.isShop) {
                 memberId = BaseApp.getInstance().getShopMember().getId();
+                getProfits();
             } else {
                 memberId = BaseApp.getInstance().getMember().getId();
             }
             getOrderNums();
             updateView();
+        }
+        if (!isShop) {
+            shopView.setVisibility(View.GONE);
+            shopHeader.setVisibility(View.GONE);
+            memberHeader.setVisibility(View.VISIBLE);
+        } else {
+            shopView.setVisibility(View.VISIBLE);
+            shopHeader.setVisibility(View.VISIBLE);
+            memberHeader.setVisibility(View.GONE);
         }
     }
 

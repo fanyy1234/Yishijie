@@ -73,8 +73,8 @@ public class LoginActivity extends BaseActivity {
         etPwd.addTextChangedListener(textWatcher);
         umShareAPI = UMShareAPI.get(this);
         umShareAPI.deleteOauth(LoginActivity.this,SHARE_MEDIA.WEIXIN,null);
-        etPhone.setText("15267850711");
-        etPwd.setText("111111");
+        etPhone.setText("15258801811");
+        etPwd.setText("123123");
     }
 
     TextWatcher textWatcher = new TextWatcher() {

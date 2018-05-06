@@ -68,7 +68,12 @@ public class IndexProductListShopAdapter extends RecyclerView.Adapter {
         this.parentName = parentName;
         this.parentId = parentId;
         inflater = LayoutInflater.from(mContext);
-        memberId= BaseApp.getInstance().getMember().getId();
+        if (BaseApp.getInstance().getShopMember()==null){
+            memberId=0;
+        }
+        else {
+            memberId= BaseApp.getInstance().getShopMember().getId();
+        }
     }
 
     @Override
@@ -257,6 +262,10 @@ public class IndexProductListShopAdapter extends RecyclerView.Adapter {
                     mContext.startActivity(intent);
                     break;
                 case R.id.btn_add_product:
+                    if (memberId==0){
+                        ToastUtils.showToast(mContext,"请先登录");
+                        return;
+                    }
                     int p= (int) v.getTag();
                     manageProduct(p);
                     break;
@@ -264,6 +273,10 @@ public class IndexProductListShopAdapter extends RecyclerView.Adapter {
                     /*1我要开店2分享店铺3普通商品4限时购商品)-memberId(会员Id)-productId(商品Id)-limitId(限时购时间段Id)
                     这四个参数没有值的传0
                     例如普通商品分享：http://weixin.zj-yunti.com/authorizationPage.html?param=3-1-14-0*/
+                    if (memberId==0){
+                        ToastUtils.showToast(mContext,"请先登录");
+                        return;
+                    }
                     Product item2 = (Product) v.getTag();
                     String shareUrl=String.format("%1$s%2$d-%3$d-%4$d-%5$d", ApiClient.SHARE_URL,3,memberId,item2.getId(),0);
                     ShareWindow shareWindow=new ShareWindow(mContext,shareUrl,item2.getName(),item2.getDetailImage(),
