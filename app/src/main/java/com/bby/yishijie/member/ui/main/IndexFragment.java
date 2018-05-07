@@ -162,7 +162,12 @@ public class IndexFragment extends BaseFragment {
         public Fragment getItem(int position) {
             if (fragments[position] == null) {
                 if (position == 0) {
-                    fragments[position] = TodayFragment.newInstance();
+                    if (isShop){
+                        fragments[position] = com.bby.yishijie.shop.ui.TodayFragment.newInstance();
+                    }
+                    else {
+                        fragments[position] = TodayFragment.newInstance();
+                    }
                 }
 //                else if (position == 1) {
 //                    fragments[position] = BrandFragment.newInstance();

@@ -1,6 +1,7 @@
 package com.bby.yishijie.member.ui.mine;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -83,9 +84,13 @@ public class OpenShopActivity extends BaseActivity {
 
     @OnClick(R.id.custom_srvice)
     void callService() {
-        intent = new Intent(mContext, WebViewActivity.class);
-        intent.putExtra("url",ApiClient.CUSTOMER_URL);
-        intent.putExtra("title", "客服");
+//        intent = new Intent(mContext, WebViewActivity.class);
+//        intent.putExtra("url",ApiClient.CUSTOMER_URL);
+//        intent.putExtra("title", "客服");
+//        startActivity(intent);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        Uri data = Uri.parse("tel:" + ApiClient.OUR_PHONE);
+        intent.setData(data);
         startActivity(intent);
     }
 

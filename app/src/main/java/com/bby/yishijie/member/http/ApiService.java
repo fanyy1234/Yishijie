@@ -162,6 +162,11 @@ public interface ApiService {
      */
     @POST("/mobi/product/AgAdveList")
     Call<ResultDO<IndexAd>> getAdveList();
+    /**
+     * 首页轮播广告
+     */
+    @POST("/mobi/product/AgAdveList")
+    Call<ResultDO<com.bby.yishijie.shop.entity.IndexAd>> getAdveList2();
 
 
     /**
@@ -169,6 +174,11 @@ public interface ApiService {
      */
     @POST("/mobi/product/AhLimitTimeList")
     Call<ResultDO<List<LimitTime>>> getLimitTimeList();
+    /**
+     * 首页限时购时间段
+     */
+    @POST("/mobi/product/AhLimitTimeList")
+    Call<ResultDO<List<com.bby.yishijie.shop.entity.LimitTime>>> getLimitTimeList2();
 
     /**
      * 首页限时购商品列表
@@ -176,6 +186,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/product/AhLimitTimeProList")
     Call<ResultDO<LimitProduct>> getLimitTimeProList(@Field("id") long id);
+    /**
+     * 首页限时购商品列表
+     */
+    @FormUrlEncoded
+    @POST("/mobi/product/AhLimitTimeProList")
+    Call<ResultDO<com.bby.yishijie.shop.entity.LimitProduct>> getLimitTimeProList2(@Field("id") long id);
 
 
     /**

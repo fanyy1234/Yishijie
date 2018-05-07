@@ -46,7 +46,8 @@ public class BaseApp extends Application implements Thread.UncaughtExceptionHand
 
     private Boolean isCanUpload = true;
     private boolean isLogin;
-    private int payType;
+    private int payType;//微信支付
+    private int wxPayFlag;//微信支付应用场景1.orderConfirmActivity页面2。OrderPayActivity页面
     private Order order;
     private GroupBuyOrder groupBuyOrder;
     public static int screenWidth;//屏幕宽度
@@ -148,6 +149,14 @@ public class BaseApp extends Application implements Thread.UncaughtExceptionHand
 
     public void setPayType(int payType) {
         this.payType = payType;
+    }
+
+    public int getWxPayFlag() {
+        return wxPayFlag;
+    }
+
+    public void setWxPayFlag(int wxPayFlag) {
+        this.wxPayFlag = wxPayFlag;
     }
 
     public GroupBuyOrder getGroupBuyOrder() {

@@ -1,5 +1,6 @@
 package com.bby.yishijie.member.ui.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -42,6 +43,10 @@ import com.sunday.common.utils.Constants;
 import com.sunday.common.utils.SharePerferenceUtils;
 import com.sunday.common.widgets.BoundScrollView;
 import com.sunday.common.widgets.CircleImageView;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 
 import java.math.RoundingMode;
 
@@ -128,6 +133,10 @@ public class MineFragment extends BaseFragment {
     TextView counponNum;
     @Bind(R.id.shop_counpon_num)
     TextView shopCounponNum;
+    @Bind(R.id.menu_share_shop)
+    LinearLayout menuShareShop;
+    @Bind(R.id.menu_jifen)
+    LinearLayout menuJifen;
     private boolean isLogin;
     private boolean isShop;
     private long memberId;
@@ -181,17 +190,23 @@ public class MineFragment extends BaseFragment {
             } else {
                 memberId = BaseApp.getInstance().getMember().getId();
             }
-            getOrderNums();
+//            getOrderNums();
             updateView();
         }
         if (!isShop) {
             shopView.setVisibility(View.GONE);
             shopHeader.setVisibility(View.GONE);
             memberHeader.setVisibility(View.VISIBLE);
+            menuShareShop.setVisibility(View.GONE);
+            menuJifen.setVisibility(View.VISIBLE);
+            menuCounpon.setVisibility(View.VISIBLE);
         } else {
             shopView.setVisibility(View.VISIBLE);
             shopHeader.setVisibility(View.VISIBLE);
             memberHeader.setVisibility(View.GONE);
+            menuShareShop.setVisibility(View.VISIBLE);
+            menuJifen.setVisibility(View.GONE);
+            menuCounpon.setVisibility(View.GONE);
         }
     }
 
@@ -295,11 +310,23 @@ public class MineFragment extends BaseFragment {
 
 
     @OnClick({R.id.menu_order_4, R.id.menu_counpon, R.id.menu_addr, R.id.order_all, R.id.set_rec_code,
-            R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting,
+            R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting,R.id.menu_share_shop,
             R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3, R.id.withdraw_btn, R.id.menu_jifen,
             R.id.my_integral, R.id.available_profit, R.id.total_profit, R.id.my_coupon})
     void onClick(View v) {
         switch (v.getId()) {
+            case R.id.menu_share_shop:
+                UMImage umImage = new UMImage(mContext, R.mipmap.logo);
+                String shareUrl = ApiClient.APK_URL;
+//                String shareUrl = String.format("http://weixin.haowukongtou.com/authorizationPage.html?param=5-%d-0-0", BaseApp.getInstance().getShopMember().getId());
+                UMWeb web = new UMWeb(shareUrl);
+                web.setTitle(getString(R.string.invite_title));
+                web.setThumb(umImage);
+                web.setDescription(getString(R.string.invite_content));
+                new ShareAction((Activity) mContext).setPlatform(SHARE_MEDIA.WEIXIN)
+                        .withMedia(web)
+                        .share();
+                break;
             case R.id.my_integral:
                 intent = new Intent(mContext, MyIntegralActivity.class);
                 startActivity(intent);

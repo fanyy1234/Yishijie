@@ -5,17 +5,18 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bby.yishijie.R;
-import com.bby.yishijie.member.ui.MainActivity;
-import com.bby.yishijie.member.utils.EntityUtil;
-import com.bby.yishijie.shop.adapter.ViewHolder;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.http.ApiClient;
+import com.bby.yishijie.member.ui.MainActivity;
+import com.bby.yishijie.member.utils.EntityUtil;
 import com.bby.yishijie.shop.adapter.CommonAdapter;
+import com.bby.yishijie.shop.adapter.ViewHolder;
 import com.bby.yishijie.shop.entity.IntegralDetail;
 import com.bby.yishijie.shop.entity.Member;
 import com.sunday.common.base.BaseActivity;
@@ -52,8 +53,11 @@ public class MyIntegralActivity extends BaseActivity {
     TextView totalMoney;
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
+    @Bind(R.id.integral_head)
+    RelativeLayout integralHead;
 
     private int score;
+    private int flag;
     private List<IntegralDetail> dataSet = new ArrayList<>();
     private long memberId;
     private CommonAdapter<IntegralDetail> adapter;
@@ -64,12 +68,15 @@ public class MyIntegralActivity extends BaseActivity {
         setContentView(R.layout.activity_my_integral);
         ButterKnife.bind(this);
         score = getIntent().getIntExtra("score", 0);
+        flag = getIntent().getIntExtra("flag", 0);
+        if (flag != 0) {
+            integralHead.setVisibility(View.GONE);
+        }
         titleView.setText("我的积分");
         totalMoney.setText("" + score);
-        if (MainActivity.isShop){
+        if (MainActivity.isShop) {
             memberId = BaseApp.getInstance().getShopMember().getId();
-        }
-        else {
+        } else {
             memberId = BaseApp.getInstance().getMember().getId();
         }
 
@@ -91,7 +98,7 @@ public class MyIntegralActivity extends BaseActivity {
                         Member member = response.body().getResult();
                         SharePerferenceUtils.getIns(mContext).saveOAuth(member);
                         BaseApp.getInstance().setShopMember(member);
-                        totalMoney.setText(member.getScore()+"");
+                        totalMoney.setText(member.getScore() + "");
                     }
                 }
             }
@@ -111,7 +118,7 @@ public class MyIntegralActivity extends BaseActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new CommonAdapter<IntegralDetail>(mContext, R.layout.item_balance_detail, dataSet) {
             @Override
-            public void convert(com.bby.yishijie.shop.adapter.ViewHolder holder, IntegralDetail balanceDetail) {
+            public void convert(ViewHolder holder, IntegralDetail balanceDetail) {
                 bind(holder, balanceDetail);
             }
         };
@@ -210,7 +217,7 @@ public class MyIntegralActivity extends BaseActivity {
                     JSONArray jsonArray = jsonObject.getJSONArray("result");
                     int length = jsonArray.size();
 
-                    for (int i=0;i<length;i++){
+                    for (int i = 0; i < length; i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
                         IntegralDetail integralDetail = new IntegralDetail();
                         integralDetail.setNum(object.get("score").toString());

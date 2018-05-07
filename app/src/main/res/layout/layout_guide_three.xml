@@ -2,11 +2,22 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ImageView
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/gui_img3">
 </ImageView>
 
-
+    <Button
+        android:id="@+id/jump_login"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:text="马上开启"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:background="@drawable/shape_solid"/>
 </FrameLayout>

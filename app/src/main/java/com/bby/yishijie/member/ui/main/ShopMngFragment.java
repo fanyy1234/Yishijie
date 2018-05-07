@@ -130,7 +130,7 @@ public class ShopMngFragment extends BaseFragment {
             loginNotLayout.setVisibility(View.GONE);
             scrollView.setVisibility(View.VISIBLE);
             memberId = BaseApp.getInstance().getShopMember().getId();
-            getOrderNums();
+//            getOrderNums();
             updateView();
             getStatistics();
         }

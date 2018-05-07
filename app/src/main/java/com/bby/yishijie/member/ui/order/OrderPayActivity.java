@@ -76,9 +76,8 @@ public class OrderPayActivity extends BaseActivity {
     CheckBox alipay;
 
     private Order order;
-    private int payType = 1;
+    private int payType = 0;
     private String money;
-
 
 
     private String orderNumber;
@@ -86,7 +85,7 @@ public class OrderPayActivity extends BaseActivity {
     private String address;
     private String reciverName, recieverMobile;
     private long orderId;
-
+    public static OrderPayActivity orderPayActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +95,7 @@ public class OrderPayActivity extends BaseActivity {
     }
 
     private void initView() {
+        orderPayActivity = this;
         rightTxt.setVisibility(View.GONE);
         titleView.setText("订单支付");
         order = (Order) getIntent().getSerializableExtra("order");
@@ -126,27 +126,28 @@ public class OrderPayActivity extends BaseActivity {
 
     @OnClick(R.id.left_btn)
     void back() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-        builder.setTitle("温馨提示");
-        builder.setMessage("订单会保留20分钟,请尽快支付");
-        builder.setNegativeButton("确认离开", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                intent = new Intent(mContext, OrderListActivity.class);
-                startActivity(intent);
-                dialog.dismiss();
-                finish();
-            }
-        });
-        builder.setPositiveButton("继续支付", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-
-
-            }
-        });
-        builder.show();
+        finish();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//        builder.setTitle("温馨提示");
+//        builder.setMessage("订单会保留20分钟,请尽快支付");
+//        builder.setNegativeButton("确认离开", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                intent = new Intent(mContext, OrderListActivity.class);
+//                startActivity(intent);
+//                dialog.dismiss();
+//                finish();
+//            }
+//        });
+//        builder.setPositiveButton("继续支付", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.dismiss();
+//
+//
+//            }
+//        });
+//        builder.show();
 
     }
 
@@ -156,6 +157,8 @@ public class OrderPayActivity extends BaseActivity {
             getPayInfo();
         } else if (payType == 2) {
             aliPay();
+        } else {
+            ToastUtils.showToast(mContext, "请选择支付方式");
         }
     }
 
@@ -200,6 +203,7 @@ public class OrderPayActivity extends BaseActivity {
     private void getPayInfo() {
         Call<ResultDO<PayInfo>> call = ApiClient.getApiAdapter().getNormalPayInfo(orderId);
         BaseApp.getInstance().setPayType(Constant.TYPE_NORMAL);
+        BaseApp.getInstance().setWxPayFlag(2);
         BaseApp.getInstance().setOrder(order);
         showLoadingDialog(0);
         call.enqueue(new Callback<ResultDO<PayInfo>>() {

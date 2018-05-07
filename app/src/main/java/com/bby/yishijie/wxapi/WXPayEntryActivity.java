@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
+import com.bby.yishijie.member.ui.MainActivity;
+import com.bby.yishijie.member.ui.order.OrderConfirmActivity;
+import com.bby.yishijie.member.ui.order.OrderPayActivity;
+import com.bby.yishijie.shop.ui.OrderConfirmShopActivity;
 import com.sunday.common.utils.ToastUtils;
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.common.BaseApp;
@@ -70,12 +74,23 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                     intent.putExtra("address", order.getAddress());
                     intent.putExtra("name", order.getName());
                     intent.putExtra("mobile", order.getMobile());
+                    if (BaseApp.getInstance().getWxPayFlag()==1){
+                        if (MainActivity.isShop){
+                            OrderConfirmShopActivity.orderConfirmShopActivity.finish();
+                        }
+                        else {
+                            OrderConfirmActivity.orderConfirmActivity.finish();
+                        }
+                    }
+                    else if(BaseApp.getInstance().getWxPayFlag()==2){
+                        OrderPayActivity.orderPayActivity.finish();
+                    }
                     startActivity(intent);
                     finish();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(WXPayEntryActivity.this);
                     builder.setTitle("恭喜您");
-                    builder.setMessage("开店成功，您的等级升级为店主，可使用该手机号登录微店版，享受店主权益！");
+                    builder.setMessage("开店成功，您的等级升级为店主，可使用该手机号登录店主版，享受店主权益！");
                     builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

@@ -213,7 +213,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case 4:
                 if (member != null) {
-                    ((MineFragment) fragments[4]).getOrderNums();
+//                    ((MineFragment) fragments[4]).getOrderNums();
                 }
                 break;
 

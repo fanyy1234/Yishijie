@@ -1,6 +1,7 @@
 package com.bby.yishijie.member.ui.order;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -120,9 +121,14 @@ public class RefundDetailActivity extends BaseActivity {
                 break;
             case R.id.btn_2:
                 //
-                intent = new Intent(mContext, WebViewActivity.class);
-                intent.putExtra("url", ApiClient.CUSTOMER_URL);
-                intent.putExtra("title", "客服");
+//                intent = new Intent(mContext, WebViewActivity.class);
+//                intent.putExtra("url", ApiClient.CUSTOMER_URL);
+//                intent.putExtra("title", "客服");
+//                startActivity(intent);
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri data = Uri.parse("tel:" + ApiClient.OUR_PHONE);
+                intent.setData(data);
                 startActivity(intent);
                 break;
         }

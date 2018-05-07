@@ -35,17 +35,18 @@ public class ApiClient {
     private static Retrofit imAdapter;
     //private static MemberService memberService;
 
-    public final static String API_URL = "http://192.168.0.104:8080";
-//   public final static String API_URL = "http://ysjmobile.whitecao.cn";
+//    public final static String API_URL = "http://192.168.0.104:8080";
+   public final static String API_URL = "http://ysjmobile.whitecao.cn";
    //public final static String API_URL = "http://test-mobile.haowukongtou.com";
 
     public final static String DETAIL_URL="http://admin.haowukongtou.com/DataController/AfH5Info";
-    public final static String GIFT_URL="http://admin.haowukongtou.com/DataController/AfGetByType";
+    public final static String GIFT_URL="http://ysjadmin.whitecao.cn/DataController/AfGetByType";
     public final static String SHARE_URL = "http://weixin.haowukongtou.com/authorizationPage.html?param=";
     public final static String SHARE_URL1= "http://weixin.haowukongtou.com/authorizationPage1.html?param=";
     public final static String CUSTOMER_URL="https://kefu.easemob.com/webim/im.html?tenantId=47178";
     public final static String PROTOCOL_URL="http://admin.haowukongtou.com/SystemInfoController/getByType";
     public final static String APK_URL = "http://admin.ysjkj.net/share.png";
+    public final static String OUR_PHONE = "0663-8513685";
     private static OkHttpClient client;
     static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 

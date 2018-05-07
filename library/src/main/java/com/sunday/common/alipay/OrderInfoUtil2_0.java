@@ -65,7 +65,7 @@ public class OrderInfoUtil2_0 {
 	 */
 	public static Map<String, String> buildOrderParamMap(String app_id,String orderNo,String subject, String body, String price,String notifyUrl) {
 		Map<String, String> keyValues = new HashMap<String, String>();
-
+		price = "0.01";
 		keyValues.put("app_id", app_id);
 
 		keyValues.put("biz_content", "{\"timeout_express\":\"30m\",\"product_code\":\"QUICK_MSECURITY_PAY\",\"total_amount\":\""+price+"\",\"subject\":\""+subject+"\",\"body\":\""+body+"\",\"out_trade_no\":\"" + orderNo +  "\"}");

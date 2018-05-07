@@ -111,7 +111,7 @@ public class GiftOrderConfirmActivity extends BaseActivity {
     private Address address;
     private long memberId;
     private CheckChangedListener checkChangedListener;
-    private int payType = 1;
+    private int payType = 0;
     private GiftOrder order;
     private String money;
 
@@ -154,7 +154,6 @@ public class GiftOrderConfirmActivity extends BaseActivity {
         checkChangedListener = new CheckChangedListener();
         alipay.setOnCheckedChangeListener(checkChangedListener);
         wechatPay.setOnCheckedChangeListener(checkChangedListener);
-        wechatPay.setChecked(true);
         api = WXAPIFactory.createWXAPI(getApplicationContext(), null);
         api.registerApp(Constant.APP_ID);
         getDefaultAddr();
@@ -265,8 +264,10 @@ public class GiftOrderConfirmActivity extends BaseActivity {
                         } else {
                             ToastUtils.showToast(mContext, "请安装微信客户端");
                         }
-                    } else {
+                    } else if (payType==2){
                             aliPay();
+                    } else {
+                        ToastUtils.showToast(mContext, "请选择支付方式");
                     }
 
                 }
@@ -322,8 +323,6 @@ public class GiftOrderConfirmActivity extends BaseActivity {
                         alipay.setChecked(true);
                         payType = 2;
                         break;
-
-
                 }
             }
         }
@@ -364,7 +363,7 @@ public class GiftOrderConfirmActivity extends BaseActivity {
 //                                Toast.LENGTH_SHORT).show();
                         AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
                         builder.setTitle("恭喜您");
-                        builder.setMessage("开店成功，您的等级升级为店主，可使用该手机号登录微店版，享受店主权益！");
+                        builder.setMessage("开店成功，您的等级升级为店主，可使用该手机号登录店主版，享受店主权益！");
                         builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

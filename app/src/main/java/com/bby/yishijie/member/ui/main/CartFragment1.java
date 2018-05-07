@@ -584,14 +584,14 @@ public class CartFragment1 extends BaseFragment {
                     dataSet.clear();
                     if (resultDO.getResult().getBuyList() != null && !resultDO.getResult().getBuyList().isEmpty()) {
                         CartListItem cartListItem = new CartListItem();
-                        cartListItem.setTypeName("好物购物");
+                        cartListItem.setTypeName(resultDO.getResult().getBuyName());
                         cartListItem.setType(0);
                         cartListItem.setSelected(false);
                         cartListItem.setCartItemList(resultDO.getResult().getBuyList());
                         dataSet.add(cartListItem);
                         for (int i = 0; i < resultDO.getResult().getBuyList().size(); i++) {
                             resultDO.getResult().getBuyList().get(i).setSelect(false);
-                            resultDO.getResult().getBuyList().get(i).setTypeName("好物购物");
+                            resultDO.getResult().getBuyList().get(i).setTypeName(resultDO.getResult().getBuyName());
                         }
                         //一开始都是全选 不包括预热 结算
 //                        availableNum = resultDO.getResult().getBuyList().size();

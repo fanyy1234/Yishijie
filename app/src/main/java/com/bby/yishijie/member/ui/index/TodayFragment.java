@@ -78,8 +78,6 @@ public class TodayFragment extends BaseLazyFragment {
     LinearLayout linearLayout;
     @Bind(R.id.id_stickynavlayout_viewpager)
     RecyclerView recyclerView;
-    @Bind(R.id.ptr_frame)
-    PtrClassicFrameLayout ptrFrame;
     @Bind(R.id.pinpaiguan_view)
     RelativeLayout pinpaiguanView;
     @Bind(R.id.today_gold_price)
@@ -100,6 +98,8 @@ public class TodayFragment extends BaseLazyFragment {
     ImageView shitidianPic;
     @Bind(R.id.jingxuan_pic)
     ImageView jingxuanPic;
+    @Bind(R.id.ptr_frame)
+    PtrClassicFrameLayout ptrFrame;
 
 
     private LinearLayoutManager layoutManager;

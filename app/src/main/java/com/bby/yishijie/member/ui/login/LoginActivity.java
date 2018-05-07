@@ -269,7 +269,7 @@ public class LoginActivity extends BaseActivity {
         });
     }
     private void login2(){
-        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().login2(mobileStr,pwdStr);
+        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().login2(mobileStr,MD5Utils.MD5(pwdStr));
         call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
             @Override
             public void onResponse(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Response<ResultDO<com.bby.yishijie.shop.entity.Member>> response) {

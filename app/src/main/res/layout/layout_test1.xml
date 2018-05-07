@@ -1,56 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <com.bby.yishijie.member.widgets.StickyNavLayout
+<com.sunday.common.widgets.ptr.PtrClassicFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cube_ptr="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ptr_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    cube_ptr:ptr_duration_to_close="300"
+    cube_ptr:ptr_duration_to_close_header="2000"
+    cube_ptr:ptr_keep_header_when_refresh="true"
+    cube_ptr:ptr_pull_to_fresh="false"
+    cube_ptr:ptr_ratio_of_header_height_to_refresh="1.2"
+    cube_ptr:ptr_resistance="1.7">
+
+    <com.sunday.haowushop.widgets.StickyNavLayout
+
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:id="@id/id_stickynavlayout_topview"
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.sunday.common.widgets.banner.ConvenientBanner
-                android:id="@+id/banner"
-                android:layout_width="match_parent"
-                android:layout_height="200dp">
-            </com.sunday.common.widgets.banner.ConvenientBanner>
+            android:layout_height="wrap_content">
             <LinearLayout
+                android:id="@id/id_stickynavlayout_topview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <com.sunday.common.widgets.banner.ConvenientBanner
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+                </com.sunday.common.widgets.banner.ConvenientBanner>
+                <include
+                    layout="@layout/part_of_fragmenttoday"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/window_background"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/index_news" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/index_news1" />
-
-                <com.sunday.common.widgets.MarqueeView
-                    android:id="@+id/marquee_view"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    app:mvTextColor="@color/black_5"
-                    app:mvTextSize="13sp"></com.sunday.common.widgets.MarqueeView>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/index_news3" />
+                    android:background="@color/white"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="今日金价："/>
+                    <TextView
+                        android:id="@+id/today_gold_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""/>
+                </LinearLayout>
             </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@color/common_bg"/>
-        </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
         <LinearLayout
             android:id="@id/id_stickynavlayout_indicator"
             android:layout_width="match_parent"
@@ -59,11 +68,13 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/common_bg"/>
+                android:background="@color/_f2f2f2"/>
             <com.sunday.common.widgets.RecyclerTabLayout
                 android:id="@+id/recycler_tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:rtl_tabIndicatorColor="#ffffff"
+                android:background="@color/white">
             </com.sunday.common.widgets.RecyclerTabLayout>
             <android.support.v4.view.ViewPager
                 android:id="@+id/recycler_tablayout_view_pager"
@@ -71,12 +82,14 @@
                 android:layout_height="1dp">
             </android.support.v4.view.ViewPager>
         </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/common_bg"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/window_background"/>
         <android.support.v7.widget.RecyclerView
             android:id="@id/id_stickynavlayout_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </com.bby.yishijie.member.widgets.StickyNavLayout>
+            android:layout_height="match_parent"
+            android:background="@color/white"/>
+    </com.sunday.haowushop.widgets.StickyNavLayout>
+</com.sunday.common.widgets.ptr.PtrClassicFrameLayout>

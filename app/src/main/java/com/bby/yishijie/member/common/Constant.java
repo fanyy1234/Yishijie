@@ -18,8 +18,8 @@ public class Constant {
     public final static int TYPE_OPEN_SHOP = 33;//开店订单
 
     //支付宝
-    public static String payNotifyUrl1 = ApiClient.API_URL+"/mobi/cart/AkAlipayNotify";//申请店主支付回调
-    public static String payNotifyUrl2 = ApiClient.API_URL+"/mobi/product/AoAlipayNotify";
+    public static String payNotifyUrl1 = ApiClient.API_URL+"/mobi/member/AiAlipayNotify";//申请店主支付回调
+    public static String payNotifyUrl2 = ApiClient.API_URL+"/mobi/cart/AkAlipayNotify";
     public static String ALI_APP_ID = "2018042802602827";
     public static String PARTNER = "2088921577248740";// 签约合作者身份ID
     public static String SELLER = "3439305185@qq.com";// 签约卖家支付宝账号
@@ -29,7 +29,7 @@ public class Constant {
     public static String APP_ID = "wxf575fa0e9bc46293";
     public static String APPSecret = "b4ec0841d90cf65f88b739ab026b60b1";
 
-    public static String PARTER_ID = "1488158082";
+    public static String PARTER_ID = "1488877922";
 
 
 }

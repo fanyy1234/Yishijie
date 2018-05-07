@@ -212,6 +212,9 @@ public class ProductListAdapter extends RecyclerView.Adapter {
                 if (response.body()==null){return;}
                 if (response.body().getCode()==0){
                     ToastUtils.showToast(mContext,type==1?"上架成功"+"\n已上架产品数："+response.body().getResult():"下架成功"+"\n已上架产品数："+response.body().getResult());
+                    dataSet.get(p).setStatus(type==1?1:0);
+                    //notifyItemChanged(p);
+                    notifyDataSetChanged();
                     EventBus.getDefault().post(new UpdateProList());
                 }else {
                     ToastUtils.showToast(mContext,response.body().getMessage());

@@ -138,13 +138,13 @@ public class OrderConfirmActivity extends BaseActivity {
     private BigDecimal productMoney = BigDecimal.ZERO, postFee = BigDecimal.ZERO;
 
 
-    private int payType = 1;
+    private int payType = 0;
     private IWXAPI api;
     private Order order;
     private int isActive;
     private List<CartListItem> dataSet = new ArrayList<>();
     private int isCross=2;
-
+    public static OrderConfirmActivity orderConfirmActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -155,6 +155,7 @@ public class OrderConfirmActivity extends BaseActivity {
 
     @SuppressLint("DefaultLocale")
     private void initView() {
+        orderConfirmActivity = this;
         memberId = BaseApp.getInstance().getMember().getId();
         cartPay = (CartPay) getIntent().getSerializableExtra("cartPay");
         cartIds = getIntent().getStringExtra("cartIds");
@@ -182,7 +183,6 @@ public class OrderConfirmActivity extends BaseActivity {
             //totalMoneyBottomExtra.append(SpannalbeStringUtils.setTextColor(")", getResources().getColor(R.color.black_6)));
             getTotalCartList();
         }
-        wechatPay.setChecked(true);
         CheckChangedListener checkChangedListener = new CheckChangedListener();
         alipay.setOnCheckedChangeListener(checkChangedListener);
         wechatPay.setOnCheckedChangeListener(checkChangedListener);
@@ -485,6 +485,8 @@ public class OrderConfirmActivity extends BaseActivity {
                             getPayInfo();
                         } else if (payType == 2) {
                             aliPay();
+                        } else {
+                            ToastUtils.showToast(mContext, "请选择支付方式");
                         }
 //                        intent = new Intent(mContext, OrderPayActivity.class);
 //                        intent.putExtra("order", resultDO.getResult());
@@ -542,6 +544,8 @@ public class OrderConfirmActivity extends BaseActivity {
                         getPayInfo();
                     } else if (payType == 2) {
                         aliPay();
+                    } else {
+                        ToastUtils.showToast(mContext, "请选择支付方式");
                     }
 //                    intent = new Intent(mContext, OrderPayActivity.class);
 //                    intent.putExtra("order", resultDO.getResult());
@@ -566,6 +570,7 @@ public class OrderConfirmActivity extends BaseActivity {
     private void getPayInfo() {
         Call<ResultDO<PayInfo>> call = ApiClient.getApiAdapter().getNormalPayInfo(order.getId());
         BaseApp.getInstance().setPayType(Constant.TYPE_NORMAL);
+        BaseApp.getInstance().setWxPayFlag(1);
         BaseApp.getInstance().setOrder(order);
         showLoadingDialog(0);
         call.enqueue(new Callback<ResultDO<PayInfo>>() {

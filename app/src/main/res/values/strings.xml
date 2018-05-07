@@ -16,7 +16,7 @@
         <item>待付款</item>
         <item>待发货</item>
         <item>待收货</item>
-        <item>售后</item>
+        <item>已完成</item>
     </array>
 
     <array name="group_order_title">

@@ -59,7 +59,7 @@ public class OrderListActivity extends BaseActivity {
         commenOrderFragment.add(OrderListFragment.newInstance(0));//待付款
         commenOrderFragment.add(OrderListFragment.newInstance(1));//待发货
         commenOrderFragment.add(OrderListFragment.newInstance(2));//待收货
-        commenOrderFragment.add(OrderListFragment.newInstance(5));//退款/退货
+        commenOrderFragment.add(OrderListFragment.newInstance(4));//已完成
         viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager(),mContext,
                 commenOrderFragment,R.array.order_title));
         tabLayout.setupWithViewPager(viewPager);
