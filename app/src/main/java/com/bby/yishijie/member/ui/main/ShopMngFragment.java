@@ -1,5 +1,6 @@
 package com.bby.yishijie.member.ui.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -33,6 +34,10 @@ import com.sunday.common.event.EventBus;
 import com.sunday.common.model.ResultDO;
 import com.sunday.common.widgets.BoundScrollView;
 import com.sunday.common.widgets.CircleImageView;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
 
 import java.math.RoundingMode;
 
@@ -215,11 +220,23 @@ public class ShopMngFragment extends BaseFragment {
     }
 
 
-    @OnClick({R.id.menu_order_4, R.id.shop_mng, R.id.address,
+    @OnClick({R.id.menu_order_4, R.id.shop_mng, R.id.address,R.id.share_shop,
             R.id.text_login, R.id.fans_manage, R.id.yeji_manage, R.id.sales_manage,
             R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3})
     void onClick(View v) {
         switch (v.getId()) {
+            case R.id.share_shop:
+                UMImage umImage = new UMImage(mContext, R.mipmap.logo);
+                String shareUrl = ApiClient.APK_URL;
+//                String shareUrl = String.format("http://weixin.haowukongtou.com/authorizationPage.html?param=5-%d-0-0", BaseApp.getInstance().getShopMember().getId());
+                UMWeb web = new UMWeb(shareUrl);
+                web.setTitle(getString(R.string.invite_title));
+                web.setThumb(umImage);
+                web.setDescription(getString(R.string.invite_content));
+                new ShareAction((Activity) mContext).setPlatform(SHARE_MEDIA.WEIXIN)
+                        .withMedia(web)
+                        .share();
+                break;
             case R.id.fans_manage:
                 intent = new Intent(mContext, CustomerManageActivity.class);
                 startActivity(intent);
