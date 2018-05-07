@@ -1,4 +1,4 @@
-package com.bby.yishijie.member.wxapi;
+package com.bby.yishijie.wxapi;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

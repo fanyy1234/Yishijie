@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bby.yishijie.R;
+import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.product.SaveProductCodeActivity;
 import com.sunday.common.utils.DeviceUtils;
 import com.sunday.common.utils.SpannalbeStringUtils;
@@ -64,7 +65,8 @@ public class ShareWindow extends PopupWindow {
         this.mContext = context;
         View windowView = LayoutInflater.from(mContext).inflate(R.layout.layout_share_window_shop, null);
         int appWidth = DeviceUtils.getDisplay(mContext).widthPixels;
-        this.shareUrl = shareUrl;
+//        this.shareUrl = shareUrl;
+        this.shareUrl = ApiClient.APK_URL;
         this.productName = productName;
         this.productImg = productImg;
         this.scale = scale;//商品可以赚的金额

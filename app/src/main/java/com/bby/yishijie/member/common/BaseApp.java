@@ -60,7 +60,7 @@ public class BaseApp extends Application implements Thread.UncaughtExceptionHand
                 Context.WINDOW_SERVICE);
         screenWidth = wm.getDefaultDisplay().getWidth();
         screenHeight = wm.getDefaultDisplay().getHeight();
-        if (getCurProcessName(this) != null && getCurProcessName(this).equals("com.bby.yishijie.member")) {
+        if (getCurProcessName(this) != null && getCurProcessName(this).equals("com.bby.yishijie")) {
             /***
              * 初始化定位sdk，建议在Application中创建
              */

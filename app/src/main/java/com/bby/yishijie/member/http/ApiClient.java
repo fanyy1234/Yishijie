@@ -45,7 +45,7 @@ public class ApiClient {
     public final static String SHARE_URL1= "http://weixin.haowukongtou.com/authorizationPage1.html?param=";
     public final static String CUSTOMER_URL="https://kefu.easemob.com/webim/im.html?tenantId=47178";
     public final static String PROTOCOL_URL="http://admin.haowukongtou.com/SystemInfoController/getByType";
-
+    public final static String APK_URL = "http://admin.ysjkj.net/share.png";
     private static OkHttpClient client;
     static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 

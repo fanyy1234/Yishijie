@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import com.bby.yishijie.member.http.ApiClient;
 import com.sunday.common.utils.DeviceUtils;
 import com.sunday.common.utils.ToastUtils;
 import com.bby.yishijie.R;
@@ -58,7 +59,8 @@ public class ShareWindow extends PopupWindow {
         this.mContext = context;
         View windowView = LayoutInflater.from(mContext).inflate(R.layout.layout_share_window, null);
         int appWidth = DeviceUtils.getDisplay(mContext).widthPixels;
-        this.shareUrl = shareUrl;
+//        this.shareUrl = shareUrl;
+        this.shareUrl = ApiClient.APK_URL;
         this.productName = productName;
         this.productImg = productImg;
         this.productDesc = productDesc;

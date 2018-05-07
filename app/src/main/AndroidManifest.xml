@@ -28,11 +28,11 @@
         android:theme="@style/MyAppTheme">
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a4620e88f4a9d1b320002e1" />
+            android:value="5ae2e34f8f4a9d359c00000c" />
 
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="sunday" />
+        <!--<meta-data-->
+            <!--android:name="UMENG_CHANNEL"-->
+            <!--android:value="Unknown" />-->
         <activity
             android:name=".member.ui.MainActivity"
             android:launchMode="singleTop"
@@ -320,13 +320,13 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
 
         <activity
-            android:name=".member.wxapi.WXPayEntryActivity"
+            android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".member.wxapi.WXEntryActivity"
+            android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"

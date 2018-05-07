@@ -167,7 +167,8 @@ public class CustomerManageActivity extends BaseActivity {
             case R.id.rightTxt:
                 UMShareAPI umShareAPI = UMShareAPI.get(mContext);
                 UMImage umImage = new UMImage(mContext, R.mipmap.logo);
-                String shareUrl = String.format("http://weixin.haowukongtou.com/authorizationPage.html?param=5-%d-0-0", BaseApp.getInstance().getMember().getId());
+                String shareUrl = ApiClient.APK_URL;
+//                String shareUrl = String.format("http://weixin.haowukongtou.com/authorizationPage.html?param=5-%d-0-0", BaseApp.getInstance().getShopMember().getId());
                 UMWeb web = new UMWeb(shareUrl);
                 web.setTitle(getString(R.string.invite_title));
                 web.setThumb(umImage);

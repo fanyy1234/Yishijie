@@ -1,4 +1,4 @@
-package com.bby.yishijie.member.wxapi;
+package com.bby.yishijie.wxapi;
 
 
 import com.umeng.socialize.weixin.view.WXCallbackActivity;
