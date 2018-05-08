@@ -183,6 +183,31 @@
                     android:textColor="@color/black_9" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/menu_integral_mall"
+                style="@style/person_menu_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:drawableLeft="@mipmap/bottom_tab_jifen_mall_checked"
+                    android:drawablePadding="10dp"
+                    android:text="积分商城" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@mipmap/arrow_right"
+                    android:text=""
+                    android:textColor="@color/black_9" />
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/menu_addr"
                 style="@style/person_menu_item"
                 android:layout_width="match_parent"

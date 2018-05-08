@@ -6,8 +6,11 @@ import android.widget.TextView;
 
 import com.bby.yishijie.R;
 import com.bby.yishijie.member.adapter.CommonRecycleAdapter;
+import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.model.IntegralMall;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.shop.ui.MyIntegralActivity;
+import com.sunday.common.utils.ToastUtils;
 
 
 /**
@@ -27,15 +30,24 @@ public class IntegralMallHeaderViewHolder extends BaseRecyleViewHolder<IntegralM
 //        final View rootView = getView(R.id.root_view);
 //        nameTv.setText(model.getName());
 //        ageTv.setText(model.getAge());
-        String jifen = model.getJifen();
-
-        myScore.setText(Double.valueOf(jifen).intValue()+"");
+        int jifen = 0;
+        try {
+            jifen = Double.valueOf(model.getJifen()).intValue();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        myScore.setText(jifen+"");
         jifenView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(adapter.getmContext(), MyIntegralActivity.class);
-                intent.putExtra("flag",1);
-                adapter.getmContext().startActivity(intent);
+                if(BaseApp.getInstance().getMember()!=null){
+                    Intent intent = new Intent(adapter.getmContext(), MyIntegralActivity.class);
+                    intent.putExtra("flag",1);
+                    adapter.getmContext().startActivity(intent);
+                }
+                else {
+                    ToastUtils.showToast(adapter.getmContext(),"请先登录");
+                }
             }
         });
     }

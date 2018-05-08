@@ -47,8 +47,8 @@ public class EditProductMaterialActivity extends BaseActivity implements View.On
 
     @Bind(R.id.left_btn)
     ImageView leftBtn;
-    @Bind(R.id.left_txt)
-    TextView leftTxt;
+//    @Bind(R.id.left_txt)
+//    TextView leftTxt;
     @Bind(R.id.title_view)
     TextView titleView;
     @Bind(R.id.rightTxt)
@@ -81,9 +81,9 @@ public class EditProductMaterialActivity extends BaseActivity implements View.On
         productId = getIntent().getLongExtra("productId", 0);
         productName = getIntent().getStringExtra("productName");
         txtProductName.setText(productName);
-        leftBtn.setVisibility(View.GONE);
-        leftTxt.setVisibility(View.VISIBLE);
-        leftTxt.setText("取消");
+        leftBtn.setVisibility(View.VISIBLE);
+//        leftTxt.setVisibility(View.VISIBLE);
+//        leftTxt.setText("取消");
         titleView.setText("文案编辑");
         rightBtn.setVisibility(View.GONE);
         rightTxt.setVisibility(View.VISIBLE);
@@ -91,7 +91,7 @@ public class EditProductMaterialActivity extends BaseActivity implements View.On
         adapter = new GridAdapter(imgList);
         gridView.setAdapter(adapter);
         adapter.setOnClickListener(this);
-        leftTxt.setOnClickListener(this);
+//        leftTxt.setOnClickListener(this);
         rightTxt.setOnClickListener(this);
 
     }
@@ -110,7 +110,7 @@ public class EditProductMaterialActivity extends BaseActivity implements View.On
                 imgList.remove(p);
                 adapter.notifyDataSetChanged();
                 break;
-            case R.id.left_txt:
+            case R.id.left_btn:
                 finish();
                 break;
             case R.id.rightTxt:

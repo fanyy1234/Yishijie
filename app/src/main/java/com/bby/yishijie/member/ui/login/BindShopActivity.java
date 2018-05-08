@@ -52,7 +52,7 @@ public class BindShopActivity extends BaseActivity {
     }
 
     private void initView() {
-        titleView.setText("邀请店铺");
+        titleView.setText("填写邀请码");
         memberId = getIntent().getLongExtra("memberId", 0);
         rightTxt.setVisibility(View.GONE);
     }

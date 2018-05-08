@@ -319,8 +319,8 @@ public class ProductDetailActivity extends BaseActivity {
             productOldPrice.setVisibility(View.VISIBLE);
             view.setVisibility(View.VISIBLE);
             if (integralFlag==1){
-                productPrice.setText(productDetail.getScore()+"积分");
-                productOldPrice.setText(String.format("¥%s", productDetail.getPrice().setScale(2, RoundingMode.HALF_UP)));
+                productOldPrice.setText("+"+productDetail.getScore()+"积分");
+                productPrice.setText(String.format("¥%s", productDetail.getCurrentPrice().setScale(2, RoundingMode.HALF_UP)));
             }
             else{
                 productPrice.setText(String.format("¥%s", productDetail.getCurrentPrice().setScale(2, RoundingMode.HALF_UP)));

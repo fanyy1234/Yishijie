@@ -21,6 +21,7 @@ import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.model.IntegralMall;
 import com.bby.yishijie.member.model.IntegralMallItem;
 import com.bby.yishijie.member.model.RecycleVisitable;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.member.ui.base.BaseLazyFragment;
 import com.bby.yishijie.member.utils.GridSpacingItemDecoration;
 import com.bby.yishijie.shop.entity.IntegralDetail;
@@ -64,6 +65,8 @@ public class IntegralMallFragment extends BaseLazyFragment {
     FeedRootRecyclerView recyclerView;
     @Bind(R.id.ptr_frame)
     PtrClassicFrameLayout ptrFrame;
+    @Bind(R.id.header_view)
+    View headerView;
 
     private CommonRecycleAdapter adapter;
     List<RecycleVisitable> models = new ArrayList<RecycleVisitable>();
@@ -95,6 +98,9 @@ public class IntegralMallFragment extends BaseLazyFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         title.setText("积分商城");
+        if (MainActivity.isShop){
+            headerView.setVisibility(View.GONE);
+        }
         initView();
         myScore();
     }
@@ -180,7 +186,7 @@ public class IntegralMallFragment extends BaseLazyFragment {
                         integralMallItem.setId(product.getId());
                         integralMallItem.setName(product.getName());
                         integralMallItem.setImg(product.getDetailImage());
-                        integralMallItem.setPrice(String.format("¥%s", product.getPrice().setScale(2, RoundingMode.HALF_UP)));
+                        integralMallItem.setPrice(String.format("¥%s", product.getCurrentPrice().setScale(2, RoundingMode.HALF_UP)));
                         integralMallItem.setScore(product.getScore()+"");
                         models.add(integralMallItem);
                     }

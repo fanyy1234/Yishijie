@@ -62,7 +62,7 @@ public class MobileLoginActivity extends BaseActivity {
 
     private void initView() {
         mobileLoginActivity = this;
-        titleView.setText("邀请店铺");
+        titleView.setText("验证身份");
         btnSubmit.setText("下一步");
         memberId = getIntent().getLongExtra("memberId", 0);
         rightTxt.setVisibility(View.GONE);

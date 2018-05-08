@@ -164,7 +164,7 @@ public class ProductDetailFragment extends BaseFragment {
         }
         type = productDetail.getType();
         final List<String> bannerImgs = new ArrayList<>();
-        url = String.format(ApiClient.DETAIL_URL + "id=%1$d&type=%2$d", productId, detailType);
+        url = String.format(ApiClient.DETAIL_URL + "?id=%1$d&type=%2$d", productId, detailType);
         if (productDetail.getImages() != null && productDetail.getImages().size() > 0) {
             bannerImgs.addAll(productDetail.getImages());
         }
@@ -206,12 +206,12 @@ public class ProductDetailFragment extends BaseFragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tab.getPosition() == 0) {
                     detailType = 1;
-                    url = String.format(ApiClient.DETAIL_URL + "id=%1$d&type=%2$d", productId, detailType);
+                    url = String.format(ApiClient.DETAIL_URL + "?id=%1$d&type=%2$d", productId, detailType);
                     Log.i("-----URL", url);
                     webView1.loadUrl(url);
                 } else {
                     detailType = 2;
-                    url = String.format(ApiClient.DETAIL_URL + "id=%1$d&type=%2$d", productId, detailType);
+                    url = String.format(ApiClient.DETAIL_URL + "?id=%1$d&type=%2$d", productId, detailType);
                     Log.i("-----URL", url);
                     webView1.loadUrl(url);
                 }

@@ -156,8 +156,8 @@ public class ShopFragment extends BaseFragment {
             } else {
                 loginNotLayout.setVisibility(View.VISIBLE);
                 refreshLayout.setVisibility(View.GONE);
-                textLogin.setText("邀请店铺");
-                loginNotDec.setText("您还未邀请店铺");
+                textLogin.setText("去填写");
+                loginNotDec.setText("尚未填写店铺邀请码");
             }
         }
     }

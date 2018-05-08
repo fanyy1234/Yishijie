@@ -33,6 +33,7 @@ import com.bby.yishijie.member.ui.mine.voucher.VoucherListActivity;
 import com.bby.yishijie.member.ui.order.OrderListActivity;
 import com.bby.yishijie.shop.entity.ProfitAll;
 import com.bby.yishijie.shop.ui.AvailableProfitActivity;
+import com.bby.yishijie.shop.ui.IntegralMallActivity;
 import com.bby.yishijie.shop.ui.MyIntegralActivity;
 import com.bby.yishijie.shop.ui.TotalProfitActivity;
 import com.bumptech.glide.Glide;
@@ -137,6 +138,8 @@ public class MineFragment extends BaseFragment {
     LinearLayout menuShareShop;
     @Bind(R.id.menu_jifen)
     LinearLayout menuJifen;
+    @Bind(R.id.menu_integral_mall)
+    LinearLayout menuIntegralMall;
     private boolean isLogin;
     private boolean isShop;
     private long memberId;
@@ -200,6 +203,7 @@ public class MineFragment extends BaseFragment {
             menuShareShop.setVisibility(View.GONE);
             menuJifen.setVisibility(View.VISIBLE);
             menuCounpon.setVisibility(View.VISIBLE);
+            menuIntegralMall.setVisibility(View.GONE);
         } else {
             shopView.setVisibility(View.VISIBLE);
             shopHeader.setVisibility(View.VISIBLE);
@@ -207,6 +211,7 @@ public class MineFragment extends BaseFragment {
             menuShareShop.setVisibility(View.VISIBLE);
             menuJifen.setVisibility(View.GONE);
             menuCounpon.setVisibility(View.GONE);
+            menuIntegralMall.setVisibility(View.VISIBLE);
         }
     }
 
@@ -310,8 +315,8 @@ public class MineFragment extends BaseFragment {
 
 
     @OnClick({R.id.menu_order_4, R.id.menu_counpon, R.id.menu_addr, R.id.order_all, R.id.set_rec_code,
-            R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting,R.id.menu_share_shop,
-            R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3, R.id.withdraw_btn, R.id.menu_jifen,
+            R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting, R.id.menu_share_shop,
+            R.id.menu_order_1, R.id.menu_order_2, R.id.menu_order_3, R.id.withdraw_btn, R.id.menu_jifen,R.id.menu_integral_mall,
             R.id.my_integral, R.id.available_profit, R.id.total_profit, R.id.my_coupon})
     void onClick(View v) {
         switch (v.getId()) {
@@ -326,6 +331,10 @@ public class MineFragment extends BaseFragment {
                 new ShareAction((Activity) mContext).setPlatform(SHARE_MEDIA.WEIXIN)
                         .withMedia(web)
                         .share();
+                break;
+            case R.id.menu_integral_mall:
+                intent = new Intent(mContext, IntegralMallActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_integral:
                 intent = new Intent(mContext, MyIntegralActivity.class);

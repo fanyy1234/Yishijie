@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:src="@mipmap/login_bg"
+        android:src="@mipmap/jifen_banner"
         android:scaleType="fitXY"/>
     <LinearLayout
         android:layout_width="match_parent"

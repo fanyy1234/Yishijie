@@ -42,16 +42,18 @@
             tools:text="\t\t\taaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
     </RelativeLayout>
 
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_toRightOf="@+id/product_img"
+    android:layout_alignBottom="@id/product_img"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="10dp"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/price_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/product_img"
-        android:layout_alignBottom="@id/product_img"
-        android:layout_marginBottom="10dp"
-        android:layout_alignLeft="@+id/product_title_layout"
-        android:layout_marginTop="15dp"
         android:text="价格"
         android:textColor="@color/main_color" />
 
@@ -59,12 +61,11 @@
         android:id="@+id/price_old"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/price_now"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/price_now"
         android:text="价格"
         android:textColor="@color/black_8"
         android:textSize="12sp" />
+</LinearLayout>
+
 
     <TextView
         android:id="@+id/btn_buy"
