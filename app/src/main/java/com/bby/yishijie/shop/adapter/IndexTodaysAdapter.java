@@ -75,7 +75,7 @@ public class IndexTodaysAdapter extends RecyclerView.Adapter {
                 view.setLayoutParams(layoutParams);
                 return new ListHolder1(view);
             case TYPE_LIST2:
-                view = LayoutInflater.from(mContext).inflate(R.layout.layout_product_item, null);
+                view = LayoutInflater.from(mContext).inflate(R.layout.layout_product_item_shop, null);
                 return new ListHolder2(view);
         }
         return null;

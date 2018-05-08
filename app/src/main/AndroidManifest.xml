@@ -309,6 +309,9 @@
         <activity android:name=".shop.ui.IntegralMallActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" />
+        <activity android:name=".shop.ui.OrderListActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait" />
 
 
         <activity

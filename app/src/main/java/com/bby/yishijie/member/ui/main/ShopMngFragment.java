@@ -21,7 +21,7 @@ import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.login.LoginActivity;
 import com.bby.yishijie.member.ui.mine.AddressListActivity;
 import com.bby.yishijie.member.ui.mine.UserInfoActivity;
-import com.bby.yishijie.member.ui.order.OrderListActivity;
+import com.bby.yishijie.shop.ui.OrderListActivity;
 import com.bby.yishijie.shop.entity.Member;
 import com.bby.yishijie.shop.entity.Statistic;
 import com.bby.yishijie.shop.ui.CustomerManageActivity;

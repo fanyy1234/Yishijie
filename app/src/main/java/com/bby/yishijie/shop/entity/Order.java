@@ -1,6 +1,7 @@
 package com.bby.yishijie.shop.entity;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +72,17 @@ public class Order implements Serializable {
 
     private List<OrderListItem> datas = new ArrayList<>();
 
+    public BigDecimal getScoreFee() {
+        return scoreFee;
+    }
 
+    public void setScoreFee(BigDecimal scoreFee) {
+        this.scoreFee = scoreFee;
+    }
+
+    public void setDatas(List<OrderListItem> datas) {
+        this.datas = datas;
+    }
 
     public long getId() {
         return id;
@@ -226,13 +237,13 @@ public class Order implements Serializable {
         this.sendTime = sendTime;
     }
 
-    public BigDecimal getScoreFee() {
-        return scoreFee;
-    }
-
-    public void setScoreFee(BigDecimal scoreFee) {
-        this.scoreFee = scoreFee;
-    }
+//    public BigDecimal getScoreFee() {
+//        return scoreFee;
+//    }
+//
+//    public void setScoreFee(BigDecimal scoreFee) {
+//        this.scoreFee = scoreFee;
+//    }
 
     public BigDecimal getVoucherFee() {
         return voucherFee;
@@ -381,4 +392,28 @@ public class Order implements Serializable {
         this.list = list;
     }
 
+    public static com.bby.yishijie.member.entity.Order transferMember(Order shopMember){
+        if (shopMember==null){
+            return null;
+        }
+        com.bby.yishijie.member.entity.Order member = new com.bby.yishijie.member.entity.Order();
+        try {
+            //使用反射技术完成对象属性的输出
+            Class<?> c1 = Class.forName("com.bby.yishijie.member.entity.Order");
+            Class<?> c2 = Class.forName("com.bby.yishijie.shop.entity.Order");
+            Field[] fields = c1.getDeclaredFields();
+            Field[] fields2 = c2.getDeclaredFields();
+            int length = fields.length;
+            for (int i=0;i<length;i++){
+                Field f1 = fields[i];
+                Field f2 = fields2[i];
+                f1.setAccessible(true);
+                f2.setAccessible(true);
+                f1.set(member,f2.get(shopMember));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return member;
+    }
 }

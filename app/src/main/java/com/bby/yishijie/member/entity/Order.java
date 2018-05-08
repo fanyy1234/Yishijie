@@ -63,13 +63,24 @@ public class Order implements Serializable {
     private String shopName;
     private String backTime;
     private BigDecimal discountFee;//满减的费用
-
+    private BigDecimal scoreFee;
     private List<OrderListBean> crossList;//跨境
     private List<OrderListBean> limitList;//限时购
     private List<OrderListBean> activeList;//满减
 
     private List<OrderListItem> datas = new ArrayList<>();
 
+    public void setDatas(List<OrderListItem> datas) {
+        this.datas = datas;
+    }
+
+    public BigDecimal getScoreFee() {
+        return scoreFee;
+    }
+
+    public void setScoreFee(BigDecimal scoreFee) {
+        this.scoreFee = scoreFee;
+    }
 
     public long getId() {
         return id;

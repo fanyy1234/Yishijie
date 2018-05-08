@@ -569,7 +569,17 @@ public interface ApiService {
                                                 @Field("pageNo") Integer pageNo, @Field("pageSize") Integer pageSize,
                                                 @Field("orderType") Integer orderType);
 
-
+    /**
+     * 订单列表
+     *
+     * @param orderType 订单类型(1-用户订单 2-店主订单)
+     * @param status    状态(0-待付款 1-待发货 2-待收货 3-待评价 4-已完成 5-退款中 7-退货中 8-售后完成(8-已退款，9-已退货)
+     */
+    @FormUrlEncoded
+    @POST("/mobi/order/AaOrderList1")
+    Call<ResultDO<List<com.bby.yishijie.shop.entity.Order>>> getOrderListNew(@Field("memberId") long memberId, @Field("status") Integer status,
+                                                @Field("pageNo") Integer pageNo, @Field("pageSize") Integer pageSize,
+                                                @Field("orderType") Integer orderType, @Field("type") Integer type);
 
 
 
@@ -582,6 +592,15 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("/mobi/order/AeToPay")
     Call<ResultDO<Order>> getOrderPay(@Field("orderId") long orderId);
+    /**
+     * 从订单列表去支付
+     *
+     * @param orderId
+     *
+     */
+    @FormUrlEncoded
+    @POST("/mobi/order/AeToPay")
+    Call<ResultDO<com.bby.yishijie.shop.entity.Order>> getOrderPay2(@Field("orderId") long orderId);
 
 
     /**

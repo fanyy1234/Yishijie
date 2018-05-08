@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:id="@+id/total_layout">
+
+    <ImageView
+        android:id="@+id/main_img"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:src="@mipmap/ic_default"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <RelativeLayout
+        android:id="@+id/product_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_img"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/product_tag1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="特卖"
+            android:padding="2dp"
+            android:background="@drawable/shape_red_stroke"
+            android:layout_marginRight="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/main_color"/>
+        <TextView
+            android:id="@+id/product_tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/product_tag1"
+            android:padding="2dp"
+            android:background="@drawable/shape_yellow_stoke"
+            android:textSize="12sp"
+            android:textColor="#eb3349"
+            android:text="可积分购买"
+
+            />
+        <TextView
+            android:id="@+id/product_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            tools:text="\t\t\t\t\t\t\t\t\t\t描述aaa啊啊aaaaa啊啊啊啊啊啊啊aaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/price_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_title_layout"
+        android:layout_marginTop="8dp"
+        android:text="价格"
+        android:textColor="@color/black_0" />
+    <TextView
+        android:id="@+id/txt_zhuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="赚"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_red_spec"
+        android:padding="2dp"
+        android:layout_alignBottom="@+id/price_now"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_toRightOf="@+id/price_now"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/price_old"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/price_now"
+        android:layout_toRightOf="@+id/txt_zhuan"
+        android:text="价格"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp" />
+    <TextView
+        android:id="@+id/store_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/price_now"
+        android:layout_marginTop="7dp"
+        android:text="库存"/>
+
+    <ImageView
+        android:id="@+id/btn_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/store_num"
+        android:layout_marginBottom="15dp"
+        android:src="@mipmap/product_share"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"/>
+    <ImageView
+        android:id="@+id/btn_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/product_add"
+        android:layout_toLeftOf="@+id/btn_check_material"
+        android:layout_alignBottom="@+id/btn_share"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        />
+    <ImageView
+        android:id="@+id/btn_check_material"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/save"
+        android:layout_toLeftOf="@+id/btn_share"
+        android:layout_alignBottom="@+id/btn_share"
+        android:paddingLeft="13dp"
+        android:paddingRight="13dp"
+        />
+
+</RelativeLayout>
