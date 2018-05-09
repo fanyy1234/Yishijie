@@ -29,7 +29,7 @@
         android:textSize="13sp"
         tools:text="aa" />
 
-    <com.bby.yishijie.member.widgets.CountDownView.CountdownView
+    <com.sunday.common.widgets.countdownview.CountdownView
         android:id="@+id/countdown_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

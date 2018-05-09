@@ -274,6 +274,14 @@ public interface ApiService {
     @POST("/mobi/product/AcGetBrands")
     Call<ResultDO<List<IndexProductBrand>>> getProductBrand(@Field("pageNo") Integer pageNo,
                                                             @Field("pageSize") Integer pageSize);
+    /**
+     * 产品品牌
+     */
+    @FormUrlEncoded
+    @POST("/mobi/product/AcGetBrands")
+    Call<ResultDO<List<com.bby.yishijie.shop.entity.ProductBrand>>> getProductBrand2(@Field("memberId") Long memberId,
+                                                                                         @Field("pageNo") Integer pageNo,
+                                                            @Field("pageSize") Integer pageSize);
 
     /**
      * 店主精选品牌

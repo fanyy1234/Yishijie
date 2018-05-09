@@ -47,7 +47,7 @@ import com.bby.yishijie.member.ui.base.ShowBigImage;
 import com.bby.yishijie.member.ui.cart.CartActivity;
 import com.bby.yishijie.member.ui.login.LoginActivity;
 import com.bby.yishijie.member.ui.order.OrderConfirmActivity;
-import com.bby.yishijie.member.widgets.CountDownView.CountdownView;
+import com.sunday.common.widgets.countdownview.CountdownView;
 import com.bby.yishijie.member.widgets.SelectProSpecWindow;
 import com.bby.yishijie.member.widgets.ShareWindow;
 

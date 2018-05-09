@@ -95,12 +95,12 @@ public class ShopManageActivity extends BaseActivity {
         titleView.setText("店铺管理");
         rightBtn.setVisibility(View.VISIBLE);
         rightBtn.setImageResource(R.mipmap.store_manage_sort);
-        if (!TextUtils.isEmpty(member.getShopLogo())) {
+//        if (!TextUtils.isEmpty(member.getShopLogo())) {
             Glide.with(mContext)
                     .load(member.getShopLogo())
                     .error(R.mipmap.ic_default)
                     .into(shopImg);
-        }
+//        }
         shopTitle.setText(member.getShopName());
         shopDescription.setText(member.getShopInfo());
         shopDescription.setVisibility(View.GONE);

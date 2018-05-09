@@ -71,8 +71,12 @@ public class MyIntegralActivity extends BaseActivity {
         flag = getIntent().getIntExtra("flag", 0);
         if (flag != 0) {
             integralHead.setVisibility(View.GONE);
+            titleView.setText("兑换记录");
         }
-        titleView.setText("我的积分");
+        else {
+            titleView.setText("我的积分");
+        }
+
         totalMoney.setText("" + score);
         if (MainActivity.isShop) {
             memberId = BaseApp.getInstance().getShopMember().getId();
@@ -199,7 +203,6 @@ public class MyIntegralActivity extends BaseActivity {
             }
         });
     }
-
     private void myScoreRecord() {
         Call<ResultDO> call = ApiClient.getApiAdapter().getScoreRecord(memberId);
         call.enqueue(new Callback<ResultDO>() {
@@ -222,7 +225,28 @@ public class MyIntegralActivity extends BaseActivity {
                         IntegralDetail integralDetail = new IntegralDetail();
                         integralDetail.setNum(object.get("score").toString());
                         integralDetail.setTime(object.getString("strTime"));
-                        integralDetail.setForm(object.getInteger("type").toString());
+                        String typeStr = "";
+                        switch (object.getInteger("type")){
+                            case 0:
+                                typeStr = "登录";
+                                break;
+                            case 1:
+                                typeStr = "分享";
+                                break;
+                            case 2:
+                                typeStr = "购买";
+                                break;
+                            case 3:
+                                typeStr = "评论";
+                                break;
+                            case 4:
+                                typeStr = "推荐注册";
+                                break;
+                            default:
+                                typeStr = "其他";
+                                break;
+                        }
+                        integralDetail.setForm(typeStr);
                         dataSet.add(integralDetail);
                     }
                     adapter.notifyDataSetChanged();

@@ -302,7 +302,7 @@
 //    private void getTotalCartList() {
 //        if (cartPay.getList() != null && !cartPay.getList().isEmpty()) {
 //            CartListItem cartListItem = new CartListItem();
-//            cartListItem.setTypeName("好物购物");
+//            cartListItem.setTypeName("易饰界购物");
 //            cartListItem.setType(0);
 //            cartListItem.setCartItemList(cartPay.getList());
 //            dataSet.add(cartListItem);

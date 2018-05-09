@@ -366,7 +366,7 @@ public class Order implements Serializable {
         datas.clear();
         if (getList() != null && !getList().isEmpty()) {
             OrderListItem listItem = new OrderListItem();
-            listItem.setTypeName("好物购物");
+            listItem.setTypeName("易饰界购物");
             listItem.setType(0);
             listItem.setOrderListBeanList(getList());
             datas.add(listItem);

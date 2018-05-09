@@ -208,8 +208,8 @@ public class ShopMngFragment extends BaseFragment {
                     .error(R.mipmap.ic_logo_default)
                     .into(userLogo);
         }
-        userMobile.setText(member.getMobile());
-        userNickname.setText(member.getNickName());
+        userMobile.setText("店铺邀请码: "+member.getInitCode());
+        userNickname.setText(member.getShopName());
 
 
     }

@@ -36,8 +36,6 @@
                     android:background="@color/white"
                     android:padding="10dp">
                 </com.sunday.common.widgets.banner.ConvenientBanner>
-                <include
-                    layout="@layout/part_of_fragmenttoday"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -51,13 +49,18 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="今日金价："/>
+                        android:textColor="@color/appcolor"
+                        android:text="今日金价：￥"/>
                     <TextView
                         android:id="@+id/today_gold_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/appcolor"
                         android:text=""/>
                 </LinearLayout>
+
+                <include
+                    layout="@layout/part_of_fragmenttoday"/>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 

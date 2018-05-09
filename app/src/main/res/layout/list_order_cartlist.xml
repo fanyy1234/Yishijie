@@ -16,7 +16,7 @@
         android:layout_gravity="center_vertical"
         android:padding="12dp"
         android:textColor="@color/_333"
-        tools:text="好物购物" />
+        tools:text="易饰界购物" />
 
     <View
         android:layout_width="match_parent"

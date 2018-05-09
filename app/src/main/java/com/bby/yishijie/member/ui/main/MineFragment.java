@@ -143,7 +143,7 @@ public class MineFragment extends BaseFragment {
     private boolean isLogin;
     private boolean isShop;
     private long memberId;
-
+    private String availableMoney="";
     public static MineFragment newInstance(boolean isLogin) {
         MineFragment fragment = new MineFragment();
         Bundle args = new Bundle();
@@ -299,12 +299,10 @@ public class MineFragment extends BaseFragment {
                         .error(R.mipmap.ic_logo_default)
                         .into(userLogo2);
             }
-            userMobile2.setText(member.getMobile());
+            userMobile2.setText("(店主)");
             userNickname2.setText(member.getNickName());
             shopName.setText(member.getRecId() != 0 ? member.getRecName() : "");
-            if (member.getShopStatus() == 1) {
-                menuOpenShop.setVisibility(View.GONE);
-            }
+            menuOpenShop.setVisibility(View.GONE);
         }
     }
 
@@ -346,6 +344,7 @@ public class MineFragment extends BaseFragment {
                 break;
             case R.id.available_profit:
                 intent = new Intent(mContext, AvailableProfitActivity.class);
+                intent.putExtra("money",availableMoney);
                 startActivity(intent);
                 break;
             case R.id.total_profit:
@@ -490,7 +489,8 @@ public class MineFragment extends BaseFragment {
                     }
                     ProfitAll profitAll = response.body().getResult();
                     withdrawNum.setText(String.format("%s", profitAll.getWithdrawAmount().setScale(2, RoundingMode.HALF_UP)));
-                    waitProfitNum.setText(String.format("%s", profitAll.getWaitAmount().setScale(2, RoundingMode.HALF_UP)));
+                    availableMoney = String.format("%s", profitAll.getWaitAmount().setScale(2, RoundingMode.HALF_UP));
+                    waitProfitNum.setText(availableMoney);
                     totalProfitNum.setText(String.format("%s", profitAll.getTotalProfit().setScale(2, RoundingMode.HALF_UP)));
                     shopCounponNum.setText("" + profitAll.getVoucherCount());
                     myScore.setText("" + profitAll.getScore());

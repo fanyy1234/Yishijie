@@ -5,7 +5,9 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.bby.yishijie.R;
+import com.bby.yishijie.member.ui.MainActivity;
 import com.bby.yishijie.member.ui.index.BrandFragment;
+import com.bby.yishijie.shop.ui.BrandShopFragment;
 import com.sunday.common.base.BaseActivity;
 
 import butterknife.Bind;
@@ -32,11 +34,21 @@ public class BrandActivity extends BaseActivity {
 
     private void initView() {
         titleView.setText("品牌馆");
-        BrandFragment brandFragment = BrandFragment.newInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.main_container, brandFragment)
-                .show(brandFragment).commit();
+        if(MainActivity.isShop){
+            BrandShopFragment brandFragment = BrandShopFragment.newInstance();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_container, brandFragment)
+                    .show(brandFragment).commit();
+        }
+        else {
+            BrandFragment brandFragment = BrandFragment.newInstance();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.main_container, brandFragment)
+                    .show(brandFragment).commit();
+        }
+
     }
 
 }
