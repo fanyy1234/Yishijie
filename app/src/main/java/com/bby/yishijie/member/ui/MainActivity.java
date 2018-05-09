@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
 
     @Bind({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5})
     List<TextView> tabViews1;
-    @Bind({R.id.tab6, R.id.tab2, R.id.tab7, R.id.tab3, R.id.tab5})
+    @Bind({R.id.tab6, R.id.tab8, R.id.tab7, R.id.tab3, R.id.tab5})
     List<TextView> tabViews2;
     @Bind(R.id.tab1)
     TextView textView1;
@@ -70,6 +70,10 @@ public class MainActivity extends BaseActivity {
     TextView textView6;
     @Bind(R.id.tab7)
     TextView textView7;
+    @Bind(R.id.tab2)
+    TextView textView2;
+    @Bind(R.id.tab8)
+    TextView textView8;
 
     List<TextView> tabViews;
     private Member member;
@@ -136,9 +140,10 @@ public class MainActivity extends BaseActivity {
         if (isShop){
             textView1.setVisibility(View.GONE);
             textView4.setVisibility(View.GONE);
+            textView2.setVisibility(View.GONE);
             fragments = new Fragment[]{
                     indexFragment,
-                    mClassifyFragment,
+                    integralMallFragment,
                     shopMngFragment,
                     mLiveCircleFragment,
                     mineFragment
@@ -147,6 +152,7 @@ public class MainActivity extends BaseActivity {
         else {
             textView6.setVisibility(View.GONE);
             textView7.setVisibility(View.GONE);
+            textView8.setVisibility(View.GONE);
             fragments = new Fragment[]{
                     indexFragment,
                     mClassifyFragment,
@@ -221,14 +227,14 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5, R.id.tab6, R.id.tab7})
+    @OnClick({R.id.tab1, R.id.tab2, R.id.tab3, R.id.tab4, R.id.tab5, R.id.tab6, R.id.tab7,R.id.tab8})
     public void onClick(View v) {
         if (isShop){
             switch (v.getId()) {
                 case R.id.tab6:
                     changeFragmentIndex(0);
                     break;
-                case R.id.tab2:
+                case R.id.tab8:
                     changeFragmentIndex(1);
                     break;
                 case R.id.tab7:

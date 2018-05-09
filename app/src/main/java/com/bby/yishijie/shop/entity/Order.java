@@ -34,6 +34,7 @@ public class Order implements Serializable {
      * list : [{"itemId":1,"status":0,"productName":"MEDIHEAL/美迪惠尔可莱丝M版针剂水库补水保湿面膜 爆款风靡韩国","productImg":"http://admin.zj-yunti.com/upload/2017/4/785d7b6c-ad45-45ee-8f6e-eafa9dc4d3e5.jpg","num":7,"price":2,"elements":"100ml"}]
      */
 
+
     private long id;
     private String orderNo;
     private String name;
@@ -55,12 +56,14 @@ public class Order implements Serializable {
     private String sendTime;
     private BigDecimal scoreFee;//云币
     private BigDecimal voucherFee;
-    protected BigDecimal expressFee;
+    private BigDecimal expressFee;
     private int isUsed;
     private int isBuy;
     private String shopName;
     private String payTime;
     private String backTime;
+    private String receiveTime;
+    private String finishedTime;
     private BigDecimal realPay;
     private BigDecimal moneyFee;
     private BigDecimal discountFee;//满减的费用
@@ -349,6 +352,22 @@ public class Order implements Serializable {
         this.activeList = activeList;
     }
 
+    public String getReceiveTime() {
+        return receiveTime;
+    }
+
+    public void setReceiveTime(String receiveTime) {
+        this.receiveTime = receiveTime;
+    }
+
+    public String getFinishedTime() {
+        return finishedTime;
+    }
+
+    public void setFinishedTime(String finishedTime) {
+        this.finishedTime = finishedTime;
+    }
+
     public List<OrderListItem> getDatas() {
         // List<OrderListItem> datas = new ArrayList<>();
         datas.clear();
@@ -392,28 +411,28 @@ public class Order implements Serializable {
         this.list = list;
     }
 
-    public static com.bby.yishijie.member.entity.Order transferMember(Order shopMember){
-        if (shopMember==null){
-            return null;
-        }
-        com.bby.yishijie.member.entity.Order member = new com.bby.yishijie.member.entity.Order();
-        try {
-            //使用反射技术完成对象属性的输出
-            Class<?> c1 = Class.forName("com.bby.yishijie.member.entity.Order");
-            Class<?> c2 = Class.forName("com.bby.yishijie.shop.entity.Order");
-            Field[] fields = c1.getDeclaredFields();
-            Field[] fields2 = c2.getDeclaredFields();
-            int length = fields.length;
-            for (int i=0;i<length;i++){
-                Field f1 = fields[i];
-                Field f2 = fields2[i];
-                f1.setAccessible(true);
-                f2.setAccessible(true);
-                f1.set(member,f2.get(shopMember));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return member;
-    }
+//    public static com.bby.yishijie.member.entity.Order transferMember(Order shopMember){
+//        if (shopMember==null){
+//            return null;
+//        }
+//        com.bby.yishijie.member.entity.Order member = new com.bby.yishijie.member.entity.Order();
+//        try {
+//            //使用反射技术完成对象属性的输出
+//            Class<?> c1 = Class.forName("com.bby.yishijie.member.entity.Order");
+//            Class<?> c2 = Class.forName("com.bby.yishijie.shop.entity.Order");
+//            Field[] fields = c1.getDeclaredFields();
+//            Field[] fields2 = c2.getDeclaredFields();
+//            int length = fields.length;
+//            for (int i=0;i<length;i++){
+//                Field f1 = fields[i];
+//                Field f2 = fields2[i];
+//                f1.setAccessible(true);
+//                f2.setAccessible(true);
+//                f1.set(member,f2.get(shopMember));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return member;
+//    }
 }

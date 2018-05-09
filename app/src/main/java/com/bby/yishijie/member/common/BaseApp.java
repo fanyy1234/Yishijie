@@ -49,6 +49,7 @@ public class BaseApp extends Application implements Thread.UncaughtExceptionHand
     private int payType;//微信支付
     private int wxPayFlag;//微信支付应用场景1.orderConfirmActivity页面2。OrderPayActivity页面
     private Order order;
+    private com.bby.yishijie.shop.entity.Order shopOrder;
     private GroupBuyOrder groupBuyOrder;
     public static int screenWidth;//屏幕宽度
     public static int screenHeight;//屏幕高度
@@ -173,6 +174,14 @@ public class BaseApp extends Application implements Thread.UncaughtExceptionHand
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public com.bby.yishijie.shop.entity.Order getShopOrder() {
+        return shopOrder;
+    }
+
+    public void setShopOrder(com.bby.yishijie.shop.entity.Order shopOrder) {
+        this.shopOrder = shopOrder;
     }
 
     //static 代码段可以防止内存泄露

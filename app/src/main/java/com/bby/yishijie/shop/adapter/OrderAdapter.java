@@ -13,8 +13,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bby.yishijie.R;
-import com.bby.yishijie.member.ui.order.OrderDetailActivity;
 import com.bby.yishijie.shop.entity.Order;
+import com.bby.yishijie.shop.ui.OrderDetailActivity;
 import com.sunday.common.utils.SpannalbeStringUtils;
 import com.sunday.common.widgets.NoScrollListview;
 
@@ -262,7 +262,7 @@ public class OrderAdapter extends RecyclerView.Adapter {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Order orderItem = (Order) listview.getTag();
                     Intent intent = new Intent(mContext, OrderDetailActivity.class);
-                    intent.putExtra("order", Order.transferMember(orderItem));
+                    intent.putExtra("order", orderItem);
                     mContext.startActivity(intent);
                 }
             });

@@ -44,6 +44,17 @@
             android:drawableTop="@drawable/bottom_tab_jingxuan"
             android:drawablePadding="5dp"/>
         <TextView
+            android:id="@+id/tab8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawableTop="@drawable/bottom_tab_jifen"
+            android:text="积分商城"
+            android:textColor="@color/main_bottom_tab_text"
+            android:gravity="bottom|center_horizontal"
+            android:drawablePadding="5dp"/>
+        <TextView
             android:id="@+id/tab2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

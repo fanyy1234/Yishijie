@@ -69,11 +69,21 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 int orderType = BaseApp.getInstance().getPayType();
                 if (orderType == Constant.TYPE_NORMAL) {
                     intent = new Intent(WXPayEntryActivity.this, PaySuccessActivity.class);//支付成功界面
-                    Order order = BaseApp.getInstance().getOrder();
-                    intent.putExtra("totalMoney", String.format("%s", order.getTotalMoney().setScale(2, RoundingMode.HALF_UP)));
-                    intent.putExtra("address", order.getAddress());
-                    intent.putExtra("name", order.getName());
-                    intent.putExtra("mobile", order.getMobile());
+                    if (MainActivity.isShop){
+                        com.bby.yishijie.shop.entity.Order order = BaseApp.getInstance().getShopOrder();
+                        intent.putExtra("totalMoney", String.format("%s", order.getTotalMoney().setScale(2, RoundingMode.HALF_UP)));
+                        intent.putExtra("address", order.getAddress());
+                        intent.putExtra("name", order.getName());
+                        intent.putExtra("mobile", order.getMobile());
+                    }
+                    else {
+                        Order order = BaseApp.getInstance().getOrder();
+                        intent.putExtra("totalMoney", String.format("%s", order.getTotalMoney().setScale(2, RoundingMode.HALF_UP)));
+                        intent.putExtra("address", order.getAddress());
+                        intent.putExtra("name", order.getName());
+                        intent.putExtra("mobile", order.getMobile());
+                    }
+
                     if (BaseApp.getInstance().getWxPayFlag()==1){
                         if (MainActivity.isShop){
                             OrderConfirmShopActivity.orderConfirmShopActivity.finish();
@@ -83,7 +93,12 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                         }
                     }
                     else if(BaseApp.getInstance().getWxPayFlag()==2){
-                        OrderPayActivity.orderPayActivity.finish();
+                        if (MainActivity.isShop){
+                            com.bby.yishijie.shop.ui.OrderPayActivity.orderPayActivity.finish();
+                        }
+                        else {
+                            OrderPayActivity.orderPayActivity.finish();
+                        }
                     }
                     startActivity(intent);
                     finish();

@@ -15,10 +15,6 @@ import com.bby.yishijie.R;
 import com.bby.yishijie.member.common.BaseApp;
 import com.bby.yishijie.member.http.ApiClient;
 import com.bby.yishijie.member.ui.WebViewActivity;
-import com.bby.yishijie.member.ui.order.ApplyRefundActivity;
-import com.bby.yishijie.member.ui.order.OrderDetailActivity;
-import com.bby.yishijie.member.ui.order.OrderPayActivity;
-import com.bby.yishijie.member.ui.order.RefundDetailActivity;
 import com.bby.yishijie.shop.adapter.OrderAdapter;
 import com.bby.yishijie.shop.entity.Order;
 import com.sunday.common.base.BaseFragment;
@@ -137,7 +133,7 @@ public class OrderListFragment extends BaseFragment {
                     case R.id.item_view:
                         //订单详情
                         intent = new Intent(mContext, OrderDetailActivity.class);
-                        intent.putExtra("order", Order.transferMember(item));
+                        intent.putExtra("order", item);
                         startActivity(intent);
                         break;
                     case R.id.order_btn1:
@@ -173,7 +169,7 @@ public class OrderListFragment extends BaseFragment {
                             case 1:
                                 //申请退款
                                 intent = new Intent(mContext, ApplyRefundActivity.class);
-                                intent.putExtra("order", Order.transferMember(item));
+                                intent.putExtra("order", item);
                                 intent.putExtra("type", 1);//申请退款
                                 startActivity(intent);
                                 break;
@@ -200,13 +196,13 @@ public class OrderListFragment extends BaseFragment {
                             case 5:
                                 //查看退款详情
                                 intent = new Intent(mContext, RefundDetailActivity.class);
-                                intent.putExtra("order", Order.transferMember(item));
+                                intent.putExtra("order", item);
                                 startActivity(intent);
                                 break;
                             case 8:
                                 //查看退货详情
                                 intent=new Intent(mContext,RefundDetailActivity.class);
-                                intent.putExtra("order",Order.transferMember(item));
+                                intent.putExtra("order",item);
                                 startActivity(intent);
                                 break;
                         }
@@ -280,7 +276,7 @@ public class OrderListFragment extends BaseFragment {
                 if (response.body().getCode() == 0) {
                     Order item = response.body().getResult();
                     intent = new Intent(mContext, OrderPayActivity.class);
-                    intent.putExtra("order", Order.transferMember(item));
+                    intent.putExtra("order", item);
                     intent.putExtra("isGroupBuy", false);
                     startActivity(intent);
                 }

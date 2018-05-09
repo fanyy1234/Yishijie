@@ -54,16 +54,20 @@ public class Order implements Serializable {
     private String reason;
     private List<OrderListBean> list;
     private String sendTime;
+    private BigDecimal scoreFee;
     private BigDecimal voucherFee;
     private BigDecimal expressFee;
     private int isUsed;
+    private int isBuy;
+    private String shopName;
     private String payTime;
+    private String backTime;
     private String receiveTime;
     private String finishedTime;
-    private String shopName;
-    private String backTime;
+    private BigDecimal realPay;
+    private BigDecimal moneyFee;
     private BigDecimal discountFee;//满减的费用
-    private BigDecimal scoreFee;
+
     private List<OrderListBean> crossList;//跨境
     private List<OrderListBean> limitList;//限时购
     private List<OrderListBean> activeList;//满减
@@ -331,6 +335,30 @@ public class Order implements Serializable {
 
     public void setList(List<OrderListBean> list) {
         this.list = list;
+    }
+
+    public int getIsBuy() {
+        return isBuy;
+    }
+
+    public void setIsBuy(int isBuy) {
+        this.isBuy = isBuy;
+    }
+
+    public BigDecimal getRealPay() {
+        return realPay;
+    }
+
+    public void setRealPay(BigDecimal realPay) {
+        this.realPay = realPay;
+    }
+
+    public BigDecimal getMoneyFee() {
+        return moneyFee;
+    }
+
+    public void setMoneyFee(BigDecimal moneyFee) {
+        this.moneyFee = moneyFee;
     }
 
     public List<OrderListItem> getDatas() {

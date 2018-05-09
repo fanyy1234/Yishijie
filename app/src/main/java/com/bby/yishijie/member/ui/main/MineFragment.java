@@ -211,7 +211,7 @@ public class MineFragment extends BaseFragment {
             menuShareShop.setVisibility(View.VISIBLE);
             menuJifen.setVisibility(View.GONE);
             menuCounpon.setVisibility(View.GONE);
-            menuIntegralMall.setVisibility(View.VISIBLE);
+            menuIntegralMall.setVisibility(View.GONE);
         }
     }
 
