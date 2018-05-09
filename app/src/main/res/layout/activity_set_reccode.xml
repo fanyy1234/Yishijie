@@ -16,8 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:background="@null"
         android:hint="请输入邀请码"/>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/fontgrey"/>
     <LinearLayout
         android:id="@+id/set_reccode_btn"
         android:layout_width="match_parent"

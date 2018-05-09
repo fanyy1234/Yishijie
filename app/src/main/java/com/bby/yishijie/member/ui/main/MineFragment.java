@@ -307,10 +307,6 @@ public class MineFragment extends BaseFragment {
     }
 
 
-    private void getMemberInfo() {
-
-    }
-
 
     @OnClick({R.id.menu_order_4, R.id.menu_counpon, R.id.menu_addr, R.id.order_all, R.id.set_rec_code,
             R.id.menu_open_shop, R.id.menu_customer_service, R.id.text_login, R.id.menu_setting, R.id.menu_share_shop,

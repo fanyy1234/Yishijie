@@ -50,10 +50,20 @@ public class SetRecCodeActivity extends BaseActivity {
         if (MainActivity.isShop){
             com.bby.yishijie.shop.entity.Member member = BaseApp.getInstance().getShopMember();
             memberId = member.getId();
+            if (member.getRecId()!=0){
+                reccodeEdittext.setEnabled(false);
+                setReccodeBtn.setVisibility(View.GONE);
+                getShopMemberInfo2(member.getRecId());
+            }
         }
         else {
             Member member = BaseApp.getInstance().getMember();
             memberId = member.getId();
+            if (member.getRecId()!=0){
+                reccodeEdittext.setEnabled(false);
+                setReccodeBtn.setVisibility(View.GONE);
+                getShopMemberInfo2(member.getRecId());
+            }
         }
 
         initView();
@@ -76,7 +86,7 @@ public class SetRecCodeActivity extends BaseActivity {
 
     private void bindCode() {
         showLoadingDialog(0);
-        Call<ResultDO> call = ApiClient.getApiAdapter().bindShopBycode(memberId,recCodeStr);
+        Call<ResultDO> call = ApiClient.getApiAdapter().bindShop(memberId,recCodeStr);
         call.enqueue(new Callback<ResultDO>() {
             @Override
             public void onResponse(Call<ResultDO> call, Response<ResultDO> response) {
@@ -86,7 +96,13 @@ public class SetRecCodeActivity extends BaseActivity {
                 }
                 if (response.body().getResult() != null && response.body().getCode() == 0) {
                     ToastUtils.showToast(mContext,"绑定成功");
-                    finish();
+                    if (MainActivity.isShop){
+                        getShopMemberInfo();
+                    }
+                    else {
+                        getMemberInfo();
+                    }
+
                 }
                 else {
                     ToastUtils.showToast(mContext,response.body().getMessage());
@@ -100,5 +116,78 @@ public class SetRecCodeActivity extends BaseActivity {
             }
         });
     }
+    private void getMemberInfo() {
+        showLoadingDialog(0);
+        Call<ResultDO<Member>> call = ApiClient.getApiAdapter().getMemberInfo(memberId);
+        call.enqueue(new Callback<ResultDO<Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<Member>> call, Response<ResultDO<Member>> response) {
+                dissMissDialog();
+                if (isFinish) {
+                    return;
+                }
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() == null) {
+                        return;
+                    }
+                    SharePerferenceUtils.getIns(mContext).saveOAuth(response.body().getResult());
+                    BaseApp.getInstance().setMember(response.body().getResult());
+                    finish();
+                }
+            }
 
+            @Override
+            public void onFailure(Call<ResultDO<Member>> call, Throwable t) {
+                dissMissDialog();
+            }
+        });
+    }
+    private void getShopMemberInfo() {
+        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().getMemberInfo2(memberId);
+        call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Response<ResultDO<com.bby.yishijie.shop.entity.Member>> response) {
+                if (isFinish || response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() != null) {
+                        com.bby.yishijie.shop.entity.Member member = response.body().getResult();
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(member);
+                        BaseApp.getInstance().setShopMember(member);
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Throwable t) {
+
+            }
+        });
+    }
+    private void getShopMemberInfo2(long shopId) {
+        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().getMemberInfo2(shopId);
+        call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Response<ResultDO<com.bby.yishijie.shop.entity.Member>> response) {
+                if (isFinish || response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() != null) {
+                        reccodeEdittext.setText(response.body().getResult().getInitCode());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Throwable t) {
+
+            }
+        });
+    }
 }
