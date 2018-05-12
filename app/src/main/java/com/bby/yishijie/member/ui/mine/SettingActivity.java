@@ -206,6 +206,7 @@ public class SettingActivity extends BaseActivity {
                                            SharePerferenceUtils.getIns(mContext).removeKey(Constants.MEMBERID);
                                            BaseApp.getInstance().setMember(null);
                                            BaseApp.getInstance().setShopMember(null);
+                                           SharePerferenceUtils.getIns(mContext).removeKey(Constants.IS_SHOP);
                                            deleteClientId();
                                            delDialog.dismiss();
                                        }
