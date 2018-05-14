@@ -1,6 +1,7 @@
 package com.bby.yishijie.member.entity;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
 /**
@@ -455,5 +456,30 @@ public class Member implements Serializable{
 
     public void setSendScale(BigDecimal sendScale) {
         this.sendScale = sendScale;
+    }
+
+    public static com.bby.yishijie.shop.entity.Member transferMember(com.bby.yishijie.member.entity.Member shopMember){
+        if (shopMember==null){
+            return null;
+        }
+        com.bby.yishijie.shop.entity.Member member = new com.bby.yishijie.shop.entity.Member();
+        try {
+            //使用反射技术完成对象属性的输出
+            Class<?> c1 = Class.forName("com.bby.yishijie.member.entity.Member");
+            Class<?> c2 = Class.forName("com.bby.yishijie.shop.entity.Member");
+            Field[] fields = c1.getDeclaredFields();
+            Field[] fields2 = c2.getDeclaredFields();
+            int length = fields.length;
+            for (int i=0;i<length;i++){
+                Field f1 = fields[i];
+                Field f2 = fields2[i];
+                f1.setAccessible(true);
+                f2.setAccessible(true);
+                f1.set(shopMember,f2.get(member));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return member;
     }
 }

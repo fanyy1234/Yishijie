@@ -113,7 +113,12 @@ public class MainActivity extends BaseActivity {
             finish();*/
         } else {
             if (isShop){
-                com.bby.yishijie.shop.entity.Member member1 = (com.bby.yishijie.shop.entity.Member) SharePerferenceUtils.getIns(mContext).getOAuth();
+                com.bby.yishijie.shop.entity.Member member1 = null;
+                try {
+                    member1 = (com.bby.yishijie.shop.entity.Member) SharePerferenceUtils.getIns(mContext).getOAuth();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 if (member1 != null) {
                     BaseApp.getInstance().setShopMember(member1);
                 }

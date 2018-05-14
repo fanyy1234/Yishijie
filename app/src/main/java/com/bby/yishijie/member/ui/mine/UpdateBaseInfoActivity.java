@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bby.yishijie.member.ui.MainActivity;
 import com.sunday.common.base.BaseActivity;
 import com.sunday.common.event.EventBus;
 import com.sunday.common.model.ResultDO;
@@ -40,7 +41,7 @@ public class UpdateBaseInfoActivity extends BaseActivity{
 
     private int type;//0:昵称
     private String userName;
-    private Member member;
+    private long memberId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +49,27 @@ public class UpdateBaseInfoActivity extends BaseActivity{
         setContentView(R.layout.activity_update_base_info);
         ButterKnife.bind(this);
         type = getIntent().getIntExtra("type", 0);
-        member = BaseApp.getInstance().getMember();
-        switch (type) {
-            case 0:
-                titleView.setText("修改昵称");
-                etInfo.setText(TextUtils.isEmpty(member.getNickName()) ? "" : member.getNickName());
-                break;
+        if (MainActivity.isShop){
+            com.bby.yishijie.shop.entity.Member member = BaseApp.getInstance().getShopMember();
+            memberId = member.getId();
+            switch (type) {
+                case 0:
+                    titleView.setText("修改昵称");
+                    etInfo.setText(TextUtils.isEmpty(member.getNickName()) ? "" : member.getNickName());
+                    break;
+            }
         }
+        else {
+            Member member = BaseApp.getInstance().getMember();
+            memberId = member.getId();
+            switch (type) {
+                case 0:
+                    titleView.setText("修改昵称");
+                    etInfo.setText(TextUtils.isEmpty(member.getNickName()) ? "" : member.getNickName());
+                    break;
+            }
+        }
+
     }
 
     @OnClick(R.id.btn_submit)
@@ -68,7 +83,7 @@ public class UpdateBaseInfoActivity extends BaseActivity{
             userName=info;
         }
         showLoadingDialog(0);
-        Call<ResultDO<Member>> call = ApiClient.getApiAdapter().saveEditInfo(member.getId(),null,userName,null,
+        Call<ResultDO<Member>> call = ApiClient.getApiAdapter().saveEditInfo(memberId,null,userName,null,
                 null,null,null);
         call.enqueue(new Callback<ResultDO<Member>>() {
             @Override
@@ -79,8 +94,17 @@ public class UpdateBaseInfoActivity extends BaseActivity{
                 }
                 if (response.body().getResult() != null && response.body().getCode() == 0) {
                     ToastUtils.showToast(mContext, "修改成功");
-                    SharePerferenceUtils.getIns(mContext).saveOAuth(response.body().getResult());
-                    BaseApp.getInstance().setMember(response.body().getResult());
+                    if (MainActivity.isShop){
+                        Member member = response.body().getResult();
+                        com.bby.yishijie.shop.entity.Member shopMember = com.bby.yishijie.member.entity.Member.transferMember(member);
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(shopMember);
+                        BaseApp.getInstance().setShopMember(shopMember);
+                    }
+                    else {
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(response.body().getResult());
+                        BaseApp.getInstance().setMember(response.body().getResult());
+                    }
+
                     EventBus.getDefault().post(new UpdateBaseInfo());
                     finish();
                 }

@@ -499,4 +499,67 @@ public class MineFragment extends BaseFragment {
             }
         });
     }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (MainActivity.isShop){
+            getMember2();
+        }
+        else {
+            getMemberInfo();
+        }
+    }
+    private void getMember2() {
+        Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call = ApiClient.getApiAdapter().getMemberInfo2(memberId);
+        call.enqueue(new Callback<ResultDO<com.bby.yishijie.shop.entity.Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Response<ResultDO<com.bby.yishijie.shop.entity.Member>> response) {
+                if (isFinish || response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() != null) {
+                        com.bby.yishijie.shop.entity.Member member = response.body().getResult();
+                        SharePerferenceUtils.getIns(mContext).saveOAuth(member);
+                        BaseApp.getInstance().setShopMember(member);
+                        initView();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<com.bby.yishijie.shop.entity.Member>> call, Throwable t) {
+
+            }
+        });
+    }
+    private void getMemberInfo() {
+        showLoadingDialog(0);
+        Call<ResultDO<Member>> call = ApiClient.getApiAdapter().getMemberInfo(memberId);
+        call.enqueue(new Callback<ResultDO<Member>>() {
+            @Override
+            public void onResponse(Call<ResultDO<Member>> call, Response<ResultDO<Member>> response) {
+                dissMissDialog();
+                if (isFinish) {
+                    return;
+                }
+                if (response.body() == null) {
+                    return;
+                }
+                if (response.body().getCode() == 0) {
+                    if (response.body().getResult() == null) {
+                        return;
+                    }
+                    SharePerferenceUtils.getIns(mContext).saveOAuth(response.body().getResult());
+                    BaseApp.getInstance().setMember(response.body().getResult());
+                    initView();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResultDO<Member>> call, Throwable t) {
+                dissMissDialog();
+            }
+        });
+    }
 }
